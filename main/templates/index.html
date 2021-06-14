@@ -12,23 +12,29 @@
 {% endblock %}
 
 {% block body %}
+
+
+
+
     <!-- Swiper-->
     <section class="section swiper-container swiper-slider swiper-slider-classic" data-loop="true" data-autoplay="5000"
              data-simulate-touch="true" data-direction="vertical" data-nav="false">
         <div class="swiper-wrapper text-center">
-{#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-1-1770x742.jpg' %}">#}
+            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-1-1770x742.jpg' %}">#}
             <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture1.jpg' %}">
 
                 <div class="swiper-slide-caption section-md">
                     <div class="container">
                         <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"></h1>
                         <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">
-{#                            Our team#}
-{#                            uses innovations combined with customized interior planning to deliver the best interior#}
-{#                            design for your home or office while saving costs.#}
+                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского
+                            Викентия
+                            {#                            Our team#}
+                            {#                            uses innovations combined with customized interior planning to deliver the best interior#}
+                            {#                            design for your home or office while saving costs.#}
                         </p><a
                             class="button button-primary button-ujarak" href="#" data-caption-animate="fadeInUp"
-                            data-caption-delay="200">Get in touch</a>
+                            data-caption-delay="200">Богослужения</a>
                     </div>
                 </div>
             </div>
@@ -64,6 +70,102 @@
             </div>
             <div class="swiper-pagination__divider"></div>
             <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+    {#    <!-- Latest blog posts-->#}
+    <section class="section section-sm section-last bg-default">
+        <div class="container">
+            <h3>Последние новости</h3>
+            <div class="row row-60 row-sm">
+                <div class="col-sm-6 col-lg-4 wow fadeInLeft">
+                    <!-- Post Modern-->
+                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
+                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>
+                        <div class="post-modern-time">
+                            <time datetime="2019-07-04"><span class="post-modern-time-number">13</span><span
+                                    class="post-modern-time-month">Июнь</span></time>
+                        </div>
+                    </a>
+                        <h5 class="post-modern-title"><a href="#">На юбилейные торжества в честь святителя Луки
+                            (Войно-Ясенецкого) съехались именитые гости из епархий Русской и Украинской Православных
+                            Церквей</a></h5>
+                        <p class="post-modern-text">На юбилейные торжества в честь святителя Луки (Войно-Ясенецкого)
+                            съехались именитые гости из епархий Русской и Украинской Православных Церквей...</p>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
+                    <!-- Post Modern-->
+                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
+                            src="{% static 'images/post-11-370x307.jpg' %}" alt="" width="370" height="307"/>
+                        <div class="post-modern-time">
+                            <time datetime="2019-07-17"><span class="post-modern-time-number">03</span><span
+                                    class="post-modern-time-month">Июнь</span></time>
+                        </div>
+                    </a>
+                        <h5 class="post-modern-title"><a href="#">Престольный праздник Свято-Алексиевского собора в
+                            Самарканде</a></h5>
+                        <p class="post-modern-text">Престольный праздник отметил 2 июня 2021 года единственный в
+                            Узбекистане собор в честь святителя Алексия, митрополита Московского и всея России,
+                            чудотворца, который по промыслу Божию расположился в Самарканде. В этот день глава
+                            Среднеазиатского митрополичьего округа митрополит Ташкентский и Узбекистанский Викентий
+                            совершил Божественную литургию в рамках своего архипастырского визита по приходам
+                            Самаркандского благочиния...</p>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
+                    <!-- Post Modern-->
+                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
+                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
+                        <div class="post-modern-time">
+                            <time datetime="2019-07-22"><span class="post-modern-time-number">24</span><span
+                                    class="post-modern-time-month">Май</span></time>
+                        </div>
+                    </a>
+                        <h5 class="post-modern-title"><a href="#">40-летие служения в священном сане отметил митрополит
+                            Ташкентский и Узбекистанский Викентий</a></h5>
+                        <p class="post-modern-text">21 мая Святая Церковь чтит память апостола и евангелиста Иоанна
+                            Богослова. Иоанн Богослов является покровителем богословской науки и всех богословов.
+                            Поэтому для студентов и преподавателей духовных учебных заведений этот день особенно
+                            почитаем...</p>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
+                    <!-- Post Modern-->
+                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
+                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
+                        <div class="post-modern-time">
+                            <time datetime="2019-07-22"><span class="post-modern-time-number">24</span><span
+                                    class="post-modern-time-month">Май</span></time>
+                        </div>
+                    </a>
+                        <h5 class="post-modern-title"><a href="#">40-летие служения в священном сане отметил митрополит
+                            Ташкентский и Узбекистанский Викентий</a></h5>
+                        <p class="post-modern-text">21 мая Святая Церковь чтит память апостола и евангелиста Иоанна
+                            Богослова. Иоанн Богослов является покровителем богословской науки и всех богословов.
+                            Поэтому для студентов и преподавателей духовных учебных заведений этот день особенно
+                            почитаем...</p>
+                    </article>
+                </div>
+                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
+                    <!-- Post Modern-->
+                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
+                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
+                        <div class="post-modern-time">
+                            <time datetime="2019-07-22"><span class="post-modern-time-number">24</span><span
+                                    class="post-modern-time-month">Май</span></time>
+                        </div>
+                    </a>
+                        <h5 class="post-modern-title"><a href="#">40-летие служения в священном сане отметил митрополит
+                            Ташкентский и Узбекистанский Викентий</a></h5>
+                        <p class="post-modern-text">21 мая Святая Церковь чтит память апостола и евангелиста Иоанна
+                            Богослова. Иоанн Богослов является покровителем богословской науки и всех богословов.
+                            Поэтому для студентов и преподавателей духовных учебных заведений этот день особенно
+                            почитаем...</p>
+                    </article>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -569,56 +671,56 @@
         </div>
     </section>
 
-    <!-- Latest blog posts-->
-    <section class="section section-sm section-last bg-default">
-        <div class="container">
-            <h3>Latest blog posts</h3>
-            <div class="row row-60 row-sm">
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-04"><span class="post-modern-time-number">04</span><span
-                                    class="post-modern-time-month">July</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">Designing a Children’s room</a></h5>
-                        <p class="post-modern-text">Kids’ bedrooms aren’t usually noted for their sophisticated style.
-                            But it’s not a bad idea to design a room that your kid can grow into...</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-11-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-17"><span class="post-modern-time-number">17</span><span
-                                    class="post-modern-time-month">July</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">Home decor trends</a></h5>
-                        <p class="post-modern-text">Trends are hard to keep up with. Ever-changing, contradictory, and
-                            sometimes seemingly senseless, no one can stay perfectly up to...</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-22"><span class="post-modern-time-number">22</span><span
-                                    class="post-modern-time-month">July</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">Bedroom space management</a></h5>
-                        <p class="post-modern-text">Any sleep enthusiast would agree that the bedroom is pretty high up
-                            on the list of most important rooms in the house. There’s even...</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
+    {#    <!-- Latest blog posts-->#}
+    {#    <section class="section section-sm section-last bg-default">#}
+    {#        <div class="container">#}
+    {#            <h3>Latest blog posts</h3>#}
+    {#            <div class="row row-60 row-sm">#}
+    {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft">#}
+    {#                    <!-- Post Modern-->#}
+    {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
+    {#                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>#}
+    {#                        <div class="post-modern-time">#}
+    {#                            <time datetime="2019-07-04"><span class="post-modern-time-number">04</span><span#}
+    {#                                    class="post-modern-time-month">July</span></time>#}
+    {#                        </div>#}
+    {#                    </a>#}
+    {#                        <h5 class="post-modern-title"><a href="#">Designing a Children’s room</a></h5>#}
+    {#                        <p class="post-modern-text">Kids’ bedrooms aren’t usually noted for their sophisticated style.#}
+    {#                            But it’s not a bad idea to design a room that your kid can grow into...</p>#}
+    {#                    </article>#}
+    {#                </div>#}
+    {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">#}
+    {#                    <!-- Post Modern-->#}
+    {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
+    {#                            src="{% static 'images/post-11-370x307.jpg' %}" alt="" width="370" height="307"/>#}
+    {#                        <div class="post-modern-time">#}
+    {#                            <time datetime="2019-07-17"><span class="post-modern-time-number">17</span><span#}
+    {#                                    class="post-modern-time-month">July</span></time>#}
+    {#                        </div>#}
+    {#                    </a>#}
+    {#                        <h5 class="post-modern-title"><a href="#">Home decor trends</a></h5>#}
+    {#                        <p class="post-modern-text">Trends are hard to keep up with. Ever-changing, contradictory, and#}
+    {#                            sometimes seemingly senseless, no one can stay perfectly up to...</p>#}
+    {#                    </article>#}
+    {#                </div>#}
+    {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">#}
+    {#                    <!-- Post Modern-->#}
+    {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
+    {#                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>#}
+    {#                        <div class="post-modern-time">#}
+    {#                            <time datetime="2019-07-22"><span class="post-modern-time-number">22</span><span#}
+    {#                                    class="post-modern-time-month">July</span></time>#}
+    {#                        </div>#}
+    {#                    </a>#}
+    {#                        <h5 class="post-modern-title"><a href="#">Bedroom space management</a></h5>#}
+    {#                        <p class="post-modern-text">Any sleep enthusiast would agree that the bedroom is pretty high up#}
+    {#                            on the list of most important rooms in the house. There’s even...</p>#}
+    {#                    </article>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
 
     <!-- Page Footer-->
     {% include 'includes/footer.html' %}
