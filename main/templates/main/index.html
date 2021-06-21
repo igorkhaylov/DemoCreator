@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 {% block title %}Main Page{% endblock %}
 
 {% block nav_active %}
@@ -38,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-2-1770x742.jpg' %}">
+            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture2.jpg' %}">
                 <div class="swiper-slide-caption section-md">
                     <div class="container">
                         <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Committed and professional</h1>
@@ -79,92 +80,45 @@
         <div class="container">
             <h3>Последние новости</h3>
             <div class="row row-60 row-sm">
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-04"><span class="post-modern-time-number">13</span><span
-                                    class="post-modern-time-month">Июнь</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">На юбилейные торжества в честь святителя Луки
-                            (Войно-Ясенецкого) съехались именитые гости из епархий Русской и Украинской Православных
-                            Церквей</a></h5>
-                        <p class="post-modern-text">На юбилейные торжества в честь святителя Луки (Войно-Ясенецкого)
-                            съехались именитые гости из епархий Русской и Украинской Православных Церквей...</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-11-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-17"><span class="post-modern-time-number">03</span><span
-                                    class="post-modern-time-month">Июнь</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">Престольный праздник Свято-Алексиевского собора в
-                            Самарканде</a></h5>
-                        <p class="post-modern-text">Престольный праздник отметил 2 июня 2021 года единственный в
-                            Узбекистане собор в честь святителя Алексия, митрополита Московского и всея России,
-                            чудотворца, который по промыслу Божию расположился в Самарканде. В этот день глава
-                            Среднеазиатского митрополичьего округа митрополит Ташкентский и Узбекистанский Викентий
-                            совершил Божественную литургию в рамках своего архипастырского визита по приходам
-                            Самаркандского благочиния...</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-22"><span class="post-modern-time-number">24</span><span
-                                    class="post-modern-time-month">Май</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">40-летие служения в священном сане отметил митрополит
-                            Ташкентский и Узбекистанский Викентий</a></h5>
-                        <p class="post-modern-text">21 мая Святая Церковь чтит память апостола и евангелиста Иоанна
-                            Богослова. Иоанн Богослов является покровителем богословской науки и всех богословов.
-                            Поэтому для студентов и преподавателей духовных учебных заведений этот день особенно
-                            почитаем...</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-22"><span class="post-modern-time-number">24</span><span
-                                    class="post-modern-time-month">Май</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">40-летие служения в священном сане отметил митрополит
-                            Ташкентский и Узбекистанский Викентий</a></h5>
-                        <p class="post-modern-text">21 мая Святая Церковь чтит память апостола и евангелиста Иоанна
-                            Богослова. Иоанн Богослов является покровителем богословской науки и всех богословов.
-                            Поэтому для студентов и преподавателей духовных учебных заведений этот день особенно
-                            почитаем...</p>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
-                    <!-- Post Modern-->
-                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img
-                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>
-                        <div class="post-modern-time">
-                            <time datetime="2019-07-22"><span class="post-modern-time-number">24</span><span
-                                    class="post-modern-time-month">Май</span></time>
-                        </div>
-                    </a>
-                        <h5 class="post-modern-title"><a href="#">40-летие служения в священном сане отметил митрополит
-                            Ташкентский и Узбекистанский Викентий</a></h5>
-                        <p class="post-modern-text">21 мая Святая Церковь чтит память апостола и евангелиста Иоанна
-                            Богослова. Иоанн Богослов является покровителем богословской науки и всех богословов.
-                            Поэтому для студентов и преподавателей духовных учебных заведений этот день особенно
-                            почитаем...</p>
-                    </article>
-                </div>
+{#                <div class="col-sm-6 col-lg-4 wow fadeInLeft">#}
+{#                    <!-- Post Modern-->#}
+{#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
+{#                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>#}
+{#                        <div class="post-modern-time">#}
+{#                            <time datetime="2019-07-04"><span class="post-modern-time-number">13</span><span#}
+{#                                    class="post-modern-time-month">Декабрь</span></time>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                        <h5 class="post-modern-title"><a href="#">На юбилейные торжества в честь святителя Луки#}
+{#                            (Войно-Ясенецкого) съехались именитые гости из епархий Русской и Украинской Православных#}
+{#                            Церквей</a></h5>#}
+{#                        <p class="post-modern-text">На юбилейные торжества в честь святителя Луки (Войно-Ясенецкого)#}
+{#                            съехались именитые гости из епархий Русской и Украинской Православных Церквей...</p>#}
+{#                    </article>#}
+{#                </div>#}
+
+
+
+                {% for news in news %}
+                    <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
+                        <!-- Post Modern-->
+
+{#                        <article class="post post-modern"><a class="post-modern-figure" href="{{ news.date|date:'Y/m/d/'}}{{ news.slug }}">#}
+                        <article class="post post-modern"><a class="post-modern-figure" href="{% url 'post_detail' news.pk %}">
+                            {% thumbnail news.picture "370x307" crop="center" as im %}
+                                <img src="{{ im.url }}" alt="" width="370" height="307"/>
+                            {% endthumbnail %}
+                            <div class="post-modern-time">
+                                <time datetime="2019-07-22"><span
+                                        class="post-modern-time-number">{{ news.date|date:"d" }}</span><span
+                                        class="post-modern-time-month">{{ news.date|date:"F" }}</span></time>
+                            </div>
+                        </a>
+                            <h5 class="post-modern-title"><a href="{% url 'post_detail' news.pk %}">{{ news.title }}</a></h5>
+                            <p class="post-modern-text">{{ news.content|striptags|truncatechars:250 }}</p>
+                        </article>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

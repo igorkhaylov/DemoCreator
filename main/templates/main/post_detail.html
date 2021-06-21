@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+    Post Detail
+{% endblock %}
+
+{% block nav_active %}
+
+    <ul class="rd-navbar-nav">
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Home</a></li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'about' %}">About Us</a></li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'typography' %}">Typography</a></li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+    </ul>
+
+{% endblock %}
+
+{% block body %}
+
+
+    {#    <!-- Breadcrumbs -->#}
+    <section class="breadcrumbs-custom-inset">
+        <div class="breadcrumbs-custom context-dark bg-overlay-33">
+            <div class="container">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                {#                <h2 class="breadcrumbs-custom-title">Post detail</h2>#}
+            </div>
+            {#            <div class="box-position" style="background-image: url({% static 'images/bg-elements.jpg' %});"></div>#}
+            {% thumbnail post.picture "x900" crop="center" quality=70 as im %}
+                <div class="box-position" style="background-image: url({{ im.url }});"></div>
+            {% endthumbnail %}
+        </div>
+    </section>
+    {#    <!-- Base typography-->#}
+    <section class="section section-sm section-first bg-default text-left">
+        <div class="container">
+            <div class="row row-40 flex-lg-row-reverse justify-content-xl-between">
+                <div class="col-xl-5 d-none d-xl-block">
+                    <div class="offset-left-xl-45">
+                        {#                        <h1>H1 Heading</h1>#}
+                        <h2>H2 Heading</h2>
+                        <h3>H3 Heading</h3>
+                        <h4>H4 Heading</h4>
+                        <h5>H5 Heading</h5>
+                        <h6>Welcome to our wonderful world. We sincerely hope that each and every user entering our
+                            website will find exactly what he/she is looking for. With advanced features of
+                            activating account and new login widgets, you will definitely have a great experience of
+                            using our web page</h6>
+                    </div>
+                </div>
+                <div class="col-xl-7">
+                    <ul class="list-xl box-typography">
+
+                        <li>
+                            <h4>{{ post.title }}</h4>
+                            <p>{{ post.content|safe }}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if post.images.all %}
+        <section class="section section-sm section-fluid bg-default text-center">
+            <div class="container-fluid">
+                <h3 class="wow fadeInLeft">Фотогалерея</h3>
+{#                <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">In our portfolio you can browse the latest#}
+{#                    interior designs created in various styles and for different purposes. Our qualified design#}
+{#                    professionals are always ready to design something spectacular for you, even if it’s a residential#}
+{#                    interior improvement.</p>#}
+                <div class="isotope-filters isotope-filters-horizontal">
+                    <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha"
+                            data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true"><span
+                            class="icon fa fa-caret-down"></span>Filter
+                    </button>
+                    <ul class="isotope-filters-list" id="isotope-3">
+                        <li><a class="active" href="#" data-isotope-filter="*" data-isotope-group="gallery">All</a></li>
+                        <li><a href="#" data-isotope-filter="Type 1" data-isotope-group="gallery">Apartments</a></li>
+                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Offices</a></li>
+                        <li><a href="#" data-isotope-filter="Type 3" data-isotope-group="gallery">Corporate designs</a>
+                        </li>
+{#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Офис</a></li>#}
+                    </ul>
+                </div>
+                <div class="row row-30 isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
+                     data-lightgallery="group">
+
+                    {% for image in post.images.all %}
+                        <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 3">
+                            <!-- Thumbnail Classic-->
+                            <article class="thumbnail thumbnail-classic thumbnail-md">
+                                {% thumbnail image.pictures "420x350" crop="center" as im %}
+                                    <div class="thumbnail-classic-figure"><img
+                                            src="{{ im.url }}" alt="" width="420"
+                                            height="350"/>
+                                    </div>
+
+                                    <div class="thumbnail-classic-caption">
+                                        <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
+                                                                                     href="{{ image.pictures.url }}"
+                                                                                     data-lightgallery="item"><img
+                                                src="{{ im.url }}" alt="" width="420"
+                                                height="350"/></a>
+                                            <h5 class="thumbnail-classic-title"><a href="#">379 Harvey Rd</a></h5>
+                                        </div>
+                                        <p class="thumbnail-classic-text">We work hard on every project to deliver
+                                            top-notch
+                                            interior design concepts that satisfy your wishes.</p>
+                                    </div>
+                                {% endthumbnail %}
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <!-- HTML Text Elements-->
+    {#    <section class="section section-sm bg-default text-left">#}
+    {#        <div class="container">#}
+    {#            <h3>HTML Text Elements</h3>#}
+    {#            <p class="text-block">Welcome to our wonderful world. This is a bold text#}
+    {#                <mark>This is a highlighted text</mark>#}
+    {#                We sincerely hope that each and every user entering our website will find exactly what he/she is looking#}
+    {#                for. With advanced features of activating account and new login<span class="tooltip-custom"#}
+    {#                                                                                     data-toggle="tooltip"#}
+    {#                                                                                     data-placement="top"#}
+    {#                                                                                     title="Default text">Tooltips</span>widgets,#}
+    {#                you will definitely have a great experience of using our web page.<span class="text-strike">This is a strikethrough text</span><span#}
+    {#                        class="text-underline">This is an underlined text.</span><a href="#">Link</a><a#}
+    {#                        class="link-hover" href="#">Hover link</a><a class="link-active" href="#">Press link</a>#}
+    {#            </p>#}
+    {#        </div>#}
+    {#    </section>#}
+
+    {#    <!-- Lists and Blockquote-->#}
+    {#    <section class="section section-sm section-last bg-default text-left">#}
+    {#        <div class="container">#}
+    {#            <div class="row row-60 row-md-80 row-lg-90">#}
+    {#                <div class="col-lg-8 col-xl-6">#}
+    {#                    <h3>Ordered & Unordered Lists</h3>#}
+    {#                    <div class="row row-sm row-30">#}
+    {#                        <div class="col-sm-6">#}
+    {#                            <ul class="list-marked">#}
+    {#                                <li>Consulting</li>#}
+    {#                                <li>Customer Service</li>#}
+    {#                                <li>Innovation</li>#}
+    {#                                <li>Management</li>#}
+    {#                                <li>Ethics</li>#}
+    {#                            </ul>#}
+    {#                        </div>#}
+    {#                        <div class="col-sm-6">#}
+    {#                            <ol class="list-ordered">#}
+    {#                                <li>Consulting</li>#}
+    {#                                <li>Customer Service</li>#}
+    {#                                <li>Innovation</li>#}
+    {#                                <li>Management</li>#}
+    {#                                <li>Ethics</li>#}
+    {#                            </ol>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-8 col-xl-6">#}
+    {#                    <div class="offset-left-xl-65">#}
+    {#                        <h3>Blockquote</h3>#}
+    {#                        <!-- Quote Classic-->#}
+    {#                        <article class="quote-classic">#}
+    {#                            <div class="quote-classic-text">#}
+    {#                                <p class="q">We use only trusted, verified content, so you can believe our every#}
+    {#                                    word.</p>#}
+    {#                            </div>#}
+    {#                            <h6 class="quote-classic-cite">Catherine Williams</h6>#}
+    {#                        </article>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+
+    <!-- Page Footer-->
+    {% include 'includes/footer.html' %}
+{% endblock %}
