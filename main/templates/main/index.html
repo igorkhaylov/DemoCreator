@@ -15,8 +15,6 @@
 {% block body %}
 
 
-
-
     <!-- Swiper-->
     <section class="section swiper-container swiper-slider swiper-slider-classic" data-loop="true" data-autoplay="5000"
              data-simulate-touch="true" data-direction="vertical" data-nav="false">
@@ -51,23 +49,24 @@
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-3-1770x742.jpg' %}">
-                <div class="swiper-slide-caption section-md">
-                    <div class="container">
-                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Harmonious and cozy</h1>
-                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">We
-                            develop individual room concepts for private and commercial use. Our team focuses on the
-                            interior design of private living rooms, hotels, offices, and more.</p><a
-                            class="button button-primary button-ujarak" href="#" data-caption-animate="fadeInUp"
-                            data-caption-delay="200">Get in touch</a>
-                    </div>
-                </div>
-            </div>
+            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-3-1770x742.jpg' %}">#}
+            {#                <div class="swiper-slide-caption section-md">#}
+            {#                    <div class="container">#}
+            {#                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Harmonious and cozy</h1>#}
+            {#                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">We#}
+            {#                            develop individual room concepts for private and commercial use. Our team focuses on the#}
+            {#                            interior design of private living rooms, hotels, offices, and more.</p><a#}
+            {#                            class="button button-primary button-ujarak" href="#" data-caption-animate="fadeInUp"#}
+            {#                            data-caption-delay="200">Get in touch</a>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
         </div>
         <!-- Swiper Pagination-->
         <div class="swiper-pagination__module">
             <div class="swiper-pagination__fraction"><span class="swiper-pagination__fraction-index">00</span><span
-                    class="swiper-pagination__fraction-divider">/</span><span class="swiper-pagination__fraction-count">00</span>
+                    class="swiper-pagination__fraction-divider">/</span><span
+                    class="swiper-pagination__fraction-count">00</span>
             </div>
             <div class="swiper-pagination__divider"></div>
             <div class="swiper-pagination"></div>
@@ -75,36 +74,32 @@
     </section>
 
 
-    {#    <!-- Latest blog posts-->#}
+    <!-- Latest blog posts-->
     <section class="section section-sm section-last bg-default">
         <div class="container">
             <h3>Последние новости</h3>
             <div class="row row-60 row-sm">
-{#                <div class="col-sm-6 col-lg-4 wow fadeInLeft">#}
-{#                    <!-- Post Modern-->#}
-{#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
-{#                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>#}
-{#                        <div class="post-modern-time">#}
-{#                            <time datetime="2019-07-04"><span class="post-modern-time-number">13</span><span#}
-{#                                    class="post-modern-time-month">Декабрь</span></time>#}
-{#                        </div>#}
-{#                    </a>#}
-{#                        <h5 class="post-modern-title"><a href="#">На юбилейные торжества в честь святителя Луки#}
-{#                            (Войно-Ясенецкого) съехались именитые гости из епархий Русской и Украинской Православных#}
-{#                            Церквей</a></h5>#}
-{#                        <p class="post-modern-text">На юбилейные торжества в честь святителя Луки (Войно-Ясенецкого)#}
-{#                            съехались именитые гости из епархий Русской и Украинской Православных Церквей...</p>#}
-{#                    </article>#}
-{#                </div>#}
-
-
-
-                {% for news in news %}
+                {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft">#}
+                {#                    <!-- Post Modern-->#}
+                {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
+                {#                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>#}
+                {#                        <div class="post-modern-time">#}
+                {#                            <time datetime="2019-07-04"><span class="post-modern-time-number">13</span><span#}
+                {#                                    class="post-modern-time-month">Декабрь</span></time>#}
+                {#                        </div>#}
+                {#                    </a>#}
+                {#                        <h5 class="post-modern-title"><a href="#">На юбилейные торжества в честь святителя Луки#}
+                {#                            (Войно-Ясенецкого) съехались именитые гости из епархий Русской и Украинской Православных#}
+                {#                            Церквей</a></h5>#}
+                {#                        <p class="post-modern-text">На юбилейные торжества в честь святителя Луки (Войно-Ясенецкого)#}
+                {#                            съехались именитые гости из епархий Русской и Украинской Православных Церквей...</p>#}
+                {#                    </article>#}
+                {#                </div>#}
+                {% for news in page_obj %}
                     <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
                         <!-- Post Modern-->
-
-{#                        <article class="post post-modern"><a class="post-modern-figure" href="{{ news.date|date:'Y/m/d/'}}{{ news.slug }}">#}
-                        <article class="post post-modern"><a class="post-modern-figure" href="{% url 'post_detail' news.pk %}">
+                        <article class="post post-modern"><a class="post-modern-figure"
+                                                             href="{% url 'post_detail' news.pk %}">
                             {% thumbnail news.picture "370x307" crop="center" as im %}
                                 <img src="{{ im.url }}" alt="" width="370" height="307"/>
                             {% endthumbnail %}
@@ -114,14 +109,56 @@
                                         class="post-modern-time-month">{{ news.date|date:"F" }}</span></time>
                             </div>
                         </a>
-                            <h5 class="post-modern-title"><a href="{% url 'post_detail' news.pk %}">{{ news.title }}</a></h5>
+                            <h5 class="post-modern-title"><a href="{% url 'post_detail' news.pk %}">{{ news.title }}</a>
+                            </h5>
                             <p class="post-modern-text">{{ news.content|striptags|truncatechars:250 }}</p>
                         </article>
                     </div>
                 {% endfor %}
             </div>
+
+            {% if page_obj.has_other_pages %}
+                <nav aria-label="main-navigation" class="mt-5">
+                    <ul class="pagination justify-content-end">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ page_obj.previous_page_number }}">&laquo;Previous</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">&laquo;Previous</span>
+                            </li>
+                        {% endif %}
+                        {% for i in page_obj.paginator.page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        {{ i }}
+                                        <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">Next &raquo;</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
         </div>
+
     </section>
+
+
 
     <!-- See all services-->
     <section class="section section-sm section-first bg-default text-center">
@@ -173,6 +210,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -624,57 +662,6 @@
             </div>
         </div>
     </section>
-
-    {#    <!-- Latest blog posts-->#}
-    {#    <section class="section section-sm section-last bg-default">#}
-    {#        <div class="container">#}
-    {#            <h3>Latest blog posts</h3>#}
-    {#            <div class="row row-60 row-sm">#}
-    {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft">#}
-    {#                    <!-- Post Modern-->#}
-    {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
-    {#                            src="{% static 'images/post-10-370x307.jpg' %}" alt="" width="370" height="307"/>#}
-    {#                        <div class="post-modern-time">#}
-    {#                            <time datetime="2019-07-04"><span class="post-modern-time-number">04</span><span#}
-    {#                                    class="post-modern-time-month">July</span></time>#}
-    {#                        </div>#}
-    {#                    </a>#}
-    {#                        <h5 class="post-modern-title"><a href="#">Designing a Children’s room</a></h5>#}
-    {#                        <p class="post-modern-text">Kids’ bedrooms aren’t usually noted for their sophisticated style.#}
-    {#                            But it’s not a bad idea to design a room that your kid can grow into...</p>#}
-    {#                    </article>#}
-    {#                </div>#}
-    {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".1s">#}
-    {#                    <!-- Post Modern-->#}
-    {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
-    {#                            src="{% static 'images/post-11-370x307.jpg' %}" alt="" width="370" height="307"/>#}
-    {#                        <div class="post-modern-time">#}
-    {#                            <time datetime="2019-07-17"><span class="post-modern-time-number">17</span><span#}
-    {#                                    class="post-modern-time-month">July</span></time>#}
-    {#                        </div>#}
-    {#                    </a>#}
-    {#                        <h5 class="post-modern-title"><a href="#">Home decor trends</a></h5>#}
-    {#                        <p class="post-modern-text">Trends are hard to keep up with. Ever-changing, contradictory, and#}
-    {#                            sometimes seemingly senseless, no one can stay perfectly up to...</p>#}
-    {#                    </article>#}
-    {#                </div>#}
-    {#                <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">#}
-    {#                    <!-- Post Modern-->#}
-    {#                    <article class="post post-modern"><a class="post-modern-figure" href="#"><img#}
-    {#                            src="{% static 'images/post-12-370x307.jpg' %}" alt="" width="370" height="307"/>#}
-    {#                        <div class="post-modern-time">#}
-    {#                            <time datetime="2019-07-22"><span class="post-modern-time-number">22</span><span#}
-    {#                                    class="post-modern-time-month">July</span></time>#}
-    {#                        </div>#}
-    {#                    </a>#}
-    {#                        <h5 class="post-modern-title"><a href="#">Bedroom space management</a></h5>#}
-    {#                        <p class="post-modern-text">Any sleep enthusiast would agree that the bedroom is pretty high up#}
-    {#                            on the list of most important rooms in the house. There’s even...</p>#}
-    {#                    </article>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </section>#}
 
     <!-- Page Footer-->
     {% include 'includes/footer.html' %}

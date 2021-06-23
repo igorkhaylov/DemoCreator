@@ -68,10 +68,10 @@
         <section class="section section-sm section-fluid bg-default text-center">
             <div class="container-fluid">
                 <h3 class="wow fadeInLeft">Фотогалерея</h3>
-{#                <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">In our portfolio you can browse the latest#}
-{#                    interior designs created in various styles and for different purposes. Our qualified design#}
-{#                    professionals are always ready to design something spectacular for you, even if it’s a residential#}
-{#                    interior improvement.</p>#}
+                {#                <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">In our portfolio you can browse the latest#}
+                {#                    interior designs created in various styles and for different purposes. Our qualified design#}
+                {#                    professionals are always ready to design something spectacular for you, even if it’s a residential#}
+                {#                    interior improvement.</p>#}
                 <div class="isotope-filters isotope-filters-horizontal">
                     <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha"
                             data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true"><span
@@ -83,7 +83,7 @@
                         <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Offices</a></li>
                         <li><a href="#" data-isotope-filter="Type 3" data-isotope-group="gallery">Corporate designs</a>
                         </li>
-{#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Офис</a></li>#}
+                        {#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Офис</a></li>#}
                     </ul>
                 </div>
                 <div class="row row-30 isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
@@ -92,25 +92,35 @@
                     {% for image in post.images.all %}
                         <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 3">
                             <!-- Thumbnail Classic-->
-                            <article class="thumbnail thumbnail-classic thumbnail-md">
+                            <article class="thumbnail thumbnail-mary thumbnail-md">
                                 {% thumbnail image.pictures "420x350" crop="center" as im %}
-                                    <div class="thumbnail-classic-figure"><img
+                                    <div class="thumbnail-mary-figure"><img
                                             src="{{ im.url }}" alt="" width="420"
                                             height="350"/>
                                     </div>
 
-                                    <div class="thumbnail-classic-caption">
-                                        <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                                     href="{{ image.pictures.url }}"
-                                                                                     data-lightgallery="item"><img
-                                                src="{{ im.url }}" alt="" width="420"
-                                                height="350"/></a>
-                                            <h5 class="thumbnail-classic-title"><a href="#">379 Harvey Rd</a></h5>
-                                        </div>
-                                        <p class="thumbnail-classic-text">We work hard on every project to deliver
-                                            top-notch
-                                            interior design concepts that satisfy your wishes.</p>
+                                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60"
+                                                                           href="{{ image.pictures.url }}"
+                                                                           data-lightgallery="item"><img
+                                            src="{{ im.url }}" alt="" width="420"
+                                            height="308"/></a>
                                     </div>
+
+
+
+
+                                    {#                                    <div class="thumbnail-classic-caption">#}
+                                    {#                                        <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"#}
+                                    {#                                                                                     href="{{ image.pictures.url }}"#}
+                                    {#                                                                                     data-lightgallery="item"><img#}
+                                    {#                                                src="{{ im.url }}" alt="" width="420"#}
+                                    {#                                                height="350"/></a>#}
+                                    {#                                            <h5 class="thumbnail-classic-title"><a href="#">379 Harvey Rd</a></h5>#}
+                                    {#                                        </div>#}
+                                    {#                                        <p class="thumbnail-classic-text">We work hard on every project to deliver#}
+                                    {#                                            top-notch#}
+                                    {#                                            interior design concepts that satisfy your wishes.</p>#}
+                                    {#                                    </div>#}
                                 {% endthumbnail %}
                             </article>
                         </div>
