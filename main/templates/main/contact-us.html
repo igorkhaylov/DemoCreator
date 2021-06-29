@@ -8,10 +8,12 @@
 {% block nav_active %}
 
     <ul class="rd-navbar-nav">
-        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Home</a></li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Главная</a></li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'about' %}">About Us</a></li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'typography' %}">Typography</a></li>
-        <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+        <li class="rd-nav-item active mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link"
+                                                                           href="{% url 'contact' %}">Контакты</a>
+        </li>
     </ul>
 
 {% endblock %}
@@ -24,16 +26,27 @@
         <!--Please, add the data attribute data-key="YOUR_API_KEY" in order to insert your own API key for the Google map.-->
         <!--Please note that YOUR_API_KEY should replaced with your key.-->
         <!--Example: <div class="google-map-container" data-key="YOUR_API_KEY">-->
-        <div class="google-map-container" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="5"
-             data-icon="{% static 'images/gmap_marker.png' %}"
-             data-icon-active="{% static 'images/gmap_marker_active.png' %}"
-             data-styles="[{&quot;featureType&quot;:&quot;landscape&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:60}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:40},{&quot;visibility&quot;:&quot;on&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;administrative.province&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;lightness&quot;:30}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ef8c25&quot;},{&quot;lightness&quot;:40}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#b6c54c&quot;},{&quot;lightness&quot;:40},{&quot;saturation&quot;:-40}]},{}]">
-            <div class="google-map"></div>
-            <ul class="google-map-markers">
-                <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45."
-                    data-description="9870 St Vincent Place, Glasgow"></li>
-            </ul>
-        </div>
+        {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1291.6747268424986!2d66.95917513156091!3d39.64661880931012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d18d394aed9b1%3A0xe2361c47e222c7b8!2zU3QgQWxla3NpIENhdGhlZHJhbCwgQm9idXIgTWlyem8gU3QsIFNhbWFya2FuZCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1624704060945!5m2!1sru!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>#}
+        {#<div class="map-responsive">#}
+{#        <div class="google-map-container">#}
+            <div class="map-responsive">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1291.6747268424986!2d66.95917513156091!3d39.64661880931012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d18d394aed9b1%3A0xe2361c47e222c7b8!2zU3QgQWxla3NpIENhdGhlZHJhbCwgQm9idXIgTWlyem8gU3QsIFNhbWFya2FuZCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1624704060945!5m2!1sru!2s"
+                        style="border:0;" allowfullscreen="" loading="lazy" data-zoom="5"></iframe>
+            </div>
+
+{#        </div>#}
+
+
+        {#        <div class="google-map-container" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="5"#}
+        {#             data-icon="{% static 'images/gmap_marker.png' %}"#}
+        {#             data-icon-active="{% static 'images/gmap_marker_active.png' %}"#}
+        {#             data-styles="[{&quot;featureType&quot;:&quot;landscape&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:60}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:40},{&quot;visibility&quot;:&quot;on&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;administrative.province&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;lightness&quot;:30}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ef8c25&quot;},{&quot;lightness&quot;:40}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#b6c54c&quot;},{&quot;lightness&quot;:40},{&quot;saturation&quot;:-40}]},{}]">#}
+        {#            <div class="google-map"></div>#}
+        {#            <ul class="google-map-markers">#}
+        {#                <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45."#}
+        {#                    data-description="9870 St Vincent Place, Glasgow"></li>#}
+        {#            </ul>#}
+        {#        </div>#}
     </section>
 
     <!-- Contact information-->
@@ -45,8 +58,8 @@
                         <div class="box-contacts-body">
                             <div class="box-contacts-icon fl-bigmug-line-cellphone55"></div>
                             <div class="box-contacts-decor"></div>
-                            <p class="box-contacts-link"><a href="tel:#">+1 323-913-4688</a></p>
-                            <p class="box-contacts-link"><a href="tel:#">+1 323-888-4554</a></p>
+                            <p class="box-contacts-link"><a href="tel:#">+998 (66) 2335480</a></p>
+                            <p class="box-contacts-link"><a href="tel:#">+998 (66) 2335480</a></p>
                         </div>
                     </article>
                 </div>
@@ -55,7 +68,8 @@
                         <div class="box-contacts-body">
                             <div class="box-contacts-icon fl-bigmug-line-up104"></div>
                             <div class="box-contacts-decor"></div>
-                            <p class="box-contacts-link"><a href="#">4730 Crystal Springs Dr, Los Angeles, CA 90027</a>
+                            <p class="box-contacts-link"><a href="#">Узбекистан. г. Самарканд. ул. Бобир Мирзо. дом №
+                                1</a>
                             </p>
                         </div>
                     </article>
@@ -65,8 +79,8 @@
                         <div class="box-contacts-body">
                             <div class="box-contacts-icon fl-bigmug-line-chat55"></div>
                             <div class="box-contacts-decor"></div>
-                            <p class="box-contacts-link"><a href="mailto:#">mail@demolink.org</a></p>
-                            <p class="box-contacts-link"><a href="mailto:#">info@demolink.org</a></p>
+                            <p class="box-contacts-link"><a href="mailto:#">sobor1912@mail.ru</a></p>
+                            <p class="box-contacts-link"><a href="mailto:#">sobor1912@mail.ru</a></p>
                         </div>
                     </article>
                 </div>
@@ -128,5 +142,5 @@
                     href="https://www.templatemonster.com">TemplateMonster</a></span>
         </p>
     </div>
-{#{% include "includes/footer.html" %}#}
+    {#{% include "includes/footer.html" %}#}
 {% endblock %}

@@ -6,16 +6,17 @@
     Post Detail
 {% endblock %}
 
-{% block nav_active %}
-
-    <ul class="rd-navbar-nav">
-        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Home</a></li>
-        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'about' %}">About Us</a></li>
-        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'typography' %}">Typography</a></li>
-        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Contact Us</a></li>
-    </ul>
-
-{% endblock %}
+{#{% block nav_active %}#}
+{##}
+{#    <ul class="rd-navbar-nav">#}
+{#        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Главная</a></li>#}
+{#        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'about' %}">About Us</a></li>#}
+{#        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'typography' %}">Typography</a></li>#}
+{#        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Contact Us</a></li>#}
+{#    <li class="rd-nav-item"></li>#}
+{#    </ul>#}
+{##}
+{#{% endblock %}#}
 
 {% block body %}
 
@@ -23,13 +24,15 @@
     {#    <!-- Breadcrumbs -->#}
     <section class="breadcrumbs-custom-inset">
         <div class="breadcrumbs-custom context-dark bg-overlay-33">
-            <div class="container">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                {#                <h2 class="breadcrumbs-custom-title">Post detail</h2>#}
+            <div class="container"
+                 style="height: 25rem"
+            >
+{#                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#}
+                {#                <h2 cl    ass="breadcrumbs-custom-title">Post detail</h2>#}
             </div>
             {#            <div class="box-position" style="background-image: url({% static 'images/bg-elements.jpg' %});"></div>#}
             {% thumbnail post.picture "x900" crop="center" quality=70 as im %}
-                <div class="box-position" style="background-image: url({{ im.url }});"></div>
+                <div class="my-detail" style="background-image: url({{ im.url }});"></div>
             {% endthumbnail %}
         </div>
     </section>
@@ -39,7 +42,6 @@
             <div class="row row-40 flex-lg-row-reverse justify-content-xl-between">
                 <div class="col-xl-5 d-none d-xl-block">
                     <div class="offset-left-xl-45">
-                        {#                        <h1>H1 Heading</h1>#}
                         <h2>H2 Heading</h2>
                         <h3>H3 Heading</h3>
                         <h4>H4 Heading</h4>

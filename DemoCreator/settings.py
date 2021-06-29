@@ -186,9 +186,21 @@ CKEDITOR_CONFIGS = {
             [], '/',
         ],
         'extraPlugins': ','.join([
-            'uploadimage',
+            # 'uploadimage',
             'youtube',
         ]),
+    },
+    'schedule': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Font',  'Maximize'], '/',
+            ['Table', 'Bold', 'Italic', 'Underline',
+             'HorizontalRule'],
+            ['BulletedList', 'TextColor', 'BGColor', 'Link', 'Smiley', 'SpecialChar'], '/',
+            ['Find', 'Subscript', 'Superscript'], '/',
+            [], '/',
+            [], '/',
+        ],
     },
 }
 

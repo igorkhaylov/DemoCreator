@@ -5,10 +5,10 @@
 
 {% block nav_active %}
     <ul class="rd-navbar-nav">
-        <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'index' %}">Home</a></li>
+        <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'index' %}">Главная</a></li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'about' %}">About Us</a></li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'typography' %}">Typography</a></li>
-        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>
     </ul>
 {% endblock %}
 
@@ -32,7 +32,8 @@
                             {#                            uses innovations combined with customized interior planning to deliver the best interior#}
                             {#                            design for your home or office while saving costs.#}
                         </p><a
-                            class="button button-primary button-ujarak" href="#" data-caption-animate="fadeInUp"
+                            class="button button-primary button-ujarak" href="{% url 'schedule' %}"
+                            data-caption-animate="fadeInUp"
                             data-caption-delay="200">Богослужения</a>
                     </div>
                 </div>
@@ -117,17 +118,18 @@
                 {% endfor %}
             </div>
 
+
             {% if page_obj.has_other_pages %}
                 <nav aria-label="main-navigation" class="mt-5">
                     <ul class="pagination justify-content-end">
                         {% if page_obj.has_previous %}
                             <li class="page-item">
                                 <a class="page-link"
-                                   href="?page={{ page_obj.previous_page_number }}">&laquo;Previous</a>
+                                   href="?page={{ page_obj.previous_page_number }}">&laquo;Предыдущая</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
-                                <span class="page-link">&laquo;Previous</span>
+                                <span class="page-link">&laquo;Предыдущая</span>
                             </li>
                         {% endif %}
                         {% for i in page_obj.paginator.page_range %}
@@ -138,27 +140,167 @@
                                         <span class="sr-only">(current)</span>
                                     </span>
                                 </li>
-                            {% else %}
-                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% elif i > page_obj.number|add:-3 and i < page_obj.number|add:3 %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                    </li>
                             {% endif %}
                         {% endfor %}
+
                         {% if page_obj.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая&raquo;</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
-                                <span class="page-link">Next &raquo;</span>
+                                <span class="page-link">Следующая&raquo;</span>
                             </li>
                         {% endif %}
                     </ul>
                 </nav>
             {% endif %}
-        </div>
 
+
+
+
+{#            {% if page_obj.has_other_pages %}#}
+{#                <nav aria-label="main-navigation" class="mt-5">#}
+{#                    <ul class="pagination justify-content-end">#}
+{#                        {% if page_obj.has_previous %}#}
+{#                            <li class="page-item">#}
+{#                                <a class="page-link"#}
+{#                                   href="?page={{ page_obj.previous_page_number }}">&laquo;Предыдущая</a>#}
+{#                            </li>#}
+{#                        {% else %}#}
+{#                            <li class="page-item disabled">#}
+{#                                <span class="page-link">&laquo;Предыдущая</span>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{#                        {% for i in page_obj.paginator.page_range %}#}
+{#                            {% if page_obj.number == i %}#}
+{#                                <li class="page-item active">#}
+{#                                    <span class="page-link">#}
+{#                                        {{ i }}#}
+{#                                        <span class="sr-only">(current)</span>#}
+{#                                    </span>#}
+{#                                </li>#}
+{#                            {% elif i > page_obj.number|add:-1 and i < page_obj.number|add:1 %}#}
+{##}
+{#                                {% if i <= page_obj.paginator.count|add:2 %}#}
+{#                                    <li class="page-item">#}
+{#                                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>#}
+{#                                    </li>#}
+{#                                {% endif %}#}
+{##}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                        {% if page_obj.number < page_obj.paginator.count|add:-1 %}#}
+{#                            <li class="page-item disabled"><a class="page-link disabled"> из </a></li>#}
+{#                            <li class="page-item">#}
+{#                                <a class="page-link"#}
+{#                                   href="?page={{ page_obj.paginator.count }}">{{ page_obj.paginator.count }}</a>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{##}
+{##}
+{#                        {% if page_obj.has_next %}#}
+{#                            <li class="page-item">#}
+{#                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая&raquo;</a>#}
+{#                            </li>#}
+{#                        {% else %}#}
+{#                            <li class="page-item disabled">#}
+{#                                <span class="page-link">Следующая&raquo;</span>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{#                    </ul>#}
+{#                </nav>#}
+{#            {% endif %}#}
+        </div>
     </section>
 
 
+    {# Храмы Самарканда #}
+    <section class="section section-sm section-last bg-default">
+        <div class="container">
+            <h3>Храмы Самарканда</h3>
+            <!-- Owl Carousel-->
+            <div class="owl-carousel owl-modern" data-items="1" data-stage-padding="15" data-margin="30"
+                 data-dots="true" data-animation-in="fadeIn" data-animation-out="fadeOut" data-autoplay="true">
+                <!-- Quote Lisa-->
+
+                {% for church in churches %}
+
+                    <article class="quote-lisa">
+                        <div class="quote-lisa-body">
+                            <a class="quote-lisa-figure" href="{% url 'churches' church.slug %}">
+                                {% thumbnail church.picture "100x100" crop="center" as im %}
+                                    <img class="img-circles" src="{{ im.url }}" alt="" width="100"
+                                         height="100"/>
+                                {% endthumbnail %}
+                            </a>
+                            <h5 class="quote-lisa-cite"><a href="{% url 'churches' church.slug %}">{{ church.name }}</a>
+                            </h5>
+                            <div class="quote-lisa-text">
+                                <p class="q">{{ church.short_text }}</p>
+                            </div>
+                            <p class="quote-lisa-status">Local shop owner</p>
+                        </div>
+                    </article>
+
+                {% endfor %}
+
+
+                {#                <article class="quote-lisa">#}
+                {#                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
+                {#                                                                                            src="{% static 'images/user-16-100x100.jpg' %}"#}
+                {#                                                                                            alt="" width="100"#}
+                {#                                                                                            height="100"/></a>#}
+                {#                        <div class="quote-lisa-text">#}
+                {#                            <p class="q">{{ pass }}</p>#}
+                {#                        </div>#}
+                {#                        <h5 class="quote-lisa-cite"><a href="#">Catherine Williams</a></h5>#}
+                {#                        <p class="quote-lisa-status">Local shop owner</p>#}
+                {#                    </div>#}
+                {#                </article>#}
+                {#                <!-- Quote Lisa-->#}
+                {#                <article class="quote-lisa">#}
+                {#                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
+                {#                                                                                            src="{% static 'images/user-17-100x100.jpg' %}"#}
+                {#                                                                                            alt="" width="100"#}
+                {#                                                                                            height="100"/></a>#}
+                {#                        <div class="quote-lisa-text">#}
+                {#                            <p class="q">This agency was highly recommended to me. The sensitivity, knowledge,#}
+                {#                                vision#}
+                {#                                and ultimate execution this firm brought to the table was tremendous. They have#}
+                {#                                enormously talented designers in the team who consistently deliver the highest#}
+                {#                                quality#}
+                {#                                as well as aesthetically beautiful solutions for their clients.</p>#}
+                {#                        </div>#}
+                {#                        <h5 class="quote-lisa-cite"><a href="#">Rupert Wood</a></h5>#}
+                {#                        <p class="quote-lisa-status">House owner</p>#}
+                {#                    </div>#}
+                {#                </article>#}
+                {#                <!-- Quote Lisa-->#}
+                {#                <article class="quote-lisa">#}
+                {#                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
+                {#                                                                                            src="{% static 'images/user-18-100x100.jpg' %}"#}
+                {#                                                                                            alt="" width="100"#}
+                {#                                                                                            height="100"/></a>#}
+                {#                        <div class="quote-lisa-text">#}
+                {#                            <p class="q">Your professional guidance gave me results that far exceeded my#}
+                {#                                expectations.#}
+                {#                                My clients thoroughly enjoy the fun, relaxing ambience that the interior design#}
+                {#                                creates.#}
+                {#                                Thank you for helping me bring my ideas to life and transform my own workspace into#}
+                {#                                something new and awesome!</p>#}
+                {#                        </div>#}
+                {#                        <h5 class="quote-lisa-cite"><a href="#">Samantha Brown</a></h5>#}
+                {#                        <p class="quote-lisa-status">Freelancer</p>#}
+                {#                    </div>#}
+                {#                </article>#}
+            </div>
+        </div>
+    </section>
 
     <!-- See all services-->
     <section class="section section-sm section-first bg-default text-center">

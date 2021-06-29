@@ -1,0 +1,39 @@
+.map-responsive {
+    overflow: hidden;
+    /*padding-bottom: 56.25%;*/
+    /*padding-bottom: 200px;*/
+    position: relative;
+    /*height: 0;*/
+    height: 200px;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 70%;
+    width: 100%;
+    position: absolute;
+}
+
+.map-responsive iframe {
+    height: 200px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .map-responsive iframe {
+        height: 400px;
+    }
+    .map-responsive {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .map-responsive iframe {
+        height: 665px;
+    }
+    .map-responsive {
+        height: 665px;
+    }
+}

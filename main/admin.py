@@ -1,13 +1,11 @@
 from django.contrib import admin
-from .models import News, NewsImages
+from .models import News, NewsImages, Schedule, Churches
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from ckeditor.widgets import CKEditorWidget
 
 
-
-class ImagesInline(admin.StackedInline):
-# class ImagesInline(admin.TabularInline):
+class ImagesInline(admin.StackedInline):  # TabularInline
     model = NewsImages
     extra = 1   # сколько полей будет в inlines, default=3
 
@@ -20,7 +18,6 @@ class NewsAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-# @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
     list_display = ('date', 'title', 'is_published')
@@ -38,7 +35,17 @@ class NewsImagesAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
 
 
+class ChurchesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    list_display_links = ('name',)
+    prepopulated_fields = {'slug': ('name', )}
+    list_filter = ('id', )
+    save_on_top = True
+
+
 admin.site.register(News, NewsAdmin)
+admin.site.register(Schedule)
+admin.site.register(Churches, ChurchesAdmin)
 # admin.site.register(NewsImages, NewsImagesAdmin)
 
 
