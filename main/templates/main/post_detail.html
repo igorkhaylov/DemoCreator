@@ -27,7 +27,7 @@
             <div class="container"
                  style="height: 25rem"
             >
-{#                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#}
+                {#                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>#}
                 {#                <h2 cl    ass="breadcrumbs-custom-title">Post detail</h2>#}
             </div>
             {#            <div class="box-position" style="background-image: url({% static 'images/bg-elements.jpg' %});"></div>#}
@@ -41,15 +41,127 @@
         <div class="container">
             <div class="row row-40 flex-lg-row-reverse justify-content-xl-between">
                 <div class="col-xl-5 d-none d-xl-block">
-                    <div class="offset-left-xl-45">
-                        <h2>H2 Heading</h2>
-                        <h3>H3 Heading</h3>
-                        <h4>H4 Heading</h4>
-                        <h5>H5 Heading</h5>
-                        <h6>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                            website will find exactly what he/she is looking for. With advanced features of
-                            activating account and new login widgets, you will definitely have a great experience of
-                            using our web page</h6>
+                    <div class="offset-left-xl-45 text-center ">
+                        <h5 class="mb-4 mt-5">Последние новости</h5>
+
+
+                        {#                        {% for last_post in last_posts %}#}
+                        {#                            <article class="quote-lisa mb-1">#}
+                        {#                            {% thumbnail last_post.picture "100x100" crop="center" as im %}#}
+                        {#                                <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img#}
+                        {#                                        class="img-circles"#}
+                        {#                                        src="{{ im.url }}"#}
+                        {#                                        alt="" width="100"#}
+                        {#                                        height="100"/></a>#}
+                        {#                            {% endthumbnail %}#}
+                        {#                                    <div class="quote-lisa-text">#}
+                        {#                                        <p class="font-weight-bold">{{ last_post.title }}</p>#}
+                        {#                                    </div>#}
+                        {#                                <h5 class="quote-lisa-cite"><a href="#">Samantha Brown</a></h5>#}
+                        {#                                <p class="quote-lisa-status">Freelancer</p>#}
+                        {#                                </div>#}
+                        {#                            </article>#}
+                        {#                        {% endfor %}#}
+
+
+                        {% for last_post in last_posts %}
+                            <article class="quote-lisa mb-1">
+                                <div class="unit unit-spacing-md align-items-center">
+                                    {% thumbnail last_post.picture "75x75" crop="center" as im %}
+                                        <div class="unit-left"><a class="quote-modern-figure"
+                                                                  href="{% url 'post_detail' last_post.pk %}"><img
+                                                class="img-circles"
+                                                src="{{ im.url }}"
+                                                alt="" width="75"
+                                                height="75"/></a>
+                                        </div>
+                                    {% endthumbnail %}
+                                    {#                                    <div class="unit-body">#}
+                                    <h6 class="">
+                                        <a class="font-weight-medium m-0 p-0"
+                                           href="{% url 'post_detail' last_post.pk %}">
+                                            {{ last_post.title|truncatewords_html:10 }}
+                                        </a>
+                                    </h6>
+
+                                    {#                                    </div>#}
+                                    </div><p class="text-gray-500"><a href="{% url 'post_detail' last_post.pk %}">Читать полностью...</a></p>
+{#                                <div class="">#}
+{#                                    <a href="{% url 'post_detail' last_post.pk %}">Читать полностью...</a>#}
+                                    {#                                    <p class="q">{{ last_post.content|safe|truncatechars_html:100 }}</p>#}
+{#                                </div>#}
+
+                            </article>
+
+                        {% endfor %}
+
+
+
+                        {#                        <article class="quote-modern quote-modern-custom">#}
+                        {#                            <div class="unit unit-spacing-md align-items-center">#}
+                        {#                                <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles"#}
+                        {#                                                                                                    src="{% static 'images/user-11-75x75.jpg' %}"#}
+                        {#                                                                                                    alt="" width="75"#}
+                        {#                                                                                                    height="75"/></a>#}
+                        {#                                </div>#}
+                        {#                                <div class="unit-body">#}
+                        {#                                    <p class="text">НА ЮБИЛЕЙНЫЕ ТОРЖЕСТВА В ЧЕСТЬ СВЯТИТЕЛЯ ЛУКИ (ВОЙНО-ЯСЕНЕЦ</p>#}
+                        {#                                    <p class="quote-modern-status">Local shop owner</p>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class="quote-modern-text">#}
+                        {#                                <p class="q">В этот радостный день в нашем храме прошла праздничная Божественная Литургия!#}
+                        {##}
+                        {#Литургию совершил настоятель нашего храма, иерей Игорь Бабаков.#}
+                        {##}
+                        {#Накануне, в субботу, прошла Всенощная служба.#}
+                        {##}
+                        {#В этот день храм утопал в зелени и аромате свежескошенной травы.</p>#}
+                        {#                                <p class="quote-modern-cite"><a href="#">Читать далее...#}
+                        {#                                    </a></p>#}
+                        {#                            </div>#}
+                        {#                        </article>#}
+                        {##}
+                        {##}
+                        {#                        <article class="quote-modern quote-modern-custom">#}
+                        {#                            <div class="unit unit-spacing-md align-items-center">#}
+                        {#                                <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles"#}
+                        {#                                                                                                    src="{% static 'images/user-11-75x75.jpg' %}"#}
+                        {#                                                                                                    alt="" width="75"#}
+                        {#                                                                                                    height="75"/></a>#}
+                        {#                                </div>#}
+                        {#                                <div class="unit-body">#}
+                        {#                                    <h5 class="quote-modern-cite"><a href="#">короткая фраза</a></h5>#}
+                        {#                                    <p class="quote-modern-status">Local shop owner</p>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class="quote-modern-text">#}
+                        {#                                <p class="q">ПРЕСТОЛЬНЫЙ ПРАЗДНИК СВЯТО-АЛЕКСИЕВСКОГО#}
+                        {#                                        СОБОРА В САМАРКАНДЕ</p>#}
+                        {#                            </div>#}
+                        {#                        </article>#}
+                        {#                        <article class="quote-modern quote-modern-custom">#}
+                        {#                            <div class="unit unit-spacing-md align-items-center">#}
+                        {#                                <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles"#}
+                        {#                                                                                                    src="{% static 'images/user-11-75x75.jpg' %}"#}
+                        {#                                                                                                    alt="" width="75"#}
+                        {#                                                                                                    height="75"/></a>#}
+                        {#                                </div>#}
+                        {#                                <div class="unit-body">#}
+                        {#                                    <h5 class="quote-modern-cite"><a href="#">Catherine Williams</a></h5>#}
+                        {#                                    <p class="quote-modern-status">Local shop owner</p>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                        {#                            <div class="quote-modern-text">#}
+                        {#                                <p class="q">I chose Creator because of their knowledge, experience and attention to#}
+                        {#                                    detail#}
+                        {#                                    that has proven invaluable to me in creating a superior finished project, which#}
+                        {#                                    attracts#}
+                        {#                                    more clients to my shop.</p>#}
+                        {#                            </div>#}
+                        {#                        </article>#}
+
+
                     </div>
                 </div>
                 <div class="col-xl-7">
@@ -58,6 +170,7 @@
                         <li>
                             <h4>{{ post.title }}</h4>
                             <p>{{ post.content|safe }}</p>
+                            {#                            <p>post text и <span style="font-family: 'CyrillicOld', Arial">обычный текст на русском</span></p>#}
                         </li>
 
                     </ul>

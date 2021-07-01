@@ -26,13 +26,6 @@ def index(request):
                                                        })
 
 
-def post_detail(request, id):
-    # post = News.objects.get(pk=id)
-    post = get_object_or_404(News, pk=id)
-    # images = NewsImages.objects.filter(post_id=id)
-    return render(request, "main/post_detail.html", {"post": post})
-
-
 def schedule(request):
     schedule = Schedule.objects.first()
     return render(request, "main/schedule.html", {"schedule": schedule})
@@ -42,6 +35,25 @@ def churches(request, slug):
     churches = get_object_or_404(Churches, slug=slug)
     # churches = Churches.objects.all(slug=slug)
     return render(request, "main/churches.html", {"churches": churches})
+
+
+def history(request):
+    history = Churches.objects.first()
+    return render(request, "main/history.html", {"history": history})
+
+
+def gallery(request):
+    return render(request, "main/gallery.html")
+
+
+def post_detail(request, id):
+    # post = News.objects.get(pk=id)
+    post = get_object_or_404(News, pk=id)
+    last_posts = News.objects.filter(is_published=True)[:3]
+    # images = NewsImages.objects.filter(post_id=id)
+    return render(request, "main/post_detail.html", {"post": post,
+                                                     "last_posts": last_posts,
+                                                     })
 
 
 def about_us(request):

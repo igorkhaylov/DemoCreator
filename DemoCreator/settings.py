@@ -139,7 +139,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 #         'toolbar': 'full',
 #     },
 # }
-
+# CKEDITOR.config.font_names = {}
 
 CKEDITOR_CONFIGS = {
     'skin': 'moono',
