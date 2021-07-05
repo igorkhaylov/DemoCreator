@@ -44,7 +44,7 @@
             <div class="container">
 {#                <h2 class="breadcrumbs-custom-title">Фотогалерея</h2>#}
             </div>
-            <div class="box-position" style="background-image: url({% static 'images/bg-elements.jpg' %});"></div>
+            <div class="box-position" style="background-image: url({% static 'images/my/MainPicture2.jpg' %});"></div>
         </div>
     </section>
 
@@ -73,6 +73,7 @@
                                 <a href="{% url 'photo_gallery' news.pk %}">
 {#                                    <h2>Title</h2>#}
                                     <p>{{ news.title }}</p>
+                                    <a href="" class="position-absolute mt-4 ml-4">Посмотреть...</a>
                                 </a>
                             </div>
                         </div>
