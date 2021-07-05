@@ -15,7 +15,8 @@
             <div class="dropdown-menu">
                 <a href="{% url 'schedule' %}" class="dropdown-item">Расписание богослужений</a>
                 <a href="{% url 'typography' %}" class="dropdown-item">История богослужений</a>
-                <a href="{% url 'index' %}" class="dropdown-item">Просто тестовая ссылка</a>
+                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
+                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
             </div>
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
@@ -156,61 +157,6 @@
                 </nav>
             {% endif %}
 
-
-
-
-{#            {% if page_obj.has_other_pages %}#}
-{#                <nav aria-label="main-navigation" class="mt-5">#}
-{#                    <ul class="pagination justify-content-end">#}
-{#                        {% if page_obj.has_previous %}#}
-{#                            <li class="page-item">#}
-{#                                <a class="page-link"#}
-{#                                   href="?page={{ page_obj.previous_page_number }}">&laquo;Предыдущая</a>#}
-{#                            </li>#}
-{#                        {% else %}#}
-{#                            <li class="page-item disabled">#}
-{#                                <span class="page-link">&laquo;Предыдущая</span>#}
-{#                            </li>#}
-{#                        {% endif %}#}
-{#                        {% for i in page_obj.paginator.page_range %}#}
-{#                            {% if page_obj.number == i %}#}
-{#                                <li class="page-item active">#}
-{#                                    <span class="page-link">#}
-{#                                        {{ i }}#}
-{#                                        <span class="sr-only">(current)</span>#}
-{#                                    </span>#}
-{#                                </li>#}
-{#                            {% elif i > page_obj.number|add:-1 and i < page_obj.number|add:1 %}#}
-{##}
-{#                                {% if i <= page_obj.paginator.count|add:2 %}#}
-{#                                    <li class="page-item">#}
-{#                                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>#}
-{#                                    </li>#}
-{#                                {% endif %}#}
-{##}
-{#                            {% endif %}#}
-{#                        {% endfor %}#}
-{#                        {% if page_obj.number < page_obj.paginator.count|add:-1 %}#}
-{#                            <li class="page-item disabled"><a class="page-link disabled"> из </a></li>#}
-{#                            <li class="page-item">#}
-{#                                <a class="page-link"#}
-{#                                   href="?page={{ page_obj.paginator.count }}">{{ page_obj.paginator.count }}</a>#}
-{#                            </li>#}
-{#                        {% endif %}#}
-{##}
-{##}
-{#                        {% if page_obj.has_next %}#}
-{#                            <li class="page-item">#}
-{#                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая&raquo;</a>#}
-{#                            </li>#}
-{#                        {% else %}#}
-{#                            <li class="page-item disabled">#}
-{#                                <span class="page-link">Следующая&raquo;</span>#}
-{#                            </li>#}
-{#                        {% endif %}#}
-{#                    </ul>#}
-{#                </nav>#}
-{#            {% endif %}#}
         </div>
     </section>
 
@@ -239,7 +185,7 @@
                             <div class="quote-lisa-text">
                                 <p class="q">{{ church.short_text }}</p>
                             </div>
-                            <p class="quote-lisa-status">Local shop owner</p>
+                            <p class="quote-lisa-status"><a href="{% url 'churches' church.slug %}">Читать далее...</a></p>
                         </div>
                     </article>
 

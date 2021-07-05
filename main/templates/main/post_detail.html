@@ -85,11 +85,16 @@
                                     </h6>
 
                                     {#                                    </div>#}
-                                    </div><p class="text-gray-500"><a href="{% url 'post_detail' last_post.pk %}">Читать полностью...</a></p>
-{#                                <div class="">#}
-{#                                    <a href="{% url 'post_detail' last_post.pk %}">Читать полностью...</a>#}
-                                    {#                                    <p class="q">{{ last_post.content|safe|truncatechars_html:100 }}</p>#}
-{#                                </div>#}
+                                </div>
+                                <p class="m-0 p-0 float-xl-right position-absolute" style="display: inline-block">
+                                    <a href="{% url 'post_detail' last_post.pk %}">
+                                        Читать полностью   <span class="fa fa-arrow-circle-right"></span>
+                                    </a>
+                                </p>
+                                {#                                <div class="">#}
+                                {#                                    <a href="{% url 'post_detail' last_post.pk %}">Читать полностью...</a>#}
+                                {#                                    <p class="q">{{ last_post.content|safe|truncatechars_html:100 }}</p>#}
+                                {#                                </div>#}
 
                             </article>
 

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+    Галерея
+{% endblock %}
+{% block nav_active %}
+    <ul class="rd-navbar-nav">
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Главная</a>
+        </li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'history' %}">История</a>
+        </li>
+
+        <li class="rd-nav-item dropdown">
+            <a class="rd-nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+               role="button" aria-haspopup="true" aria-expanded="false">
+                Богослужения
+            </a>
+            <div class="dropdown-menu">
+                <a href="{% url 'schedule' %}" class="dropdown-item">Расписание
+                    богослужений</a>
+                <a href="{% url 'typography' %}" class="dropdown-item">История
+                    богослужений</a>
+                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
+                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
+            </div>
+        </li>
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a>
+        </li>
+
+        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link"
+                                                                    href="{% url 'contact' %}">Контакты</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+
+
+    {#    <!-- Breadcrumbs -->#}
+    <section class="breadcrumbs-custom-inset">
+        <div class="breadcrumbs-custom context-dark bg-overlay-33">
+            <div class="container">
+                <h2 class="breadcrumbs-custom-title">{{ photos.title }}</h2>
+            </div>
+            <div class="box-position" style="background-image: url({% static 'images/bg-elements.jpg' %});"></div>
+        </div>
+    </section>
+{% if photos.images.all %}
+    <section class="section section-sm section-fluid bg-default text-center">
+            <div class="container-fluid">
+                <h3 class="wow fadeInLeft">Фотогалерея</h3>
+
+{#                <div class="isotope-filters isotope-filters-horizontal">#}
+{#                    <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha"#}
+{#                            data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true"><span#}
+{#                            class="icon fa fa-caret-down"></span>Filter#}
+{#                    </button>#}
+{#                    <ul class="isotope-filters-list" id="isotope-3">#}
+{#                        <li><a class="active" href="#" data-isotope-filter="*" data-isotope-group="gallery">All</a></li>#}
+{#                        <li><a href="#" data-isotope-filter="Type 1" data-isotope-group="gallery">Apartments</a></li>#}
+{#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Offices</a></li>#}
+{#                        <li><a href="#" data-isotope-filter="Type 3" data-isotope-group="gallery">Corporate designs</a>#}
+{#                        </li>#}
+                        {#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Офис</a></li>#}
+{#                    </ul>#}
+{#                </div>#}
+                <div class="row row-30 isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
+                     data-lightgallery="group">
+
+
+    {% for image in photos.images.all %}
+                        <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 3">
+                            <!-- Thumbnail Classic-->
+                            <article class="thumbnail thumbnail-mary thumbnail-md">
+                                {% thumbnail image.pictures "420x350" crop="center" as im %}
+                                    <div class="thumbnail-mary-figure"><img
+                                            src="{{ im.url }}" alt="" width="420"
+                                            height="350"/>
+                                    </div>
+
+                                    <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60"
+                                                                           href="{{ image.pictures.url }}"
+                                                                           data-lightgallery="item"><img
+                                            src="{{ im.url }}" alt="" width="420"
+                                            height="308"/></a>
+                                    </div>
+
+
+
+
+                                    {#                                    <div class="thumbnail-classic-caption">#}
+                                    {#                                        <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"#}
+                                    {#                                                                                     href="{{ image.pictures.url }}"#}
+                                    {#                                                                                     data-lightgallery="item"><img#}
+                                    {#                                                src="{{ im.url }}" alt="" width="420"#}
+                                    {#                                                height="350"/></a>#}
+                                    {#                                            <h5 class="thumbnail-classic-title"><a href="#">379 Harvey Rd</a></h5>#}
+                                    {#                                        </div>#}
+                                    {#                                        <p class="thumbnail-classic-text">We work hard on every project to deliver#}
+                                    {#                                            top-notch#}
+                                    {#                                            interior design concepts that satisfy your wishes.</p>#}
+                                    {#                                    </div>#}
+                                {% endthumbnail %}
+                            </article>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </section>
+
+
+    {% else %}
+    <h1>Тут просто нет фотографий</h1>
+
+
+    {% endif %}
+
+
+
+
+
+
+    {% include 'includes/footer.html' %}
+{% endblock %}

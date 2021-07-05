@@ -20,7 +20,7 @@ class News(models.Model):
 
 
 class NewsImages(models.Model):
-    title = models.CharField(max_length=150, db_index=True)
+    title = models.CharField(max_length=150, db_index=True, default="image")
     post = models.ForeignKey('News', on_delete=models.CASCADE, related_name='images')
     pictures = models.ImageField("Фотографии", upload_to="media/gallery/%Y/%m/%d/")
 

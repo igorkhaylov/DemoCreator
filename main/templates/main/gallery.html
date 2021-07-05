@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 
 {% block title %}
     Галерея
@@ -21,8 +22,8 @@
                     богослужений</a>
                 <a href="{% url 'typography' %}" class="dropdown-item">История
                     богослужений</a>
-                <a href="{% url 'index' %}" class="dropdown-item">Просто тестовая
-                    ссылка</a>
+                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
+                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
             </div>
         </li>
         <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a>
@@ -41,136 +42,323 @@
     <section class="breadcrumbs-custom-inset">
         <div class="breadcrumbs-custom context-dark bg-overlay-33">
             <div class="container">
-                <h2 class="breadcrumbs-custom-title">Галерея</h2>
+{#                <h2 class="breadcrumbs-custom-title">Фотогалерея</h2>#}
             </div>
             <div class="box-position" style="background-image: url({% static 'images/bg-elements.jpg' %});"></div>
         </div>
     </section>
+
+
+{#    ####################################################################################################################################################################}
+
+
+
+{#    <section class="section section-sm section-first bg-default text-left">#}
+        <div class="h2 text-center text-dark" id="pageHeaderTitle">Фотогалерея</div>
+                {% for news in page_obj %}
+                    {% if news.images.all %}
+                        <div class="card">
+                            <div class="card-img"
+                                    {% thumbnail news.picture "370x307" crop="center" as im %}
+                                 style="background-image:url({{ im.url }});">
+                                    {% endthumbnail %}
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <a href="{% url 'photo_gallery' news.pk %}">Посмотреть</a>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="card-content">
+                                <a href="{% url 'photo_gallery' news.pk %}">
+{#                                    <h2>Title</h2>#}
+                                    <p>{{ news.title }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+{#    </section>#}
+
+
+
+
+
+{#    <section class="section section-sm section-first bg-default text-left">#}
+{#        <div class="container">#}
+{#            <div class="row row-40 flex-lg-row-reverse justify-content-xl-between">#}
+{#                                <div class="col-xl-5 d-none d-xl-block">#}
+{#                                    <div class="offset-left-xl-45">#}
+{#                                        <h1>H1 Heading</h1>#}
+{#                                        <h2>H2 Heading</h2>#}
+{#                                        <h3>H3 Heading</h3>#}
+{#                                        <h4>H4 Heading</h4>#}
+{#                                        <h5>H5 Heading</h5>#}
+{#                                        <h6>H6 Heading</h6>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                <div class="col-xl-7">#}
+{#                    <main class="container py-2">#}
+{#                        <div class="h1 text-center text-dark" id="pageHeaderTitle">Фотогалерея</div>#}
+{##}
+{##}
+{#                        {% for news in page_obj %}#}
+{#                            {% if news.images.all %}#}
+{#                                    <article class="postcard light yellow">#}
+{#                                        <a class="postcard__img_link" href="{% url 'photo_gallery' news.pk %}">#}
+{#                                            {% thumbnail news.picture "370x307" crop="center" as im %}#}
+{#                                                <img class="postcard__img" src="{{ im.url }}" alt="Image Title"/>#}
+{#                                            {% endthumbnail %}#}
+{#                                        </a>#}
+{#                                        <div class="postcard__text t-dark">#}
+{#                                            <div class="postcard__preview-txt font-weight-bold">{{ news.title }}</div>#}
+                                            {#				<h6 class="postcard__title yellow"><a href="#">{{ news.title }}</a></h6>#}
+{#                                            <div class="postcard__subtitle small">#}
+{#                                                <time datetime="{{ news.date|date:"Y-m-d" }} 12:00:00">#}
+{#                                                    <i class="fas fa-calendar-alt mr-2"></i>{{ news.date }}#}
+{#                                                </time>#}
+{#                                            </div>#}
+{#                                            <div class="postcard__bar"></div>#}
+{#                                        </div>#}
+{#                                    </article>#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{##}
+{#                        {% if page_obj.has_other_pages %}#}
+{#                            <nav aria-label="main-navigation" class="mt-5">#}
+{#                                <ul class="pagination justify-content-end">#}
+{#                                    {% if page_obj.has_previous %}#}
+{#                                        <li class="page-item">#}
+{#                                            <a class="page-link"#}
+{#                                               href="?page={{ page_obj.previous_page_number }}">&laquo;Предыдущая</a>#}
+{#                                        </li>#}
+{#                                    {% else %}#}
+{#                                        <li class="page-item disabled">#}
+{#                                            <span class="page-link">&laquo;Предыдущая</span>#}
+{#                                        </li>#}
+{#                                    {% endif %}#}
+{#                                    {% for i in page_obj.paginator.page_range %}#}
+{#                                        {% if page_obj.number == i %}#}
+{#                                            <li class="page-item active">#}
+{#                                    <span class="page-link">#}
+{#                                        {{ i }}#}
+{#                                        <span class="sr-only">(current)</span>#}
+{#                                    </span>#}
+{#                                            </li>#}
+{#                                        {% elif i > page_obj.number|add:-3 and i < page_obj.number|add:3 %}#}
+{#                                            <li class="page-item">#}
+{#                                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>#}
+{#                                            </li>#}
+{#                                        {% endif %}#}
+{#                                    {% endfor %}#}
+{##}
+{#                                    {% if page_obj.has_next %}#}
+{#                                        <li class="page-item">#}
+{#                                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая&raquo;</a>#}
+{#                                        </li>#}
+{#                                    {% else %}#}
+{#                                        <li class="page-item disabled">#}
+{#                                            <span class="page-link">Следующая&raquo;</span>#}
+{#                                        </li>#}
+{#                                    {% endif %}#}
+{#                                </ul>#}
+{#                            </nav>#}
+{#                        {% endif %}#}
+{##}
+{#                    </main>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+
+
+
+
+
+
+
+{#    ##############################################################################################################################################################################################}
+
+
+
+    {# Список галереи #}
+
+
     {#    <!-- Base typography-->#}
-    <section class="section section-sm section-first bg-default text-left">
-        <div class="container">
-            <div class="row row-40 flex-lg-row-reverse justify-content-xl-between">
-                <div class="col-xl-5 d-none d-xl-block">
-                    <div class="offset-left-xl-45">
-                        <h1>H1 Heading</h1>
-                        <h2>H2 Heading</h2>
-                        <h3>H3 Heading</h3>
-                        <h4>H4 Heading</h4>
-                        <h5>H5 Heading</h5>
-                        <h6>H6 Heading</h6>
-                    </div>
-                </div>
-                <div class="col-xl-7">
-                    <ul class="list-xl box-typography">
-                        <li>
-                            <h1>H1 Heading</h1>
-                            <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                                website will find exactly what he/she is looking for. With advanced features of
-                                activating account and new login widgets, you will definitely have a great experience of
-                                using our web page.</p>
-                        </li>
-                        <li>
-                            <h2>H2 Heading</h2>
-                            <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                                website will find exactly what he/she is looking for. With advanced features of
-                                activating account and new login widgets, you will definitely have a great experience of
-                                using our web page.</p>
-                        </li>
-                        <li>
-                            <h3>H3 Heading</h3>
-                            <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                                website will find exactly what he/she is looking for. With advanced features of
-                                activating account and new login widgets, you will definitely have a great experience of
-                                using our web page.</p>
-                        </li>
-                        <li>
-                            <h4>H4 Heading</h4>
-                            <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                                website will find exactly what he/she is looking for. With advanced features of
-                                activating account and new login widgets, you will definitely have a great experience of
-                                using our web page.</p>
-                        </li>
-                        <li>
-                            <h5>H5 Heading</h5>
-                            <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                                website will find exactly what he/she is looking for. With advanced features of
-                                activating account and new login widgets, you will definitely have a great experience of
-                                using our web page.</p>
-                        </li>
-                        <li>
-                            <h6>H6 Heading</h6>
-                            <p>Welcome to our wonderful world. We sincerely hope that each and every user entering our
-                                website will find exactly what he/she is looking for. With advanced features of
-                                activating account and new login widgets, you will definitely have a great experience of
-                                using our web page.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+{#    <section class="section section-sm section-first bg-default text-left">#}
+{#        <div class="container">#}
+
+{#            <div class="row row-40 flex-lg-row-reverse justify-content-xl-between">#}
+{#                <div class="col-xl-5 d-none d-xl-block">#}
+{#                    <div class="offset-left-xl-45">#}
+{#                        <h1>H1 Heading</h1>#}
+{#                        <h2>H2 Heading</h2>#}
+{#                        <h3>H3 Heading</h3>#}
+{#                        <h4>H4 Heading</h4>#}
+{#                        <h5>H5 Heading</h5>#}
+{#                        <h6>H6 Heading</h6>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-xl-7">#}
+{#                    <ul class="list-xl box-typography">#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                        <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">#}
+{#                            <!-- Team Classic-->#}
+{#                            <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img#}
+{#                                    src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>#}
+{#                                <div class="team-classic-caption">#}
+{#                                    <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>#}
+{#                                    <p class="team-classic-status">Founder, Senior Designer</p>#}
+{#                                </div>#}
+{#                            </article>#}
+{#                        </div>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
 
     <!-- HTML Text Elements-->
-    <section class="section section-sm bg-default text-left">
-        <div class="container">
-            <h3>HTML Text Elements</h3>
-            <p class="text-block">Welcome to our wonderful world. This is a bold text
-                <mark>This is a highlighted text</mark>
-                We sincerely hope that each and every user entering our website will find exactly what he/she is looking
-                for. With advanced features of activating account and new login<span class="tooltip-custom"
-                                                                                     data-toggle="tooltip"
-                                                                                     data-placement="top"
-                                                                                     title="Default text">Tooltips</span>widgets,
-                you will definitely have a great experience of using our web page.<span class="text-strike">This is a strikethrough text</span><span
-                        class="text-underline">This is an underlined text.</span><a href="#">Link</a><a
-                        class="link-hover" href="#">Hover link</a><a class="link-active" href="#">Press link</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Lists and Blockquote-->
-    <section class="section section-sm section-last bg-default text-left">
-        <div class="container">
-            <div class="row row-60 row-md-80 row-lg-90">
-                <div class="col-lg-8 col-xl-6">
-                    <h3>Ordered & Unordered Lists</h3>
-                    <div class="row row-sm row-30">
-                        <div class="col-sm-6">
-                            <ul class="list-marked">
-                                <li>Consulting</li>
-                                <li>Customer Service</li>
-                                <li>Innovation</li>
-                                <li>Management</li>
-                                <li>Ethics</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="list-ordered">
-                                <li>Consulting</li>
-                                <li>Customer Service</li>
-                                <li>Innovation</li>
-                                <li>Management</li>
-                                <li>Ethics</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-xl-6">
-                    <div class="offset-left-xl-65">
-                        <h3>Blockquote</h3>
-                        <!-- Quote Classic-->
-                        <article class="quote-classic">
-                            <div class="quote-classic-text">
-                                <p class="q">We use only trusted, verified content, so you can believe our every
-                                    word.</p>
-                            </div>
-                            <h6 class="quote-classic-cite">Catherine Williams</h6>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{#    <section class="section section-sm bg-default text-left">#}
+{#        <div class="container">#}
+{#            <h3>HTML Text Elements</h3>#}
+{#            <p class="text-block">Welcome to our wonderful world. This is a bold text#}
+{#                <mark>This is a highlighted text</mark>#}
+{#                We sincerely hope that each and every user entering our website will find exactly what he/she is looking#}
+{#                for. With advanced features of activating account and new login<span class="tooltip-custom"#}
+{#                                                                                     data-toggle="tooltip"#}
+{#                                                                                     data-placement="top"#}
+{#                                                                                     title="Default text">Tooltips</span>widgets,#}
+{#                you will definitely have a great experience of using our web page.<span class="text-strike">This is a strikethrough text</span><span#}
+{#                        class="text-underline">This is an underlined text.</span><a href="#">Link</a><a#}
+{#                        class="link-hover" href="#">Hover link</a><a class="link-active" href="#">Press link</a>#}
+{#            </p>#}
+{#        </div>#}
+{#    </section>#}
+{##}
+{#    <!-- Lists and Blockquote-->#}
+{#    <section class="section section-sm section-last bg-default text-left">#}
+{#        <div class="container">#}
+{#            <div class="row row-60 row-md-80 row-lg-90">#}
+{#                <div class="col-lg-8 col-xl-6">#}
+{#                    <h3>Ordered & Unordered Lists</h3>#}
+{#                    <div class="row row-sm row-30">#}
+{#                        <div class="col-sm-6">#}
+{#                            <ul class="list-marked">#}
+{#                                <li>Consulting</li>#}
+{#                                <li>Customer Service</li>#}
+{#                                <li>Innovation</li>#}
+{#                                <li>Management</li>#}
+{#                                <li>Ethics</li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                        <div class="col-sm-6">#}
+{#                            <ol class="list-ordered">#}
+{#                                <li>Consulting</li>#}
+{#                                <li>Customer Service</li>#}
+{#                                <li>Innovation</li>#}
+{#                                <li>Management</li>#}
+{#                                <li>Ethics</li>#}
+{#                            </ol>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-8 col-xl-6">#}
+{#                    <div class="offset-left-xl-65">#}
+{#                        <h3>Blockquote</h3>#}
+{#                        <!-- Quote Classic-->#}
+{#                        <article class="quote-classic">#}
+{#                            <div class="quote-classic-text">#}
+{#                                <p class="q">We use only trusted, verified content, so you can believe our every#}
+{#                                    word.</p>#}
+{#                            </div>#}
+{#                            <h6 class="quote-classic-cite">Catherine Williams</h6>#}
+{#                        </article>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
 
     {% include 'includes/footer.html' %}
 {% endblock %}
