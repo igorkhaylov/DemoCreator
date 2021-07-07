@@ -1,0 +1,37 @@
+{% load thumbnail %}
+{% load last_posts_tags %}
+{% get_last_posts as last_posts %}
+{% for last_post in last_posts %}
+    <article class="quote-lisa mb-1">
+        <div class="unit unit-spacing-md align-items-center">
+            {% thumbnail last_post.picture "75x75" crop="center" as im %}
+                <div class="unit-left"><a class="quote-modern-figure"
+                                          href="{% url 'post_detail' last_post.pk %}"><img
+                        class="img-circles"
+                        src="{{ im.url }}"
+                        alt="" width="75"
+                        height="75"/></a>
+                </div>
+            {% endthumbnail %}
+            {#                                    <div class="unit-body">#}
+            <h6 class="">
+                <a class="font-weight-medium m-0 p-0"
+                   href="{% url 'post_detail' last_post.pk %}">
+                    {{ last_post.title|truncatewords_html:10 }}
+                </a>
+            </h6>
+        </div>
+
+        <p class="m-0 p-0 float-xl-right position-absolute" style="display: inline-block">
+            <a href="{% url 'post_detail' last_post.pk %}">
+                Читать полностью   <span class="fa fa-arrow-circle-right"></span>
+            </a>
+        </p>
+
+    </article>
+
+{% endfor %}
+
+
+
+

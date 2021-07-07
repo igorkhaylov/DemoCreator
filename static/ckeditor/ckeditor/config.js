@@ -17,6 +17,7 @@ CKEDITOR.editorConfig = function( config ) {
     // 'Verdana/Verdana, Geneva, sans-serif;' +
     // 'Dekers/dekers_true';
 
+    config.font_names = 'CyrillicOldBold;' + config.font_names
     config.font_names = 'CyrillicOld;' + config.font_names
     // config.font_names = config.font_names + 'CyrillicOld';
 	// Define changes to default configuration here. For example:

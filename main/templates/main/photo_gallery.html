@@ -41,10 +41,12 @@
     {#    <!-- Breadcrumbs -->#}
     <section class="breadcrumbs-custom-inset">
         <div class="breadcrumbs-custom context-dark bg-overlay-33">
-            <div class="container">
-                <h2 class="breadcrumbs-custom-title">{{ photos.title }}</h2>
+            <div class="container" style="height: 25rem">
+{#                <h2 class="breadcrumbs-custom-title">{{ photos.title }}</h2>#}
             </div>
+            {% thumbnail photos.picture "x900" crop="center" quality=90 as im %}
             <div class="box-position" style="background-image: url({{ photos.picture.url }});"></div>
+            {% endthumbnail %}
         </div>
     </section>
 {% if photos.images.all %}

@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.urls import reverse
 
 
 class News(models.Model):
@@ -9,9 +10,13 @@ class News(models.Model):
     content = models.TextField("Контент")
     date = models.DateField("Дата")
     is_published = models.BooleanField("Опубликовать", default=True)
+    views = models.PositiveIntegerField("Просмотры", default=0)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("post_detail", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = "Новость"
