@@ -69,6 +69,9 @@ class Search(ListView):
         context["q"] = f'q={self.request.GET.get("q")}&'
         return context
 
+    def get_churches(self):
+        return Churches.objects.all()
+
 
 # def index(request):
 #     news = News.objects.filter(is_published=True)
