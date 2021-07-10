@@ -8,7 +8,7 @@ urlpatterns = [
     path('search/', views.Search.as_view(), name="search"),
     path('schedule/', views.schedule, name="schedule"),
     # path('photo_gallery/<int:id>/',views.photo_gallery, name="photo_gallery"),
-    path('gallery/<int:pk>/',views.PhotoGallery.as_view(), name="photo_gallery"),
+    path('gallery/<slug:slug>/',views.PhotoGallery.as_view(), name="photo_gallery"),
     path('history/', views.history, name="history"),
     # path('gallery/', views.gallery, name="gallery"),
     path('gallery/', views.Gallery.as_view(), name="gallery"),
@@ -19,5 +19,5 @@ urlpatterns = [
     path('contact/', views.contact_us, name="contact"),
     # path('<int:year>/<int:month>/<int:date>/<slug:slug>', views.post_detail, name="post_detail"),
     # path('<int:id>/', views.post_detail, name="post_detail"),
-    path('news/<int:pk>/', views.PostDetail.as_view(), name="post_detail"),
+    path('news/<slug:slug>/', views.PostDetail.as_view(), name="post_detail"),
 ]

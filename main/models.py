@@ -6,6 +6,7 @@ from django.urls import reverse
 
 class News(models.Model):
     title = models.CharField("Заголовок", max_length=150)
+    slug = models.SlugField("slug", max_length=40)
     picture = models.ImageField("Картинка", upload_to="media/%Y/%m/%d/")
     content = models.TextField("Контент")
     date = models.DateField("Дата")
@@ -16,7 +17,8 @@ class News(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("post_detail", kwargs={"pk": self.pk})
+        # return reverse("post_detail", kwargs={"pk": self.pk})
+        return reverse("post_detail", kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = "Новость"

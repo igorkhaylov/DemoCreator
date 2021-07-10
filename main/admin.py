@@ -23,6 +23,7 @@ class NewsAdminForm(forms.ModelForm):
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
     list_display = ('date', 'title', 'is_published', 'get_picture')
+    prepopulated_fields = {'slug': ('title', )}
     list_display_links = ('date', 'title')
     list_editable = ('is_published', )
     list_filter = ('is_published', )
