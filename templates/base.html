@@ -64,12 +64,12 @@
                                     <button class="rd-navbar-search-toggle"
                                             data-rd-navbar-toggle=".rd-navbar-search">
                                         <span></span></button>
-                                    <form class="rd-search" action="#" method="GET">
+                                    <form class="rd-search" action="{% url 'search' %}" method="GET">
                                         <div class="form-wrap">
                                             <label class="form-label"
                                                    for="rd-navbar-search-form-input">Search...</label>
                                             <input class="rd-navbar-search-form-input form-input"
-                                                   id="rd-navbar-search-form-input" type="text" name="s"
+                                                   id="rd-navbar-search-form-input" type="text" name="q"
                                                    autocomplete="off"/>
                                         </div>
                                         <button class="rd-search-form-submit fl-bigmug-line-search74"
@@ -77,19 +77,24 @@
                                     </form>
                                 </div>
                                 <!-- RD Navbar Share-->
-                                <div class="rd-navbar-share fl-bigmug-line-share27"
-                                     data-rd-navbar-toggle=".rd-navbar-share-list">
-                                    <ul class="list-inline rd-navbar-share-list">
-                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook"
-                                                                                 href="#"></a></li>
-                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter"
-                                                                                 href="#"></a></li>
-                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus"
-                                                                                 href="#"></a></li>
-                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram"
-                                                                                 href="#"></a></li>
-                                    </ul>
-                                </div>
+{#                                <div class="rd-navbar-share fl-bigmug-line-share27"#}
+{#                                     data-rd-navbar-toggle=".rd-navbar-share-list">#}
+{#                                    <ul class="list-inline rd-navbar-share-list">#}
+{#                                        <li class="rd-navbar-share-list-item">#}
+{#                                            <a class="icon fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://evileg.com/ru/{{ news.get_absolute_url }}"#}
+{#                                               target="_blank" rel="nofollow">#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook"#}
+{#                                                                                 href="#"></a></li>#}
+{#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter"#}
+{#                                                                                 href="#"></a></li>#}
+{#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus"#}
+{#                                                                                 href="#"></a></li>#}
+{#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram"#}
+{#                                                                                 href="#"></a></li>#}
+{#                                    </ul>#}
+{#                                </div>#}
                                 <!-- RD Navbar Nav-->
                                 {% block nav_active %}
                                     <ul class="rd-navbar-nav">
@@ -115,9 +120,8 @@
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a>
                                         </li>
 
-                                        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link"
-                                                                                                    href="{% url 'contact' %}">Контакты</a>
-                                        </li>
+{#                                        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a> </li>#}
+                                        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a> </li>
                                     </ul>
                                 {% endblock %}
 

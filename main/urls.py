@@ -5,6 +5,7 @@ from main import views
 urlpatterns = [
     # path('', views.index, name="index"),
     path('', views.IndexNews.as_view(), name="index"),
+    path('search/', views.Search.as_view(), name="search"),
     path('schedule/', views.schedule, name="schedule"),
     # path('photo_gallery/<int:id>/',views.photo_gallery, name="photo_gallery"),
     path('gallery/<int:pk>/',views.PhotoGallery.as_view(), name="photo_gallery"),

@@ -57,6 +57,19 @@ class PhotoGallery(DetailView):
         return context
 
 
+class Search(ListView):
+    paginate_by = 3
+    template_name = "main/index.html"
+
+    def get_queryset(self):
+        return News.objects.filter(title__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context
+
+
 # def index(request):
 #     news = News.objects.filter(is_published=True)
 #     churches = Churches.objects.all()

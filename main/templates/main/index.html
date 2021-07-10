@@ -21,7 +21,8 @@
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
 
-        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>
+{#        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>#}
+        <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>
     </ul>
 {% endblock %}
 
@@ -126,7 +127,7 @@
                         {% if page_obj.has_previous %}
                             <li class="page-item">
                                 <a class="page-link"
-                                   href="?page={{ page_obj.previous_page_number }}">&laquo;Предыдущая</a>
+                                   href="?{{ q }}page={{ page_obj.previous_page_number }}">&laquo;Предыдущая</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
@@ -143,14 +144,14 @@
                                 </li>
                             {% elif i > page_obj.number|add:-3 and i < page_obj.number|add:3 %}
                                     <li class="page-item">
-                                        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                        <a class="page-link" href="?{{ q }}page={{ i }}">{{ i }}</a>
                                     </li>
                             {% endif %}
                         {% endfor %}
 
                         {% if page_obj.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая&raquo;</a>
+                                <a class="page-link" href="?{{ q }}page={{ page_obj.next_page_number }}">Следующая&raquo;</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
