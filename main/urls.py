@@ -20,4 +20,5 @@ urlpatterns = [
     # path('<int:year>/<int:month>/<int:date>/<slug:slug>', views.post_detail, name="post_detail"),
     # path('<int:id>/', views.post_detail, name="post_detail"),
     path('news/<slug:slug>/', views.PostDetail.as_view(), name="post_detail"),
+
 ]

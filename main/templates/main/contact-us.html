@@ -60,6 +60,13 @@
         {#            </ul>#}
         {#        </div>#}
     </section>
+    
+    {% if request.user.is_authenticated %}
+
+        <div class="h2">Hello, {{ user.username|capfirst }}, you are registered</div>
+    {% else %}
+        <div class="h2">Hello, you are not registered</div>
+    {% endif %} 
 
     <!-- Contact information-->
     <section class="section section-sm section-first bg-default">

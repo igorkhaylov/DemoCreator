@@ -36,7 +36,7 @@ class NewsAdmin(admin.ModelAdmin):
 
     def get_picture(self, obj):
         if obj.picture: # если есть фото
-            return mark_safe(f'<img src="{obj.picture.url}" width="50"')
+            return mark_safe(f"<img src=\"{obj.picture.url}\" width=\"50\"")
         return "-" # если нет фото, возвращаем такую строку
 
     get_picture.short_description = "Фото"
@@ -60,4 +60,9 @@ admin.site.register(Schedule)
 admin.site.register(Churches, ChurchesAdmin)
 # admin.site.register(NewsImages, NewsImagesAdmin)
 
+admin.site.site_title = "Управление сайтом"
+admin.site.site_header = "Свято-Алексеевский Собор"
 
+
+
+'''how's life what are you doing Svetlana, i think, i Love you, i need you'''

@@ -3,7 +3,7 @@ from .models import News, Schedule, Churches
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F
 from django.views.generic import ListView, DetailView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 class IndexNews(ListView):
@@ -73,23 +73,6 @@ class Search(ListView):
         return Churches.objects.all()
 
 
-# def index(request):
-#     news = News.objects.filter(is_published=True)
-#     churches = Churches.objects.all()
-#     page = request.GET.get('page', 1)
-#     paginator = Paginator(news, 3)
-#     try:
-#         page_obj = paginator.page(page)
-#     except PageNotAnInteger:
-#         page_obj = paginator.page(1)
-#     except EmptyPage:
-#         page_obj = paginator.page(paginator.num_pages)
-#     return render(request, "main/index.html", context={"news": news,
-#                                                        "page_obj": page_obj,
-#                                                        "churches": churches,
-#                                                        })
-
-
 def schedule(request):
     schedule = Schedule.objects.first()
     return render(request, "main/schedule.html", {"schedule": schedule})
@@ -103,6 +86,22 @@ def churches(request, slug):
 def history(request):
     history = Churches.objects.first()
     return render(request, "main/history.html", {"history": history})
+
+
+
+def about_us(request):
+    return render(request, "main/about-us.html")
+
+
+def contact_us(request):
+    return render(request, "main/contact-us.html")
+
+
+def typography(request):
+    return render(request, "main/typography.html")
+
+
+
 
 
 
@@ -134,13 +133,19 @@ def history(request):
 #                                                      })
 
 
-def about_us(request):
-    return render(request, "main/about-us.html")
 
-
-def contact_us(request):
-    return render(request, "main/contact-us.html")
-
-
-def typography(request):
-    return render(request, "main/typography.html")
+# def index(request):
+#     news = News.objects.filter(is_published=True)
+#     churches = Churches.objects.all()
+#     page = request.GET.get('page', 1)
+#     paginator = Paginator(news, 3)
+#     try:
+#         page_obj = paginator.page(page)
+#     except PageNotAnInteger:
+#         page_obj = paginator.page(1)
+#     except EmptyPage:
+#         page_obj = paginator.page(paginator.num_pages)
+#     return render(request, "main/index.html", context={"news": news,
+#                                                        "page_obj": page_obj,
+#                                                        "churches": churches,
+#                                                        })
