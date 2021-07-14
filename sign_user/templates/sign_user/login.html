@@ -10,12 +10,13 @@
         <h5 class="h1-register" style="font-family: CyrillicOldBold">Вход</h5>
         <fieldset id="inputs">
             {#        <input id="username" type="text" placeholder="Логин" autofocus required>#}
-            <input name="user_name" type="text" placeholder="Логин" required>
-            <input name="password" type="password" placeholder="Пароль" required>
+            <input id="username2" name="user" type="text" placeholder="Логин" required>
+            <input id="password" name="password" type="password" placeholder="Пароль" required>
         </fieldset>
         <fieldset id="actions">
-            <input type="submit" id="submit" value="ВОЙТИ">
-            <a href="#">Забыли пароль?</a><a href="#">Регистрация</a>
+            <input type="submit" id="submit_login" value="ВОЙТИ">
+{#            <a href="#">Забыли пароль?</a>#}
+            <a href="{% url 'register' %}">Регистрация</a>
         </fieldset>
     </form>
 </div>

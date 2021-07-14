@@ -142,7 +142,7 @@
     margin: 25px 0 0 0;
 }
 
-#submit, #submit_register {
+#submit, #submit_register, #submit_login {
     background-color: #c6c6c6;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#c6c6c6));
     background-image: -webkit-linear-gradient(top, #efefef, #c6c6c6);
@@ -174,7 +174,8 @@
     color: #666;
 }
 
-#submit:hover,#submit:focus, #submit_register:hover,#submit_register:focus
+#submit:hover,#submit:focus, #submit_register:hover,#submit_register:focus,
+#submit_login:hover, #submit_login:focus
 {
     background-color: #efefef;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#c6c6c6), to(#efefef));
@@ -185,7 +186,7 @@
     background-image: linear-gradient(top, #c6c6c6, #efefef);
 }
 
-#submit:active, #submit_register:active
+#submit:active, #submit_register:active, #submit_login:active
 {
     outline: none;
 
@@ -195,7 +196,8 @@
 }
 
 #submit::-moz-focus-inner,
-#submit_register::-moz-focus-inner
+#submit_register::-moz-focus-inner,
+#submit_login::-moz-focus-inner
 {
   border: none;
 }

@@ -4,27 +4,29 @@
 {% endblock %}
 {% block body %}
 
-            <form id="login" action="#" method="post">
+            <form id="login" action="{% url 'sign_up' %}" method="post">
                 {% csrf_token %}
                 <h5 class="h1-register" style="font-family: CyrillicOldBold">Регистрация</h5>
                 <fieldset id="inputs">
                     {#        <input id="username" type="text" placeholder="Логин" autofocus required>#}
                     <div class="container">
                         <div class="row">
-                            <input class="col-6" name="first_name" type="text" placeholder="Имя" required>
-                            <input class="col-6" name="last_name" type="text" placeholder="Фамилия" required>
-                            <input name="email" type="email" placeholder="Email">
-                            <input name="username" id="username" type="text" placeholder="Логин" required>
-                            <input name="password" type="password" placeholder="Пароль" required>
-                            <input type="password" placeholder="Подтвердите пароль" required>
+                            <input id="first_name" name="first_name" type="text" placeholder="Имя" class="col-6">
+                            <input id="last_name" name="last_name" type="text" placeholder="Фамилия" class="col-6">
+                            <input id="email_user" name="email_user" type="email" placeholder="Email" >
+                            <input id="username" name="username" type="text" placeholder="Логин" >
+                            <input id="password1" name="password" type="password" placeholder="Пароль">
+                            <input id="password2" type="password" placeholder="Подтвердите пароль" >
                         </div>
                     </div>
                 </fieldset>
                 <fieldset id="actions" class="">
-                    <input style="margin-left: calc(50% - 60px)" type="submit" id="submit_register" value="Регистрация">
+                    <button style="margin-left: calc(50% - 60px)" type="submit" id="submit_register" class="btn">Регистрация</button>
+{#                    <input style="margin-left: calc(50% - 60px)" type="submit" id="submit_register" class="disabled" value="Регистрация">#}
                     {#            <a href="">Забыли пароль?</a><a href="{% url 'register' %}">Регистрация</a>#}
                 </fieldset>
             </form>
+{#    <button type="submit" id="submit_register2">check name</button>#}
 
 
 {% endblock %}
