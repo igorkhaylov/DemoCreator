@@ -16,7 +16,7 @@ $("#submit_form").click(function () {
 $.mask.definitions['9'] = false;
 $.mask.definitions['5'] = "[0-9]";
 $(function($){
-   $("#contact-phone-2").mask("+998 (55) 555-55-55",{placeholder:" "});
+   $("#contact-phone-2").mask("+998 (55) 555-55-55",{placeholder:"***********"});
 });
 
 // $(".phone").mask("+998 (55) 555-55-55",{completed:function(){alert("Вы ввели: "+this.val());}});
