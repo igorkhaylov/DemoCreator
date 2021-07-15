@@ -65,7 +65,8 @@
                                     {% endthumbnail %}
                             <div class="overlay">
                                 <div class="overlay-content">
-                                    <a href="{% url 'photo_gallery' news.pk %}">Посмотреть</a>
+{#                                    <a href="{% url 'photo_gallery' news.pk %}">Посмотреть</a>#}
+                                    <a href="{% url 'photo_gallery' news.slug %}">Посмотреть</a>
                                 </div>
                             </div>
                             </div>
@@ -73,12 +74,13 @@
                             <div class="card-content">
 
 
-                                    <a href="{% url 'photo_gallery' news.pk %}">
+{#                                <a href="{% url 'photo_gallery' news.pk %}">#}
+                                    <a href="{% url 'photo_gallery' news.slug %}">
                                         {#                                    <h2>Title</h2>#}
                                         <p>{{ news.title }}</p></a>
                                 <div class="justify-content-between m-2" style="display: flex">
                                         <span class="fa fa-eye"><span class="mx-1">{{ news.views }}</span></span>
-                                        <a href="{% url 'photo_gallery' news.pk %}" class="">Посмотреть...</a>
+                                        <a href="{% url 'photo_gallery' news.slug %}" class="">Посмотреть...</a>
 
                                 </div>
                             </div>

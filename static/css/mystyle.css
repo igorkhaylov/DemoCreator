@@ -251,7 +251,7 @@
     top:-46px;
     left: 6rem;
     /*transition-delay: 1s;*/
-    transition: 1s linear;
+    transition: 0.5s linear;
     opacity: 1;
     z-index: 9999;
 }
@@ -260,10 +260,11 @@
     display:block;
     position:absolute;
     /*top:120px;*/
-    top:-46px;
+    /*top:-46px;*/
+    top:-466px;
     left: 6rem;
     /*transition-delay: 1s;*/
-    transition: 1s linear;
+    transition: 0.5s linear;
     opacity: 0;
     z-index: -1;
 }
