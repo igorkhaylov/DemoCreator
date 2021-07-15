@@ -5,7 +5,7 @@ $("#submit_form").click(function () {
         $("#contact-message-2").val() == "") {
         console.log("Заполните все поля");
     } else {
-        alert("Ваше сообщение успешно отправлено");
+        console.log("Ваше сообщение успешно отправлено");
     }
 });
 

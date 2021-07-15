@@ -4,6 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
+# from . import send_message
 
 
 class IndexNews(ListView):
@@ -101,13 +102,41 @@ def typography(request):
     return render(request, "main/typography.html")
 
 
-def send_message(request):
+
+
+
+
+import asyncio
+from aiogram import Bot, Dispatcher, executor
+
+BOT_TOKEN = '1873821132:AAEPwFu0ESTuEhLNDF5di1nxukhxDXzmUh4'
+admin_id = '432499122'
+
+
+# loop = asyncio.get_event_loop()
+bot = Bot(BOT_TOKEN, parse_mode="HTML")
+# dp = Dispatcher(bot, loop=loop)
+
+def send_message2(request):
     if request.method == "POST":
         name = request.POST["name"]
         email = request.POST["email"]
         phone_number = request.POST["phone"]
         text = request.POST["message"]
-        print(name, email, phone_number, text)
+        mes = "\t    Имя отправителя: \n" +name +\
+              "\n    E-mail отправителя: \n"+ email + \
+              "\n    Номер телефона: \n" + phone_number +\
+              "\n    Сообщение: \n" + text
+
+        # send_message.send_my_message(mes)
+        async def sm():
+            # while True:
+            await bot.send_message(chat_id=admin_id, text=mes)
+            # asyncio.sleep(10)
+        asyncio.run(sm())
+
+        # send_message.send_to_me(mes)
+        print(mes)
         return render(request, "main/contact-us.html")
     return HttpResponseRedirect("/")
 
