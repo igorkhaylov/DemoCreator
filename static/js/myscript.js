@@ -1,3 +1,40 @@
+$("#submit_form").click(function () {
+    if ($("#contact-your-name-2").val() == "" ||
+        $("#contact-email-2").val() == "" ||
+        $("#contact-phone-2").val() == "" ||
+        $("#contact-message-2").val() == "") {
+        console.log("Заполните все поля");
+    } else {
+        alert("Ваше сообщение успешно отправлено");
+    }
+});
+
+
+// $(function($){
+//    $(".phone").mask("+998 (99) 999-9999",{placeholder:" "});
+// });
+$.mask.definitions['9'] = false;
+$.mask.definitions['5'] = "[0-9]";
+$(function($){
+   $("#contact-phone-2").mask("+998 (55) 555-55-55",{placeholder:" "});
+});
+
+// $(".phone").mask("+998 (55) 555-55-55",{completed:function(){alert("Вы ввели: "+this.val());}});
+
+
+// $("#contact-phone").focusout(function(){
+//   var value = $(this).val().trim();
+//   if (value.search(/\+998\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}$/i) != 0) {
+//     $(this).notify("Номер телефона введён не корректно", "error");
+//     $(this).addClass("errtextbox");
+//     errorMail = true;
+//   } else {
+//     $(this).removeClass("errtextbox");
+//     errorMail = false;
+//   }
+// });
+
+
 
 // $("#submit_login").click(function () {
 //     $.ajax({
@@ -54,6 +91,9 @@
 //     }
 //
 // });
+
+
+
 
 
 

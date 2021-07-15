@@ -20,6 +20,8 @@
     <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="{% static 'images/ie8-panel/warning_bar_0000_us.jpg' %}" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="{% static 'js/html5shiv.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{#<script src="jquery.maskedinput.min.js" type="text/javascript"></script>#}
 {#    <script src="http://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>#}
     <![endif]-->
 </head>
@@ -79,66 +81,93 @@
                                 </div>
 
 
-                                <div class="poster rd-navbar-share fl-bigmug-line-user144 ml-4"
-                                     data-rd-navbar-toggle=".rd-navbar-share-list">
-                                    {% if request.user.is_authenticated %}
-                                        {#                                    <p class="rd-navbar-share-list-item">Добро пожаловать {{ user.username }}</p>#}
-                                        {#                                                                        <div class="poster rd-navbar-share fl-bigmug-line-user144">#}
+    <div class="poster rd-navbar-share fl-bigmug-line-user144"
+         data-rd-navbar-toggle=".rd-navbar-share-list">
+        {% if request.user.is_authenticated %}
+            <div class="descr">
+                <div class="">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h6 class="card-subtitle my-3 text-muted"
+                                style="font-family: CyrillicOldBold">Добро
+                                пожаловать</h6>
+                            <h5 class="card-title mt-4">{{ user.first_name }} {{ user.last_name }}</h5>
+                            <a href="#" class="card-link link-instafeed"></a>
+                            <br>
+                            <a href="{% url 'logout' %}">
+                                <input style="margin-left: calc(50% - 60px)" class="my-2"
+                                       type="submit" id="submit"
+                                       value="Выйти?">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+{#            {% if request.user.is_authenticated %}#}
+{#                <ul class="list-inline rd-navbar-share-list">#}
+{#                    <div class="mt-3">#}
+{#                        <li class="rd-navbar-share-list-item">{{ user.username }}#}
+{#                        </li>#}
+{#                        <li class="rd-navbar-share-list-item"><a class=""#}
+{#                                                                 href="{% url 'logout' %}">Выйти</a>#}
+{#                        </li>#}
+{#                    </div>#}
+{#                </ul>#}
+{#            {% endif %}#}
+            <ul class="list-inline rd-navbar-share-list">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <li class="rd-navbar-share-list-item"><a class=""
+                                                                     href="{% url 'login' %}">Вход</a>
+                            </li>
+                        </div>
+                        <div class="col-12">
+                            <li class="rd-navbar-share-list-item"><a class=""
+                                                                     href="{% url 'register' %}">Регистрация</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        {% endif %}
+    </div>
 
-                                        <div class="descr">
-                                            <div class="">
-                                                <div class="card" style="width: 18rem;">
-                                                    <div class="card-body">
-
-                                                        <h6 class="card-subtitle my-3 text-muted"
-                                                            style="font-family: CyrillicOldBold">Добро
-                                                            пожаловать</h6>
-                                                        <h5 class="card-title mt-4">{{ user.first_name }} {{ user.last_name }}</h5>
-
-                                                        {#                                                                <h6>{{ user.email }}</h6>#}
-
-                                                        {#                                                        <p class="card-text">{{ user.email }}</p>#}
-                                                        {#                                                        <a href="#" class="card-link">Ссылка карты</a>#}
-                                                        <a href="#" class="card-link link-instafeed"></a>
-                                                        <br>
-                                                        <a href="{% url 'logout' %}">
-                                                            <input style="margin-left: calc(50% - 60px)" class="my-2"
-                                                                   type="submit" id="submit"
-                                                                   value="Выйти?">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {#                                    </div>#}
-
-                                    {% else %}
-
-                                        <ul class="list-inline rd-navbar-share-list">
-                                            {#                                            <li class="rd-navbar-share-list-item">Добро пожаловать {{ user.username }}</li>#}
-                                            <div class="mt-3">
-                                                <li class="rd-navbar-share-list-item"><a class=""
-                                                                                         href="{% url 'login' %}">Вход</a>
-                                                </li>
-                                                <li class="rd-navbar-share-list-item"><a class=""
-                                                                                         href="{% url 'register' %}">Регистрация</a>
-                                                </li>
-                                            </div>
-                                        </ul>
+{% if request.user.is_authenticated %}
+         <div class="rd-navbar-share"
+              data-rd-navbar-toggle=".rd-navbar-share-list">
+             <ul class="list-inline rd-navbar-share-list">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-12">
+                           <li class="rd-navbar-share-list-item"><a class="link-press"
+                                                              href="#">{{ user.first_name }} {{ user.last_name }}</a>
+                     </li>
+                         </div>
+                         <div class="col-12">
+                          <li class="rd-navbar-share-list-item"><a class="link-instafeed"
+                                                              href="{% url 'logout' %}">Выйти</a>
+                     </li>
+                         </div>
 
 
-                                    {% endif %}
-                                </div>
+                     </div>
+                 </div>
+             </ul>
+         </div>
+{% endif %}
 
-                                {#                                                                <div class="rd-navbar-share fl-bigmug-line-user144"#}
-                                {#                                                                     data-rd-navbar-toggle=".rd-navbar-share-list">#}
-                                {#                                                                    <ul class="list-inline rd-navbar-share-list">#}
-                                {#                                                                        <li class="rd-navbar-share-list-item"><a class=""#}
-                                {#                                                                                                                 href="#">Вход</a></li>#}
-                                {#                                                                        <li class="rd-navbar-share-list-item"><a class=""#}
-                                {#                                                                                                                 href="#">Регистрация</a></li>#}
-                                {#                                                                    </ul>#}
-                                {#                                                                </div>#}
+                                {#                                {% if request.user.is_authenticated %}#}
+{#                                                                                                <div class="rd-navbar-share fl-bigmug-line-user144"#}
+{#                                                                                                     data-rd-navbar-toggle=".rd-navbar-share-list">#}
+{#                                                                                                    <ul class="list-inline rd-navbar-share-list">#}
+{#                                                                                                        <li class="rd-navbar-share-list-item">{{ user.first_name }}</li>#}
+{#                                                                                                        <li class="rd-navbar-share-list-item"><a class=""#}
+{#                                                                                                                                                 href="#">Выход</a></li>#}
+{#                                                                                                    </ul>#}
+{#                                                                                                </div>#}
+{#                                {% endif %}#}
 
 
                                 <!-- RD Navbar Share-->
@@ -311,6 +340,7 @@
 {#<div class="snackbars" id="form-output-global"></div>#}
 <!-- Javascript-->
 <script src="{% static 'js/core.min.js' %}"></script>
+<script src="{% static 'js/jquery.maskedinput.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
 <script src="{% static 'js/notify.js' %}"></script>
 <script src="{% static 'js/myscript.js' %}"></script>

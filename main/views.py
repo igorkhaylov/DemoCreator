@@ -101,7 +101,15 @@ def typography(request):
     return render(request, "main/typography.html")
 
 
-
+def send_message(request):
+    if request.method == "POST":
+        name = request.POST["name"]
+        email = request.POST["email"]
+        phone_number = request.POST["phone"]
+        text = request.POST["message"]
+        print(name, email, phone_number, text)
+        return render(request, "main/contact-us.html")
+    return HttpResponseRedirect("/")
 
 
 
