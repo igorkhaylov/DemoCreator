@@ -106,7 +106,7 @@ def typography(request):
 
 
 
-import asyncio
+# import asyncio
 from aiogram import Bot, Dispatcher, executor
 
 BOT_TOKEN = '1873821132:AAEPwFu0ESTuEhLNDF5di1nxukhxDXzmUh4'
@@ -114,27 +114,32 @@ admin_id = '432499122'
 
 
 # loop = asyncio.get_event_loop()
-bot = Bot(BOT_TOKEN, parse_mode="HTML")
+# bot = Bot(BOT_TOKEN, parse_mode="HTML")
 # dp = Dispatcher(bot, loop=loop)
-
+import requests
 def send_message2(request):
     if request.method == "POST":
         name = request.POST["name"]
         email = request.POST["email"]
         phone_number = request.POST["phone"]
         text = request.POST["message"]
-        mes = "\t    Имя отправителя: \n" +name +\
-              "\n    E-mail отправителя: \n"+ email + \
-              "\n    Номер телефона: \n" + phone_number +\
-              "\n    Сообщение: \n" + text
+        mes = "\tИмя отправителя: \n<b>" +name +\
+              "</b>\n\nE-mail отправителя: \n<b>"+ email + \
+              "</b>\n\nНомер телефона: \n<b>" + phone_number +\
+              "</b>\n\nСообщение: \n" + text
 
+        def teleg(BOT_TOKEN, admin_id, message):
+            url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={admin_id}&parse_mode=HTML&text={message}'
+            response = requests.get(url)
+            return response.json()
+
+        response = teleg(BOT_TOKEN, admin_id, mes)
         # send_message.send_my_message(mes)
-        async def sm():
-            # while True:
-            await bot.send_message(chat_id=admin_id, text=mes)
+        # async def sm():
+        #     while True:
+        #     await bot.send_message(chat_id=admin_id, text=mes)
             # asyncio.sleep(10)
-        asyncio.run(sm())
-
+        # asyncio.run(sm())
         # send_message.send_to_me(mes)
         print(mes)
         return render(request, "main/contact-us.html")
