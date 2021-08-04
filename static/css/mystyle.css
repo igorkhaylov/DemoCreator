@@ -244,7 +244,7 @@
 /*    transition-delay:1s;*/
 /*}*/
 
-.poster:hover .descr{
+.poster:hover .descr, .for-hover:hover .descr{
     display:block;
     position:absolute;
     /*top:120px;*/
@@ -253,8 +253,24 @@
     /*transition-delay: 1s;*/
     transition: 0.5s linear;
     opacity: 1;
-    z-index: 9999;
+    z-index: 99999;
 }
+
+@media (max-width: 993px) {
+    .poster:hover .descr, .for-hover:hover .descr{
+        display:none;
+        position:absolute;
+        /*top:120px;*/
+        /*top:-4666px;*/
+        top:-46px;
+        left: 15rem;
+        /*transition-delay: 1s;*/
+        transition: 0.5s linear;
+        opacity: 1;
+        z-index: 99999;
+    }
+}
+
 
 .descr:not(:hover) {
     display:block;

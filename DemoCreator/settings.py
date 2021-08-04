@@ -130,6 +130,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+# EMAIL_HOST = "smtp.yandex.ru"
+# EMAIL_HOST_USER = "ikhaylov@sag.uz"
+# EMAIL_HOST_PASSWORD = "secret"
+# EMAIL_PORT = 465
+# EMAIL_USE_TLS = True
+
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"

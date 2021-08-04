@@ -1,9 +1,16 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect, BadHeaderError
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-
+from django.contrib.auth.forms import PasswordResetForm
 # Create your views here.
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+
 def logout_user(request):
     logout(request)
     return render(request, "sign_user/login.html")
@@ -100,3 +107,60 @@ def check_username(request):
 #             return HttpResponse("no", content_type='text/html')
 #
 # pass
+
+# def passwor_reset_form(request):
+#     return render(request, "sign_user/password_reset.html")
+
+
+
+
+
+
+
+# import requests
+# BOT_TOKEN = '1873821132:AAEPwFu0ESTuEhLNDF5di1nxukhxDXzmUh4'
+# admin_id = '432499122'
+#
+# def password_reset_request(request):
+#     if request.method == "POST":
+#         print('post'*100)
+#         password_reset_form = PasswordResetForm(request.POST)
+#         if password_reset_form.is_valid():
+#             mail = password_reset_form.cleaned_data['email']
+#             try:
+#                 user = User.objects.get(email=mail)
+#             except Exception:
+#                 user = False
+#             if user:
+#                 subject = "Запрошен сброс пароля"
+#                 email_template_name = "sign_user/password_reset_msg.html"
+#                 cont = {
+#                     "email": user.email,
+#                     "domain": '192.168.0.105:80',
+#                     "site_name": "igorkhaylov",
+#                     "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+#                     "user": user,
+#                     "token": default_token_generator.make_token(user),
+#                     "protocol": "http",
+#                 }
+#                 msg_html = render_to_string(email_template_name, cont)
+#                 try:
+#                     def teleg(BOT_TOKEN, admin_id, message):
+#                         url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={admin_id}&parse_mode=HTML&text={message}'
+#                         response = requests.get(url)
+#                         return response.json()
+#                     response = teleg(BOT_TOKEN, admin_id, msg_html)
+#                     # send_mail(subject, 'ссылка', 'igorkhaylov@yandex.com', [user.email], fail_silently=True, html_message=msg_html)
+#                 except BadHeaderError:
+#                     return HttpResponse("Обнаружен недопустимый заголовок")
+#                 return redirect("password_reset_done")
+#             else:
+#                 messages.error(request, 'Пользователь не найден, напишите проблему администратору')
+#                 return HttpResponseRedirect("/")
+#         return render(request, "sign_user/login.html")
+
+
+
+
+
+
