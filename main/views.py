@@ -89,7 +89,6 @@ def history(request):
     return render(request, "main/history.html", {"history": history})
 
 
-
 def about_us(request):
     return render(request, "main/about-us.html")
 
@@ -107,7 +106,7 @@ def typography(request):
 
 
 # import asyncio
-from aiogram import Bot, Dispatcher, executor
+# from aiogram import Bot, Dispatcher, executor
 
 BOT_TOKEN = '1873821132:AAEPwFu0ESTuEhLNDF5di1nxukhxDXzmUh4'
 admin_id = '432499122'
@@ -133,7 +132,7 @@ def send_message2(request):
             response = requests.get(url)
             return response.json()
 
-        response = teleg(BOT_TOKEN, admin_id, mes)
+        teleg(BOT_TOKEN, admin_id, mes)
         # send_message.send_my_message(mes)
         # async def sm():
         #     while True:
