@@ -20,9 +20,10 @@
     <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="{% static 'images/ie8-panel/warning_bar_0000_us.jpg' %}" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="{% static 'js/html5shiv.min.js' %}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-{#<script src="jquery.maskedinput.min.js" type="text/javascript"></script>#}
-{#    <script src="http://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>#}
+    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>#}
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    {#<script src="jquery.maskedinput.min.js" type="text/javascript"></script>#}
+    {#    <script src="http://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>#}
     <![endif]-->
 </head>
 <body>
@@ -89,8 +90,7 @@
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h6 class="card-subtitle my-3 text-muted"
-                                style="font-family: CyrillicOldBold">Добро
-                                пожаловать</h6>
+                                style="font-family: CyrillicOldBold">Добро пожаловать</h6>
                             <h5 class="card-title mt-4">{{ user.first_name }} {{ user.last_name }}</h5>
                             <a href="#" class="card-link link-instafeed"></a>
                             <br>

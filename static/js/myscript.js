@@ -129,6 +129,7 @@ $("#submit_register").click(function () {
                 $("#submit_register").click(function () {
                     if (!(errorNull || errorMail || errorPass)) {
                         $("#login").submit();
+
                     } else {
                         $(this).notify("Форма пустая или заполнена не корректно", "error");
                     }

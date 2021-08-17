@@ -115,7 +115,8 @@ admin_id = '432499122'
 # loop = asyncio.get_event_loop()
 # bot = Bot(BOT_TOKEN, parse_mode="HTML")
 # dp = Dispatcher(bot, loop=loop)
-import requests
+
+# import requests
 def send_message2(request):
     if request.method == "POST":
         name = request.POST["name"]
@@ -127,19 +128,13 @@ def send_message2(request):
               "</b>\n\nНомер телефона: \n<b>" + phone_number +\
               "</b>\n\nСообщение: \n" + text
 
-        def teleg(BOT_TOKEN, admin_id, message):
-            url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={admin_id}&parse_mode=HTML&text={message}'
-            response = requests.get(url)
-            return response.json()
+        # def teleg(BOT_TOKEN, admin_id, message):
+        #     url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={admin_id}&parse_mode=HTML&text={message}'
+        #     response = requests.get(url)
+        #     return response.json()
 
-        teleg(BOT_TOKEN, admin_id, mes)
-        # send_message.send_my_message(mes)
-        # async def sm():
-        #     while True:
-        #     await bot.send_message(chat_id=admin_id, text=mes)
-            # asyncio.sleep(10)
-        # asyncio.run(sm())
-        # send_message.send_to_me(mes)
+        # teleg(BOT_TOKEN, admin_id, mes)
+
         print(mes)
         return render(request, "main/contact-us.html")
     return HttpResponseRedirect("/")
