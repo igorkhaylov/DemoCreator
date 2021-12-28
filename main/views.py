@@ -101,6 +101,10 @@ def typography(request):
     return render(request, "main/typography.html")
 
 
+def old_index(request):
+    return render(request, "main/old_index.html")
+
+
 
 
 

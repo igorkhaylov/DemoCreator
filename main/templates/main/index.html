@@ -9,7 +9,8 @@
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'history' %}">История</a></li>
 
         <li class="rd-nav-item dropdown">
-            <a class="rd-nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="rd-nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
                 Богослужения
             </a>
             <div class="dropdown-menu">
@@ -17,11 +18,12 @@
                 <a href="{% url 'typography' %}" class="dropdown-item">История богослужений</a>
                 <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
                 <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
+                <a href="{% url 'old_index' %}" class="dropdown-item">index</a>
             </div>
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
 
-{#        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>#}
+        {#        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>#}
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>
     </ul>
 {% endblock %}
@@ -56,9 +58,11 @@
                 <div class="swiper-slide-caption section-md">
                     <div class="container">
                         <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Committed and professional</h1>
-                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского
+                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">
+                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского
                             Викентия</p><a
-                            class="button button-primary button-ujarak" href="{% url 'schedule' %}" data-caption-animate="fadeInUp"
+                            class="button button-primary button-ujarak" href="{% url 'schedule' %}"
+                            data-caption-animate="fadeInUp"
                             data-caption-delay="200">Богослужения</a>
                     </div>
                 </div>
@@ -88,13 +92,13 @@
     </section>
 
 
-    <!-- Latest blog posts-->
+{#    <!-- Latest blog posts-->#}
     <section class="section section-sm section-last bg-default">
         <div class="container">
             <h3>Последние новости</h3>
             <div class="row row-60 row-sm">
-{#                {% for news in page_obj %}#}
-{#                    {% for news in view.get_news %}#}
+                {#                {% for news in page_obj %}#}
+                {#                    {% for news in view.get_news %}#}
                 {% for news in page_obj %}
 
                     <div class="col-sm-6 col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
@@ -110,8 +114,8 @@
                                         class="post-modern-time-month">{{ news.date|date:"F" }}</span></time>
                             </div>
                         </a>
-{#                            <h5 class="post-modern-title"><a href="{% url 'post_detail' news.pk %}">{{ news.title }}</a>#}
-                                <h5 class="post-modern-title"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a>
+                            {#                            <h5 class="post-modern-title"><a href="{% url 'post_detail' news.pk %}">{{ news.title }}</a>#}
+                            <h5 class="post-modern-title"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a>
                             </h5>
                             <p class="post-modern-text">{{ news.content|striptags|truncatechars:250 }}</p>
                         </article>
@@ -142,9 +146,9 @@
                                     </span>
                                 </li>
                             {% elif i > page_obj.number|add:-3 and i < page_obj.number|add:3 %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?{{ q }}page={{ i }}">{{ i }}</a>
-                                    </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?{{ q }}page={{ i }}">{{ i }}</a>
+                                </li>
                             {% endif %}
                         {% endfor %}
 
@@ -174,7 +178,7 @@
                  data-dots="true" data-animation-in="fadeIn" data-animation-out="fadeOut" data-autoplay="true">
                 <!-- Quote Lisa-->
 
-{#                {% for church in churches %}#}
+                {#                {% for church in churches %}#}
                 {% for church in view.get_churches %}
 
                     <article class="quote-lisa">
@@ -190,7 +194,8 @@
                             <div class="quote-lisa-text">
                                 <p class="q">{{ church.short_text }}</p>
                             </div>
-                            <p class="quote-lisa-status"><a href="{% url 'churches' church.slug %}">Читать далее...</a></p>
+                            <p class="quote-lisa-status"><a href="{% url 'churches' church.slug %}">Читать далее...</a>
+                            </p>
                         </div>
                     </article>
 
@@ -228,529 +233,27 @@
                 {#                    </div>#}
                 {#                </article>#}
                 {#                <!-- Quote Lisa-->#}
-{#                                <article class="quote-lisa">#}
-{#                                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
-{#                                                                                                            src="{% static 'images/user-18-100x100.jpg' %}"#}
-{#                                                                                                            alt="" width="100"#}
-{#                                                                                                            height="100"/></a>#}
-{#                                        <div class="quote-lisa-text">#}
-{#                                            <p class="q">Your professional guidance gave me results that far exceeded my#}
-{#                                                expectations.#}
-{#                                                My clients thoroughly enjoy the fun, relaxing ambience that the interior design#}
-{#                                                creates.#}
-{#                                                Thank you for helping me bring my ideas to life and transform my own workspace into#}
-{#                                                something new and awesome!</p>#}
-{#                                        </div>#}
-{#                                        <h5 class="quote-lisa-cite"><a href="#">Samantha Brown</a></h5>#}
-{#                                        <p class="quote-lisa-status">Freelancer</p>#}
-{#                                    </div>#}
-{#                                </article>#}
+                {#                                <article class="quote-lisa">#}
+                {#                                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
+                {#                                                                                                            src="{% static 'images/user-18-100x100.jpg' %}"#}
+                {#                                                                                                            alt="" width="100"#}
+                {#                                                                                                            height="100"/></a>#}
+                {#                                        <div class="quote-lisa-text">#}
+                {#                                            <p class="q">Your professional guidance gave me results that far exceeded my#}
+                {#                                                expectations.#}
+                {#                                                My clients thoroughly enjoy the fun, relaxing ambience that the interior design#}
+                {#                                                creates.#}
+                {#                                                Thank you for helping me bring my ideas to life and transform my own workspace into#}
+                {#                                                something new and awesome!</p>#}
+                {#                                        </div>#}
+                {#                                        <h5 class="quote-lisa-cite"><a href="#">Samantha Brown</a></h5>#}
+                {#                                        <p class="quote-lisa-status">Freelancer</p>#}
+                {#                                    </div>#}
+                {#                                </article>#}
             </div>
         </div>
     </section>
 
-    <!-- See all services-->
-    <section class="section section-sm section-first bg-default text-center">
-        <div class="container">
-            <div class="row row-30 justify-content-center">
-                <div class="col-md-7 col-lg-5 col-xl-6 text-lg-left wow fadeInUp">
-                    <div class="figure-classic figure-classic-left"><img src="{% static 'images/index-1-513x561.jpg' %}"
-                                                                         alt="" width="513" height="561"/>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-xl-6">
-                    <div class="row row-30">
-                        <div class="col-sm-6 wow fadeInRight">
-                            <article class="box-icon-modern box-icon-modern-custom">
-                                <div>
-                                    <h3 class="box-icon-modern-big-title">See all services</h3>
-                                    <div class="box-icon-modern-decor"></div>
-                                    <a class="button button-md button-default-outline-2 button-wapasha" href="#">All
-                                        services</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay=".1s">
-                            <article class="box-icon-modern box-icon-modern-2">
-                                <div class="box-icon-modern-icon fl-bigmug-line-cropping1"></div>
-                                <h5 class="box-icon-modern-title"><a href="#">Space planning</a></h5>
-                                <div class="box-icon-modern-decor"></div>
-                                <p class="box-icon-modern-text">We create better interior experiences through space
-                                    planning services.</p>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay=".2s">
-                            <article class="box-icon-modern box-icon-modern-2">
-                                <div class="box-icon-modern-icon fl-bigmug-line-paintbrush9"></div>
-                                <h5 class="box-icon-modern-title"><a href="#">Interior design</a></h5>
-                                <div class="box-icon-modern-decor"></div>
-                                <p class="box-icon-modern-text">We develop and implement better interior design concepts
-                                    for you.</p>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay=".3s">
-                            <article class="box-icon-modern box-icon-modern-2">
-                                <div class="box-icon-modern-icon fl-bigmug-line-chat55"></div>
-                                <h5 class="box-icon-modern-title"><a href="#">Consultations</a></h5>
-                                <div class="box-icon-modern-decor"></div>
-                                <p class="box-icon-modern-text">Our specialists are ready to consult you on any interior
-                                    design related topic.</p>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest Projects-->
-    <section class="section section-sm section-fluid bg-default text-center">
-        <div class="container-fluid">
-            <h3 class="wow fadeInLeft">Latest Projects</h3>
-            <p class="quote-jean wow fadeInRight" data-wow-delay=".1s">In our portfolio you can browse the latest
-                interior designs created in various styles and for different purposes. Our qualified design
-                professionals are always ready to design something spectacular for you, even if it’s a residential
-                interior improvement.</p>
-            <div class="isotope-filters isotope-filters-horizontal">
-                <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha"
-                        data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true"><span
-                        class="icon fa fa-caret-down"></span>Filter
-                </button>
-                <ul class="isotope-filters-list" id="isotope-3">
-                    <li><a class="active" href="#" data-isotope-filter="*" data-isotope-group="gallery">All</a></li>
-                    <li><a href="#" data-isotope-filter="Type 1" data-isotope-group="gallery">Apartments</a></li>
-                    <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Offices</a></li>
-                    <li><a href="#" data-isotope-filter="Type 3" data-isotope-group="gallery">Corporate designs</a></li>
-                </ul>
-            </div>
-            <div class="row row-30 isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
-                 data-lightgallery="group">
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 3">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-1-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-1-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-1-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">379 Harvey Rd</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 2"
-                     data-wow-delay=".1s">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-2-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-2-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-2-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">64 James Ave</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 1"
-                     data-wow-delay=".2s">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-3-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/grid-gallery-1-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-3-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">861 E. Oklahoma Dr</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 3"
-                     data-wow-delay=".3s">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-4-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-4-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-4-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">14 Pulaski Str</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInRight" data-filter="Type 2">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-5-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-5-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-5-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">8381 Peg Shop Str</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInRight" data-filter="Type 1"
-                     data-wow-delay=".1s">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-6-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-6-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-6-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">830 Bridge Str</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInRight" data-filter="Type 3"
-                     data-wow-delay=".2s">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-7-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-7-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-7-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">29 Water Ln</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInRight" data-filter="Type 2"
-                     data-wow-delay=".3s">
-                    <!-- Thumbnail Classic-->
-                    <article class="thumbnail thumbnail-classic thumbnail-md">
-                        <div class="thumbnail-classic-figure"><img
-                                src="{% static 'images/fullwidth-gallery-8-420x350.jpg' %}" alt="" width="420"
-                                height="350"/>
-                        </div>
-                        <div class="thumbnail-classic-caption">
-                            <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"
-                                                                         href="{% static 'images/fullwidth-gallery-8-1200x800-original.jpg' %}"
-                                                                         data-lightgallery="item"><img
-                                    src="{% static 'images/fullwidth-gallery-8-420x350.jpg' %}" alt="" width="420"
-                                    height="350"/></a>
-                                <h5 class="thumbnail-classic-title"><a href="#">7262 Blue Spring Dr</a></h5>
-                            </div>
-                            <p class="thumbnail-classic-text">We work hard on every project to deliver top-notch
-                                interior design concepts that satisfy your wishes.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Years of experience-->
-    <section class="section section-sm bg-default">
-        <div class="container">
-            <div class="row row-50 row-xl-24 justify-content-center align-items-center align-items-lg-start text-left">
-                <div class="col-md-6 col-lg-5 col-xl-4 text-center"><a class="text-img" href="{% url 'about' %}"><span
-                        class="counter">10</span></a></div>
-                <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="text-width-extra-small offset-top-lg-24 wow fadeInUp">
-                        <h3 class="title-decoration-lines-left">Years of experience</h3>
-                        <p class="text-gray-500">Creator is a renowned interior design studio established in 2008. We
-                            create new interiors for homes and offices.</p><a
-                            class="button button-secondary button-pipaluk" href="#">Get in touch</a>
-                    </div>
-                </div>
-                <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
-                    <div class="row justify-content-center border-2-column offset-top-xl-26">
-                        <div class="col-9 col-sm-6">
-                            <div class="counter-amy">
-                                <div class="counter-amy-number"><span class="counter">2</span><span
-                                        class="symbol">k</span>
-                                </div>
-                                <h6 class="counter-amy-title">Interiors</h6>
-                            </div>
-                        </div>
-                        <div class="col-9 col-sm-6">
-                            <div class="counter-amy">
-                                <div class="counter-amy-number"><span class="counter">40</span>
-                                </div>
-                                <h6 class="counter-amy-title">Monthly designs</h6>
-                            </div>
-                        </div>
-                        <div class="col-9 col-sm-6">
-                            <div class="counter-amy">
-                                <div class="counter-amy-number"><span class="counter">12</span>
-                                </div>
-                                <h6 class="counter-amy-title">Awards</h6>
-                            </div>
-                        </div>
-                        <div class="col-9 col-sm-6">
-                            <div class="counter-amy">
-                                <div class="counter-amy-number"><span class="counter">26</span>
-                                </div>
-                                <h6 class="counter-amy-title">Employees</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-12 align-self-center">
-                    <div class="row row-30 justify-content-center">
-                        <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft"><a class="clients-classic"
-                                                                                           href="#"><img
-                                src="{% static 'images/clients-9-270x117.png' %}" alt="" width="270" height="117"/></a>
-                        </div>
-                        <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".1s"><a
-                                class="clients-classic" href="#"><img src="{% static 'images/clients-10-270x117.png' %}"
-                                                                      alt="" width="270" height="117"/></a></div>
-                        <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".2s"><a
-                                class="clients-classic" href="#"><img src="{% static 'images/clients-3-270x117.png' %}"
-                                                                      alt="" width="270" height="117"/></a></div>
-                        <div class="col-sm-6 col-md-5 col-lg-6 col-xl-3 wow fadeInLeft" data-wow-delay=".3s"><a
-                                class="clients-classic" href="#"><img src="{% static 'images/clients-11-270x117.png' %}"
-                                                                      alt="" width="270" height="117"/></a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Years of experience-->
-    <section class="section section-sm section-fluid bg-default">
-        <div class="container-fluid">
-            <h3>Different people — one mission</h3>
-            <div class="row row-sm row-30 justify-content-center">
-                <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight">
-                    <!-- Team Classic-->
-                    <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img
-                            src="{% static 'images/team-11-420x424.jpg' %}" alt="" width="420" height="424"/></a>
-                        <div class="team-classic-caption">
-                            <h5 class="team-classic-name"><a href="#">Ryan Wilson</a></h5>
-                            <p class="team-classic-status">Founder, Senior Designer</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".1s">
-                    <!-- Team Classic-->
-                    <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img
-                            src="{% static 'images/team-12-420x424.jpg' %}" alt="" width="420" height="424"/></a>
-                        <div class="team-classic-caption">
-                            <h5 class="team-classic-name"><a href="#">Jill Peterson</a></h5>
-                            <p class="team-classic-status">Architect</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".2s">
-                    <!-- Team Classic-->
-                    <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img
-                            src="{% static 'images/team-13-420x424.jpg' %}" alt="" width="420" height="424"/></a>
-                        <div class="team-classic-caption">
-                            <h5 class="team-classic-name"><a href="#">Sam Robinson</a></h5>
-                            <p class="team-classic-status">Senior Architect</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-5 col-xl-3 wow fadeInRight" data-wow-delay=".3s">
-                    <!-- Team Classic-->
-                    <article class="team-classic team-classic-lg"><a class="team-classic-figure" href="#"><img
-                            src="{% static 'images/team-14-420x424.jpg' %}" alt="" width="420" height="424"/></a>
-                        <div class="team-classic-caption">
-                            <h5 class="team-classic-name"><a href="#">Mary Lee</a></h5>
-                            <p class="team-classic-status">Decorator</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- You dream — we embody-->
-    <section class="section section-sm bg-default text-md-left">
-        <div class="container">
-            <div class="row row-50 align-items-center justify-content-center justify-content-xl-between">
-                <div class="col-lg-6 col-xl-5 wow fadeInLeft">
-                    <h3>You dream — we embody</h3>
-                    <!-- Bootstrap tabs-->
-                    <div class="tabs-custom tabs-horizontal tabs-line tabs-line-big text-center text-md-left"
-                         id="tabs-6">
-                        <!-- Nav tabs-->
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item" role="presentation"><a class="nav-link nav-link-big active"
-                                                                        href="#tabs-6-1" data-toggle="tab">01</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link nav-link-big" href="#tabs-6-2"
-                                                                        data-toggle="tab">02</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link nav-link-big" href="#tabs-6-3"
-                                                                        data-toggle="tab">03</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link nav-link-big" href="#tabs-6-4"
-                                                                        data-toggle="tab">04</a></li>
-                        </ul>
-                        <!-- Tab panes-->
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tabs-6-1">
-                                <h5 class="font-weight-normal">Starting with the right idea</h5>
-                                <p>Every project we create starts with an idea, which eventually grows into a great
-                                    design. But before it does, our team proposes several variants to choose from.</p>
-                                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk"
-                                                                      href="#">Get in touch</a><a
-                                        class="button button-default-outline button-wapasha" href="#">Download
-                                    presentation</a></div>
-                            </div>
-                            <div class="tab-pane fade" id="tabs-6-2">
-                                <h5 class="font-weight-normal">Developing the initial concept</h5>
-                                <p>After choosing the right design idea, our team members cooperate with you to create
-                                    the initial concept, which will be a prototype of your final interior design.</p>
-                                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk"
-                                                                      href="#">Get in touch</a><a
-                                        class="button button-default-outline button-wapasha" href="#">Download
-                                    presentation</a></div>
-                            </div>
-                            <div class="tab-pane fade" id="tabs-6-3">
-                                <h5 class="font-weight-normal">Working on interior design implementation</h5>
-                                <p>After completion of the previous stage, we move on to implementing our project and
-                                    creating a better interior design for your home or office.</p>
-                                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk"
-                                                                      href="#">Get in touch</a><a
-                                        class="button button-default-outline button-wapasha" href="#">Download
-                                    presentation</a></div>
-                            </div>
-                            <div class="tab-pane fade" id="tabs-6-4">
-                                <h5 class="font-weight-normal">Achieving the final result</h5>
-                                <p>Finally, we discuss what you like and don’t like in your new interior and try to make
-                                    sure everything is done the way it should be so that you could enjoy your space.</p>
-                                <div class="group-md group-middle"><a class="button button-secondary button-pipaluk"
-                                                                      href="#">Get in touch</a><a
-                                        class="button button-default-outline button-wapasha" href="#">Download
-                                    presentation</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center wow fadeInUp" data-wow-delay=".1s">
-                    <div class="figure-classic figure-classic-right"><img
-                            src="{% static 'images/index-2-556x434.jpg' %}" alt="" width="556" height="434"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What people Say-->
-    <section class="section section-sm section-bottom-70 section-fluid bg-default">
-        <div class="container-fluid">
-            <h3>What people Say</h3>
-            <div class="row row-50 row-sm">
-                <div class="col-md-6 col-xl-4 wow fadeInRight">
-                    <!-- Quote Modern-->
-                    <article class="quote-modern quote-modern-custom">
-                        <div class="unit unit-spacing-md align-items-center">
-                            <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles"
-                                                                                                src="{% static 'images/user-11-75x75.jpg' %}"
-                                                                                                alt="" width="75"
-                                                                                                height="75"/></a></div>
-                            <div class="unit-body">
-                                <h5 class="quote-modern-cite"><a href="#">Catherine Williams</a></h5>
-                                <p class="quote-modern-status">Local shop owner</p>
-                            </div>
-                        </div>
-                        <div class="quote-modern-text">
-                            <p class="q">I chose Creator because of their knowledge, experience and attention to detail
-                                that has proven invaluable to me in creating a superior finished project, which attracts
-                                more clients to my shop.</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
-                    <!-- Quote Modern-->
-                    <article class="quote-modern quote-modern-custom">
-                        <div class="unit unit-spacing-md align-items-center">
-                            <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles"
-                                                                                                src="{% static 'images/user-12-75x75.jpg' %}"
-                                                                                                alt="" width="75"
-                                                                                                height="75"/></a></div>
-                            <div class="unit-body">
-                                <h5 class="quote-modern-cite"><a href="#">Rupert Wood</a></h5>
-                                <p class="quote-modern-status">House owner</p>
-                            </div>
-                        </div>
-                        <div class="quote-modern-text">
-                            <p class="q">This agency was highly recommended to me. The sensitivity, knowledge, vision
-                                and ultimate execution this firm brought to the table was tremendous. Thank you for the
-                                amazing interior!</p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-6 col-xl-4 wow fadeInRight" data-wow-delay=".2s">
-                    <!-- Quote Modern-->
-                    <article class="quote-modern quote-modern-custom">
-                        <div class="unit unit-spacing-md align-items-center">
-                            <div class="unit-left"><a class="quote-modern-figure" href="#"><img class="img-circles"
-                                                                                                src="{% static 'images/user-20-75x75.jpg' %}"
-                                                                                                alt="" width="75"
-                                                                                                height="75"/></a></div>
-                            <div class="unit-body">
-                                <h5 class="quote-modern-cite"><a href="#">Samantha Brown</a></h5>
-                                <p class="quote-modern-status">Freelancer</p>
-                            </div>
-                        </div>
-                        <div class="quote-modern-text">
-                            <p class="q">Your professional guidance gave me results that far exceeded my expectations.
-                                My clients thoroughly enjoy the fun, relaxing ambience that the interior design creates.
-                                Thank you!</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Page Footer-->
     {% include 'includes/footer.html' %}

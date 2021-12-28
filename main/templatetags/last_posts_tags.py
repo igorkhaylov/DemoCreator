@@ -5,5 +5,5 @@ register = template.Library()
 
 @register.simple_tag()
 def get_last_posts():
-    return News.objects.filter(is_published=True).order_by("-views")[0:3]
+    return News.objects.filter(is_published=True)[:3]
 

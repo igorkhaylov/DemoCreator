@@ -21,4 +21,5 @@ urlpatterns = [
     # path('<int:id>/', views.post_detail, name="post_detail"),
     path('news/<slug:slug>/', views.PostDetail.as_view(), name="post_detail"),
     path('send_message/', views.send_message2, name="send_message"),
+    path('old_index', views.old_index, name="old_index"),
 ]
