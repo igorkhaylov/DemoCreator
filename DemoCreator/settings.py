@@ -78,12 +78,23 @@ WSGI_APPLICATION = 'DemoCreator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'a0587819_',
+            'USER': 'a0587819__user',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -121,8 +132,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATIC_DIR = os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -135,7 +148,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # EMAIL_HOST_PASSWORD = "secret"
 # EMAIL_PORT = 465
 # EMAIL_USE_TLS = True
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -202,7 +214,7 @@ CKEDITOR_CONFIGS = {
     'schedule': {
         'toolbar': 'Custom',
         'toolbar_Custom': [
-            ['Font',  'Maximize'], '/',
+            ['Font', 'Maximize'], '/',
             ['Table', 'Bold', 'Italic', 'Underline',
              'HorizontalRule'],
             ['BulletedList', 'TextColor', 'BGColor', 'Link', 'Smiley', 'SpecialChar'], '/',
