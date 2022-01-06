@@ -1,0 +1,22 @@
+{% extends "sign_user/base.html" %}
+{% load static %}
+
+{% block title %}
+    Email input
+{% endblock %}
+{% block body %}
+
+    <div class="border">
+        <form class="form" action="" method="post">
+            {% csrf_token %}
+            <h1 class="form_title">Забыли пароль ?</h1>
+            <div class="help-text">
+                Введите Email от аккаунта на который мы отправим ссылку для сброса пароля
+            </div>
+            <input placeholder="Email" type="email" name="email" autocomplete="email" required id="id_email">
+            <div class="form_button">
+                <button class="form_button-submit" type="submit">Получить ссылку для входа</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

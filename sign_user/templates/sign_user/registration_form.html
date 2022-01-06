@@ -1,0 +1,53 @@
+{% extends "sign_user/base.html" %}
+{% load static %}
+
+{% block title %}
+    Registration
+{% endblock %}
+{% block body %}
+
+
+    <div class="border">
+        <form action="" class="form" method="post">
+            {% csrf_token %}
+
+            <div class="block">
+                <h1 class="form_title">Регистрация </h1>
+                <div class="block-name">
+                    <input placeholder="Имя" type="text" name="first_name" required>
+                    <input placeholder="Фамилия" type="text" name="last_name" required>
+{#                    {{ form.first_name }}#}
+{#                    {{ form.last_name }}#}
+                </div>
+                <input placeholder="Email" type="email" name="email" required>
+                <input placeholder="Логин" type="text" name="username" required>
+                <input placeholder="Пароль" type="password" name="password1" required>
+                <input placeholder="Подтвердите пароль" type="password" name="password2" required>
+{#                {{ form.email }}#}
+{#                {{ form.username }}#}
+{#                {{ form.password1 }}#}
+{#                {{ form.password2 }}#}
+                {% for message in messages %}
+                    <p style="text-align: center">{{ message }}</p>
+                    <br>
+                {% endfor %}
+
+                <div class="form_button">
+                    <button class="form_button-submit" type="submit">Регистрация</button>
+                    <a class="sign-in" href="{% url "login" %}">Войти </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+{#    {{ form.first_name }}#}
+{#    {{ form.last_name }}#}
+{#    {{ form.email }}#}
+{#    {{ form.username }}#}
+{#    {{ form.password1 }}#}
+{#    {{ form.password2 }}#}
+{#    {{ form.as_p }}#}
+
+{% endblock %}

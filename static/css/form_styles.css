@@ -1,0 +1,143 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.form{
+
+    background:  linear-gradient(to top, #f1f1f1 ,white ) ;
+    width: 100%;
+    border: 1px dashed #cccccc;
+    border-radius: 3px;
+    z-index: -2;
+}
+
+.border{
+    background:  linear-gradient(to top, #f1f1f1 ,white ) ;
+    border: 1px solid #e1e1e1 ;
+    border-radius: 3px;
+    width: 360px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.underline{
+    width: 377px;
+    height: 2px;
+    border-radius: 2px;
+    border: 1px solid #cdcdcd ;
+    border-top: white;
+    margin: 0 auto;
+}
+.form_title{
+    font-weight: normal;
+    letter-spacing: 4px;
+    font-family: CyrillicOld;
+    width: 100%;
+    display: block;
+    letter-spacing: 4px;
+    text-align: center;
+    color: #666666; 
+    text-shadow: 0 1px #fff, 0 2px #666666 ;
+ 
+}
+.block-name{
+    display: flex;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.form input{  
+    display: block;
+    box-shadow: inset 0 2px  2px #ccc,inset 0 0 1px #ccc;
+    border: 0 ;
+    background-color: #f1f1f1;
+    margin: 5px auto;
+    width: 80%;
+    padding: 20px 25px;
+    border-radius: 5px;
+    font-weight: 500;
+} 
+.form_button{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px  auto;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+.form_button-submit{
+   
+    color: #666;
+    padding: 7px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(to top , #c6c6c6 , white);
+    border-radius: 2px;
+    border: 1px solid #000;
+    border-bottom: 1px solid #7d8487;
+    z-index: 2;
+}
+.form_button-submit:hover{
+    background: linear-gradient(to bottom , #c6c6c6 , white);
+    cursor: pointer;
+
+}
+.sign-in{
+    z-index: 2;
+    margin-top: 10px;
+    text-decoration: none;
+
+}
+
+.sign-in:hover{
+    text-decoration: underline;
+
+}
+
+.forgot_pswwd{
+    padding-top: 25px;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    color: rgb(35, 35, 158);
+}
+.forgot_pswwd:hover{
+    text-decoration: underline ;
+
+}
+
+
+
+.help-text{
+    margin: 30px 5px;
+    text-align: center;
+}
+
+
+
+@media(max-width: 430px){
+    .border{
+        width: 96%;
+        padding: 5px;
+        margin: 0;
+        margin-top: 150px;
+    }
+    .underline{
+        width: 99%;
+    }
+    
+    
+}
+@media(max-width: 360px){
+    .form_title{
+        letter-spacing: 2px;
+    }
+}
+@font-face {
+    font-family: "CyrillicOld" ;
+    src: url(../fonts/CyrillicOldBold.woff);
+};

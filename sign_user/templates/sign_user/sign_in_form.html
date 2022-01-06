@@ -1,0 +1,39 @@
+{% extends "sign_user/base.html" %}
+{% load static %}
+
+{% block title %}
+
+    Sign in
+{% endblock %}
+{% block body %}
+
+    <div class="border">
+        <form action="" class="form" method="post">
+            {% csrf_token %}
+            <h1 class="form_title">Вход </h1>
+
+{#            <input placeholder="Логин" type="text" name="username" id="id_username" autofocus required autocomplete="username">#}
+            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Логин">
+{#            <input placeholder="Пароль" type="password" name="password">#}
+            <input placeholder="Пароль" type="password" name="password" autocomplete="current-password" required id="id_password">
+
+            <p style="text-align: center">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </p>
+
+            <div class="form_button">
+                <button class="form_button-submit sign-in_button" type="submit">Войти</button>
+                <a class="sign-in" href="{% url "register" %}">Регистрация </a>
+                <a href="{% url "reset_password" %}" class="forgot_pswwd"> Забыли пароль?</a>
+
+
+            </div>
+        </form>
+    </div>
+
+
+{#    {{ form.as_ul }}#}
+
+{% endblock %}
