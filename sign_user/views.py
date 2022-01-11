@@ -25,15 +25,18 @@ def register(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get("username")
+            # passwordmy = form.cleaned_data.get("password1")
 
             messages.success(request, f"Аккаунт {username} был успешно создан")
+            # f"{passwordmy} это будет пароль его")
             return redirect("login")
         else:
             # messages.info(request, "Логин должен содержать только буквы, цифры и символы"
             #                        "Пароль должен содержать минимум 8 символов"
             #                        "Пароль не должен быть слишком простым"
             #                        "Пароль не может состоять только из цифр")
-            messages.error(request, "Ошибка регистрации, проверьте правильность введенной информации")
+            messages.error(request,
+                           "Ошибка регистрации, проверьте правильность введенной информации или поменяйте логин")
             # messages.success(request, "Удачно")
     return render(request, "sign_user/registration_form.html", {"form": form})
 
@@ -45,6 +48,7 @@ def login_user(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
+        # print(f"{username} это у нас будет имя и пароль вот такой")
         if user is not None:
             login(request, user)
             return redirect("index")

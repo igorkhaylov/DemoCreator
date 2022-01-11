@@ -1,14 +1,16 @@
 html,body{
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
-.form{
 
+.form{
+    position: relative;
     background:  linear-gradient(to top, #f1f1f1 ,white ) ;
     width: 100%;
     border: 1px dashed #cccccc;
     border-radius: 3px;
-    z-index: -2;
+ 
 }
 
 .border{
@@ -58,6 +60,13 @@ html,body{
     border-radius: 5px;
     font-weight: 500;
 } 
+
+
+
+
+
+
+
 .form_button{
     display: flex;
     flex-wrap: wrap;
@@ -67,7 +76,7 @@ html,body{
 }
 
 .form_button-submit{
-   
+    
     color: #666;
     padding: 7px 12px;
     font-size: 15px;
@@ -81,18 +90,18 @@ html,body{
 .form_button-submit:hover{
     background: linear-gradient(to bottom , #c6c6c6 , white);
     cursor: pointer;
-
+    
 }
 .sign-in{
     z-index: 2;
     margin-top: 10px;
     text-decoration: none;
-
+    
 }
 
 .sign-in:hover{
     text-decoration: underline;
-
+    
 }
 
 .forgot_pswwd{
@@ -107,15 +116,50 @@ html,body{
 }
 .forgot_pswwd:hover{
     text-decoration: underline ;
-
+    
 }
-
 
 
 .help-text{
     margin: 30px 5px;
     text-align: center;
 }
+
+
+
+
+form label{
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    color: white;
+    font-size: 0;
+    transition: .3s;
+    margin: 0 10px;
+    background-color: #ff7373;
+    border-radius: 5px;
+}
+.err{
+    font-size: 12px;
+    padding: 8px 10px 25px 15px;
+    opacity: 1;
+
+}
+.err::before{
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    display: block;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #ff7373;
+}
+.last_name.err{   
+right: 0;
+margin-right: 10px;    
+}
+
 
 
 
@@ -129,7 +173,10 @@ html,body{
     .underline{
         width: 99%;
     }
-    
+    .last_name.err{   
+        right: 0;
+        margin-right: 20px;    
+        }
     
 }
 @media(max-width: 360px){

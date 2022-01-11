@@ -12,17 +12,45 @@
             {% csrf_token %}
 
             <div class="block">
-                <h1 class="form_title">Регистрация </h1>
+
+            <h1 class="form_title">Регистрация </h1>
                 <div class="block-name">
-                    <input placeholder="Имя" type="text" name="first_name" required>
-                    <input placeholder="Фамилия" type="text" name="last_name" required>
+                    <input id="id_first_name" placeholder="Имя" type="text" name="first_name" >
+                    <input id="id_last_name" placeholder="Фамилия" type="text" name="last_name" >
+
+                    <!-- {#                    {{ form.first_name }}#}
+                        {#                    {{ form.last_name }}#} -->
+                    </div>
+                    <label class="first_name _name">Поле нужно заполнить</label>
+                    <label class="last_name _name">Поле нужно заполнить</label>
+                <input id="id_email" placeholder="Email" type="text" name="email" >
+                    <label class="email" for="id_email">Email введён не корректно</label>
+                <input id="id_username" placeholder="Логин" type="text" name="username" >
+                    <label for="login" class="username">Поле нужно заполнить</label>
+                <input id="id_new_password1" placeholder="Пароль" type="password" name="password1" >
+                    <label  for="password1" class="password-err1">Минимум 8 символов </label>
+                    <label  for="password1" class="password-err2">необходимо использовать хотябы 1 спецсимвол </label>
+                    <label  for="password1" class="password-err3">ваш пароль слишком прост</label>
+                <input id="id_new_password2" placeholder="Подтвердите пароль" type="password" name="password2" >
+                    <label for="_password2" class="password2">Пароли не совпадают</label>
+
+
+
+
+
+
+
+{#                <h1 class="form_title">Регистрация </h1>#}
+{#                <div class="block-name">#}
+{#                    <input placeholder="Имя" type="text" name="first_name" required>#}
+{#                    <input placeholder="Фамилия" type="text" name="last_name" required>#}
 {#                    {{ form.first_name }}#}
 {#                    {{ form.last_name }}#}
-                </div>
-                <input placeholder="Email" type="email" name="email" required>
-                <input placeholder="Логин" type="text" name="username" required>
-                <input placeholder="Пароль" type="password" name="password1" required>
-                <input placeholder="Подтвердите пароль" type="password" name="password2" required>
+{#                </div>#}
+{#                <input placeholder="Email" type="email" name="email" required>#}
+{#                <input placeholder="Логин" type="text" name="username" required>#}
+{#                <input placeholder="Пароль" type="password" name="password1" required>#}
+{#                <input placeholder="Подтвердите пароль" type="password" name="password2" required>#}
 {#                {{ form.email }}#}
 {#                {{ form.username }}#}
 {#                {{ form.password1 }}#}
