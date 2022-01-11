@@ -85,7 +85,6 @@ html,body{
     border-radius: 2px;
     border: 1px solid #000;
     border-bottom: 1px solid #7d8487;
-    z-index: 2;
 }
 .form_button-submit:hover{
     background: linear-gradient(to bottom , #c6c6c6 , white);
