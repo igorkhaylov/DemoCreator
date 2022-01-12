@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-@c0f^6msi(&dhic!%boy9&$m$8sh$xtvl(z3_z^i3xw-uwgbb&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+from .prod_settings import *
+
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -78,23 +80,6 @@ WSGI_APPLICATION = 'DemoCreator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'a0587819_',
-            'USER': 'a0587819__user',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',
-        }
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -142,19 +127,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-# EMAIL_HOST = "smtp.yandex.ru"
-# EMAIL_HOST_USER = "ikhaylov@sag.uz"
-# EMAIL_HOST_PASSWORD = "secret"
-# EMAIL_PORT = 465
-# EMAIL_USE_TLS = True
-
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'totpravka@gmail.com'
-EMAIL_HOST_PASSWORD = 'q1w2e3r4*'
-EMAIL_USE_SSL = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
