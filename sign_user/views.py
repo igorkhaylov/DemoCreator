@@ -57,22 +57,6 @@ def login_user(request):
     return render(request, "sign_user/sign_in_form.html", {"form": form})
 
 
-def num1(request):
-    return render(request, "sign_user/email_input.html")
-
-
-def num2(request):
-    return render(request, "sign_user/email_sent.html")
-
-
-def num4(request):
-    return render(request, "sign_user/reset_password.html")
-
-
-def num5(request):
-    return render(request, "sign_user/reset_password_success.html")
-
-
 def logout_user(request):
     logout(request)
     return render(request, "sign_user/sign_in_form.html")

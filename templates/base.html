@@ -104,17 +104,6 @@
                                             </div>
                                         </div>
                                     {% else %}
-                                        {#            {% if request.user.is_authenticated %}#}
-                                        {#                <ul class="list-inline rd-navbar-share-list">#}
-                                        {#                    <div class="mt-3">#}
-                                        {#                        <li class="rd-navbar-share-list-item">{{ user.username }}#}
-                                        {#                        </li>#}
-                                        {#                        <li class="rd-navbar-share-list-item"><a class=""#}
-                                        {#                                                                 href="{% url 'logout' %}">Выйти</a>#}
-                                        {#                        </li>#}
-                                        {#                    </div>#}
-                                        {#                </ul>#}
-                                        {#            {% endif %}#}
                                         <ul class="list-inline rd-navbar-share-list">
                                             <div class="container">
                                                 <div class="row">
@@ -157,14 +146,11 @@
                                         </div>
                                         <ul class="list-inline rd-navbar-share-list">
                                             <div class="container">
-
-
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <li class="rd-navbar-share-list-item">
                                                             <a class="link-press"
                                                                href="#">{{ user.first_name }} {{ user.last_name }}</a>
-
                                                         </li>
                                                     </div>
                                                     <div class="col-12">
@@ -173,45 +159,12 @@
                                                                href="{% url 'logout' %}">Выйти</a>
                                                         </li>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </ul>
                                     </div>
                                 {% endif %}
 
-                                {#                                {% if request.user.is_authenticated %}#}
-                                {#                                                                                                <div class="rd-navbar-share fl-bigmug-line-user144"#}
-                                {#                                                                                                     data-rd-navbar-toggle=".rd-navbar-share-list">#}
-                                {#                                                                                                    <ul class="list-inline rd-navbar-share-list">#}
-                                {#                                                                                                        <li class="rd-navbar-share-list-item">{{ user.first_name }}</li>#}
-                                {#                                                                                                        <li class="rd-navbar-share-list-item"><a class=""#}
-                                {#                                                                                                                                                 href="#">Выход</a></li>#}
-                                {#                                                                                                    </ul>#}
-                                {#                                                                                                </div>#}
-                                {#                                {% endif %}#}
-
-
-                                <!-- RD Navbar Share-->
-                                {#                                <div class="rd-navbar-share fl-bigmug-line-share27"#}
-                                {#                                     data-rd-navbar-toggle=".rd-navbar-share-list">#}
-                                {#                                    <ul class="list-inline rd-navbar-share-list">#}
-                                {#                                        <li class="rd-navbar-share-list-item">#}
-                                {#                                            <a class="icon fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://evileg.com/ru/{{ news.get_absolute_url }}"#}
-                                {#                                               target="_blank" rel="nofollow">#}
-                                {#                                            </a>#}
-                                {#                                        </li>#}
-                                {#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook"#}
-                                {#                                                                                 href="#"></a></li>#}
-                                {#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter"#}
-                                {#                                                                                 href="#"></a></li>#}
-                                {#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus"#}
-                                {#                                                                                 href="#"></a></li>#}
-                                {#                                        <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram"#}
-                                {#                                                                                 href="#"></a></li>#}
-                                {#                                    </ul>#}
-                                {#                                </div>#}
                                 <!-- RD Navbar Nav-->
                                 {% block nav_active %}
                                     <ul class="rd-navbar-nav">
@@ -227,128 +180,24 @@
                                                 Богослужения
                                             </a>
                                             <div class="dropdown-menu">
-                                                <a href="{% url 'schedule' %}" class="dropdown-item">Расписание
-                                                    богослужений</a>
-                                                <a href="{% url 'typography' %}" class="dropdown-item">История
-                                                    богослужений</a>
-                                                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
-                                                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
+                                                <a href="{% url 'schedule' %}" class="dropdown-item">
+                                                    Расписание богослужений
+                                                </a>
+                                                <a href="{% url 'typography' %}" class="dropdown-item">
+                                                    История богослужений
+                                                </a>
+{#                                                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>#}
+{#                                                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>#}
                                             </div>
                                         </li>
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a>
                                         </li>
-
-                                        {#                                        <li class="rd-nav-item mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a> </li>#}
                                         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a>
                                         </li>
                                     </ul>
                                 {% endblock %}
-
                             </div>
-                            {#                                                        <div class="rd-navbar-project-hamburger" data-rd-navbar-toggle=".rd-navbar-main">#}
-                            {#                            <a href="" class="">#}
-                            {#                               <p>Вход</p>#}
-                            {#                            </a>#}
-                            {#                            <hr>#}
-                            {#                            <a href="" class="">#}
-                            {#                                <p> Регистрация</p>#}
-                            {#                            </a>#}
-
-
-                            {#                                                            <div class="project-hamburger"><span#}
-                            {#                                                                    class="project-hamburger-arrow-top"></span><span#}
-                            {#                                                                    class="project-hamburger-arrow-center"></span><span#}
-                            {#                                                                    class="project-hamburger-arrow-bottom"></span></div>#}
-                            {#                                                            <div class="project-close"><span></span><span></span></div>#}
-                            {#                                                        </div>#}
                         </div>
-                        {#                        <div class="rd-navbar-project rd-navbar-classic-project">#}
-                        {#                                                        <h4 class="text-spacing-50">Our Works</h4>#}
-                        {#                            <div class="rd-navbar-project-content rd-navbar-classic-project-content">#}
-                        {#                                <div class="row" data-lightgallery="group">#}
-                        {#                                    <div class="col-12">#}
-                        <!-- Thumbnail Classic-->
-                        {#                                        <article class="thumbnail thumbnail-mary">#}
-                        {#                                            <div class="thumbnail-mary-figure"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-1-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/>#}
-                        {#                                            </div>#}
-                        {#                                            <div class="thumbnail-mary-caption"><a#}
-                        {#                                                    class="icon fl-bigmug-line-zoom60"#}
-                        {#                                                    href="{% static 'images/grid-gallery-4-1200x800-original.jpg' %}"#}
-                        {#                                                    data-lightgallery="item"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-1-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/></a>#}
-                        {#                                            </div>#}
-                        {#                                        </article>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="col-12">#}
-                        {#                                        <!-- Thumbnail Classic-->#}
-                        {#                                        <article class="thumbnail thumbnail-mary">#}
-                        {#                                            <div class="thumbnail-mary-figure"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-2-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/>#}
-                        {#                                            </div>#}
-                        {#                                            <div class="thumbnail-mary-caption"><a#}
-                        {#                                                    class="icon fl-bigmug-line-zoom60"#}
-                        {#                                                    href="{% static 'images/fullwidth-masonry-gallery-10-1200x800-original.jpg' %}"#}
-                        {#                                                    data-lightgallery="item"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-2-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/></a>#}
-                        {#                                            </div>#}
-                        {#                                        </article>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="col-12">#}
-                        {#                                        <!-- Thumbnail Classic-->#}
-                        {#                                        <article class="thumbnail thumbnail-mary">#}
-                        {#                                            <div class="thumbnail-mary-figure"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-3-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/>#}
-                        {#                                            </div>#}
-                        {#                                            <div class="thumbnail-mary-caption"><a#}
-                        {#                                                    class="icon fl-bigmug-line-zoom60"#}
-                        {#                                                    href="{% static 'images/fullwidth-gallery-4-1200x800-original.jpg' %}"#}
-                        {#                                                    data-lightgallery="item"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-3-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/></a>#}
-                        {#                                            </div>#}
-                        {#                                        </article>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="col-12">#}
-                        {#                                        <!-- Thumbnail Classic-->#}
-                        {#                                        <article class="thumbnail thumbnail-mary">#}
-                        {#                                            <div class="thumbnail-mary-figure"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-4-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/>#}
-                        {#                                            </div>#}
-                        {#                                            <div class="thumbnail-mary-caption"><a#}
-                        {#                                                    class="icon fl-bigmug-line-zoom60"#}
-                        {#                                                    href="{% static 'images/masonry-gallery-4-1200x800-original.jpg' %}"#}
-                        {#                                                    data-lightgallery="item"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-4-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/></a>#}
-                        {#                                            </div>#}
-                        {#                                        </article>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="col-12">#}
-                        {#                                        <!-- Thumbnail Classic-->#}
-                        {#                                        <article class="thumbnail thumbnail-mary">#}
-                        {#                                            <div class="thumbnail-mary-figure"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-5-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/>#}
-                        {#                                            </div>#}
-                        {#                                            <div class="thumbnail-mary-caption"><a#}
-                        {#                                                    class="icon fl-bigmug-line-zoom60"#}
-                        {#                                                    href="{% static 'images/fullwidth-masonry-gallery-6-1200x800-original.jpg' %}"#}
-                        {#                                                    data-lightgallery="item"><img#}
-                        {#                                                    src="{% static 'images/gallery-image-5-330x240.jpg' %}" alt=""#}
-                        {#                                                    width="330" height="240"/></a>#}
-                        {#                                            </div>#}
-                        {#                                        </article>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                        </div>#}
                     </div>
                 </div>
             </nav>

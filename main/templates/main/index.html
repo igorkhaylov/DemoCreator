@@ -16,9 +16,9 @@
             <div class="dropdown-menu">
                 <a href="{% url 'schedule' %}" class="dropdown-item">Расписание богослужений</a>
                 <a href="{% url 'typography' %}" class="dropdown-item">История богослужений</a>
-                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
-                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
-                <a href="{% url 'old_index' %}" class="dropdown-item">index</a>
+{#                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>#}
+{#                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>#}
+{#                <a href="{% url 'old_index' %}" class="dropdown-item">index</a>#}
             </div>
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
@@ -35,38 +35,65 @@
     <section class="section swiper-container swiper-slider swiper-slider-classic" data-loop="true" data-autoplay="5000"
              data-simulate-touch="true" data-direction="vertical" data-nav="false">
         <div class="swiper-wrapper text-center">
-            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-1-1770x742.jpg' %}">#}
-            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture1.jpg' %}">
 
-                <div class="swiper-slide-caption section-md">
-                    <div class="container">
-                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"></h1>
-                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">
-                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского
-                            Викентия
-                            {#                            Our team#}
-                            {#                            uses innovations combined with customized interior planning to deliver the best interior#}
-                            {#                            design for your home or office while saving costs.#}
-                        </p><a
-                            class="button button-primary button-ujarak" href="{% url 'schedule' %}"
-                            data-caption-animate="fadeInUp"
-                            data-caption-delay="200">Богослужения</a>
+            {% for main_picture in view.get_main_pictures %}
+                <div class="swiper-slide context-dark" data-slide-bg="{{ main_picture.picture.url }}">
+
+                    <div class="swiper-slide-caption section-md">
+                        <div class="container">
+                            {% if main_picture.title %}
+                                <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">
+                                    {{ main_picture.title }}
+                                </h1>
+                            {% endif %}
+                            {% if main_picture.description %}
+                                <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">
+                                    {{ main_picture.description }}
+                                </p>
+                            {% endif %}
+                            <a class="button button-primary button-ujarak" href="{% url 'schedule' %}"
+                               data-caption-animate="fadeInUp"
+                               data-caption-delay="200">
+                                Богослужения
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture2.jpg' %}">
-                <div class="swiper-slide-caption section-md">
-                    <div class="container">
-                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Committed and professional</h1>
-                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">
-                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского
-                            Викентия</p><a
-                            class="button button-primary button-ujarak" href="{% url 'schedule' %}"
-                            data-caption-animate="fadeInUp"
-                            data-caption-delay="200">Богослужения</a>
-                    </div>
-                </div>
-            </div>
+
+            {% endfor %}
+
+
+            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture1.jpg' %}">#}
+            {#                <div class="swiper-slide-caption section-md">#}
+            {#                    <div class="container">#}
+            {#                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"></h1>#}
+            {#                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">#}
+            {#                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского#}
+            {#                            Викентия#}
+            {#                        </p>#}
+            {#                        <a class="button button-primary button-ujarak" href="{% url 'schedule' %}"#}
+            {#                           data-caption-animate="fadeInUp"#}
+            {#                           data-caption-delay="200">#}
+            {#                            Богослужения#}
+            {#                        </a>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture2.jpg' %}">#}
+            {#                <div class="swiper-slide-caption section-md">#}
+            {#                    <div class="container">#}
+            {#                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">#}
+            {#                            Committed and professional#}
+            {#                        </h1>#}
+            {#                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">#}
+            {#                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского#}
+            {#                            Викентия</p><a#}
+            {#                            class="button button-primary button-ujarak" href="{% url 'schedule' %}"#}
+            {#                            data-caption-animate="fadeInUp"#}
+            {#                            data-caption-delay="200">Богослужения</a>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
             {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-3-1770x742.jpg' %}">#}
             {#                <div class="swiper-slide-caption section-md">#}
             {#                    <div class="container">#}
@@ -92,7 +119,7 @@
     </section>
 
 
-{#    <!-- Latest blog posts-->#}
+    {#    <!-- Latest blog posts-->#}
     <section class="section section-sm section-last bg-default">
         <div class="container">
             <h3>Последние новости</h3>

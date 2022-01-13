@@ -1,22 +1,24 @@
 from django.shortcuts import render, get_object_or_404
-from .models import News, Schedule, Churches
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import News, Schedule, Churches, MainPagePicture
 from django.db.models import F
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
-# from . import send_message
+from django.core.mail import send_mail
 
 
 class IndexNews(ListView):
     model = News
     template_name = "main/index.html"
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         return News.objects.filter(is_published=True)
 
     def get_churches(self):
         return Churches.objects.all()
+
+    def get_main_pictures(self):
+        return MainPagePicture.objects.all()
 
 
 class PostDetail(DetailView):
@@ -94,6 +96,29 @@ def about_us(request):
 
 
 def contact_us(request):
+    # print("This is contact us page")
+    if request.method == "POST":
+        name = request.POST["name"]
+        email = request.POST["email"]
+        phone_number = request.POST["phone"]
+        text = request.POST["message"]
+        mes = "\tИмя отправителя: \n" + name + \
+              "\n\n\tE-mail отправителя: \n" + email + \
+              "\n\n\tНомер телефона: \n" + phone_number + \
+              "\n\n\tСообщение: \n" + text
+
+        mail = send_mail('Hram-Alekseevskii', mes, 'totpravka@gmail.com',
+                         ['igorkhaylov@yandex.com', ], fail_silently=False, )
+        if mail:
+            print("Сообщение успешно отправлено")
+        else:
+            print("Ошибка отправки сообщения")
+
+        print(request)
+        # return HttpResponseRedirect()
+
+        return render(request, "main/contact-us.html")
+
     return render(request, "main/contact-us.html")
 
 
@@ -105,45 +130,30 @@ def old_index(request):
     return render(request, "main/old_index.html")
 
 
-
-
-
-
-# import asyncio
-# from aiogram import Bot, Dispatcher, executor
-
-BOT_TOKEN = '1873821132:AAEPwFu0ESTuEhLNDF5di1nxukhxDXzmUh4'
-admin_id = '432499122'
-
-
-# loop = asyncio.get_event_loop()
-# bot = Bot(BOT_TOKEN, parse_mode="HTML")
-# dp = Dispatcher(bot, loop=loop)
-
-# import requests
 def send_message2(request):
     if request.method == "POST":
         name = request.POST["name"]
         email = request.POST["email"]
         phone_number = request.POST["phone"]
         text = request.POST["message"]
-        mes = "\tИмя отправителя: \n<b>" +name +\
-              "</b>\n\nE-mail отправителя: \n<b>"+ email + \
-              "</b>\n\nНомер телефона: \n<b>" + phone_number +\
-              "</b>\n\nСообщение: \n" + text
+        mes = "\tИмя отправителя: \n" + name + \
+              "\n\n\tE-mail отправителя: \n" + email + \
+              "\n\n\tНомер телефона: \n" + phone_number + \
+              "\n\n\tСообщение: \n" + text
 
-        # def teleg(BOT_TOKEN, admin_id, message):
-        #     url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={admin_id}&parse_mode=HTML&text={message}'
-        #     response = requests.get(url)
-        #     return response.json()
+        mail = send_mail('Hram-Alekseevskii', mes, 'totpravka@gmail.com',
+                         ['igorkhaylov@yandex.com', ], fail_silently=False, )
+        if mail:
+            print("Сообщение успешно отправлено")
+        else:
+            print("Ошибка отправки сообщения")
 
-        # teleg(BOT_TOKEN, admin_id, mes)
+        # print(request)
+        # return HttpResponseRedirect()
 
-        print(mes)
-        return render(request, "main/contact-us.html")
+        # return render(request, "main/contact-us.html")
+        return HttpResponseRedirect("/")
     return HttpResponseRedirect("/")
-
-
 
 # def gallery(request):
 #     news = News.objects.filter(is_published=True)
@@ -171,7 +181,6 @@ def send_message2(request):
 #     return render(request, "main/post_detail.html", {"post": post,
 #                                                      "last_posts": last_posts,
 #                                                      })
-
 
 
 # def index(request):

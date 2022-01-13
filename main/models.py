@@ -4,10 +4,25 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 
 
+class MainPagePicture(models.Model):
+    name = models.CharField("Название картинки", max_length=50, null=True, blank=False)
+    picture = models.ImageField("Картинка 1770x742", upload_to="mainPicture/")
+    title = models.CharField("Заголовок (не обязательно)", max_length=50, null=True, blank=True)
+    description = models.CharField("Описание (мелкий текст)", max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Главная картинка страницы"
+        verbose_name_plural = "Главные картинки страниц"
+        ordering = ["id", ]
+
+
 class News(models.Model):
     title = models.CharField("Заголовок", max_length=150)
     slug = models.SlugField("slug", max_length=40)
-    picture = models.ImageField("Картинка", upload_to="media/%Y/%m/%d/")
+    picture = models.ImageField("Картинка", upload_to="articles/%Y/%m/%d/")
     content = models.TextField("Контент")
     date = models.DateField("Дата")
     is_published = models.BooleanField("Опубликовать", default=True)

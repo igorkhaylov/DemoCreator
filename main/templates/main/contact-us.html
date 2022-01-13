@@ -17,9 +17,6 @@
             <div class="dropdown-menu">
                 <a href="{% url 'schedule' %}" class="dropdown-item">Расписание богослужений</a>
                 <a href="{% url 'typography' %}" class="dropdown-item">История богослужений</a>
-                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>
-                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>
-                <a href="{% url 'old_index' %}" class="dropdown-item">index</a>
             </div>
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
@@ -128,7 +125,7 @@
             </article>
 
             <form class="rd-form rd-form-variant-2 rd-mailform" data-form-output="form-output-global"
-                  data-form-type="contact" method="post" action="{% url 'send_message' %}">
+                  data-form-type="contact" method="post" action="">
             {% csrf_token %}
                 <div class="row row-14 gutters-14">
                     <div class="col-md-4">

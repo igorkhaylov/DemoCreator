@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import News, NewsImages, Schedule, Churches
+from .models import News, NewsImages, Schedule, Churches, MainPagePicture
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from ckeditor.widgets import CKEditorWidget
@@ -55,8 +55,23 @@ class ChurchesAdmin(admin.ModelAdmin):
     save_on_top = True
 
 
+@admin.register(MainPagePicture)
+class MainPagePictureAdmin(admin.ModelAdmin):
+    list_display = ('name', 'get_picture')
+    list_display_links = ('name', )
+    save_on_top = True
+
+    def get_picture(self, obj):
+        if obj.picture: # если есть фото
+            return mark_safe(f"<img src=\"{obj.picture.url}\" width=\"100\"")
+        return "-" # если нет фото, возвращаем такую строку
+
+    get_picture.short_description = "Фото"
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(Schedule)
+# admin.site.register(MainPagePicture)
 admin.site.register(Churches, ChurchesAdmin)
 # admin.site.register(NewsImages, NewsImagesAdmin)
 
