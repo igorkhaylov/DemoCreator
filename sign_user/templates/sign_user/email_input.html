@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Email input
+    Введите email для сброса пароля
 {% endblock %}
 {% block body %}
         <div class="border">
@@ -12,7 +12,8 @@
                 <div class="help-text">
                     Введите Email от аккаунта на который мы отправим ссылку для сброса пароля
                 </div>
-                <input placeholder="Email" type="email" name="email" autocomplete="email" required id="id_email">
+                <input placeholder="Email" type="text" name="email" autocomplete="email" id="id_email">
+                <label class="email">Email введен не корректно</label>
                 <div class="form_button">
                     <button class="form_button-submit" type="submit">Получить ссылку для входа</button>
                 </div>

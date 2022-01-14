@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block title %}
-
-    Sign in
+    Вход
 {% endblock %}
 {% block body %}
 
@@ -13,9 +12,11 @@
             <h1 class="form_title">Вход </h1>
 
 {#            <input placeholder="Логин" type="text" name="username" id="id_username" autofocus required autocomplete="username">#}
-            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Логин">
+            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" id="id_username" placeholder="Логин">
+            <label class="username">Введите поле</label>
 {#            <input placeholder="Пароль" type="password" name="password">#}
-            <input placeholder="Пароль" type="password" name="password" autocomplete="current-password" required id="id_password">
+            <input placeholder="Пароль" type="password" name="password" autocomplete="current-password" id="id_password">
+            <label class="password">Введите поле</label>
 
             <p style="text-align: center">
                 {% for message in messages %}

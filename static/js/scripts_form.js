@@ -13,6 +13,9 @@ const e2Password = document.querySelector('.password-err2')
 const e3Password = document.querySelector('.password-err3')
 const password2 = document.getElementById('id_new_password2')
 const ePassword2 = document.querySelector('.password2')
+const loginPassword = document.getElementById('id_password')
+const eLoginPassword = document.querySelector('.password')
+
 
 let pass1
 let pass2
@@ -25,113 +28,97 @@ function classRemove(nameTag) {
     nameTag.classList.remove('err')
 }
 function showError(nameTag) {
+    
     nameTag.classList.add('err')  
     setTimeout(classRemove,5000 ,nameTag) 
+    err++
 } 
-
-firstName.addEventListener('blur', (e)=>{
-    if(document.getElementById('id_first_name').value == ""){
-        showError(eFirstName) 
-    }
-})
-lastName.addEventListener('blur', (e)=>{
-    if(document.getElementById('id_last_name').value == ""){
-        showError(eLastName)
-    }
-})
-email.addEventListener('blur',(e)=>{
-    val = document.getElementById('id_email').value
-    if(! re.test(String(val).toLowerCase())){   
-        showError(eEmail)
-       }
-    }  
-)
-
-username.addEventListener('blur', (e)=>{
-    if(document.getElementById('id_username').value == ""){
-        showError(eUsername) 
-    }
-})
-password1.addEventListener('blur', (e)=>{
-    pass1 = document.getElementById('id_new_password1').value
-    if(pass1.length < 8){
-        showError(e1Password) 
-    }
-    else if(! pas1.test(String(pass1))){
-        showError(e2Password) 
-    }
-    else if(pas2.test(String(pass1))){
-        showError(e3Password) 
-    }
-})  
-
-    
-
-
-password2.addEventListener('blur', (e)=>{
-    pass1 = document.getElementById('id_new_password1').value
-    pass2 = document.getElementById('id_new_password2').value
-    if(pass1 != pass2){
-        showError(ePassword2) 
-    }
-
-})  
-
-
-
-form.addEventListener('submit', (e)=>{
-    e.preventDefault()
-    
-        if(document.getElementById('id_first_name').value == ""){
-            showError(eFirstName) 
-            err++
+function Blur(nameInput,nameErr ,functionName,nameErr2,nameErr3) {
+    if(nameInput){nameInput.addEventListener('blur',()=>{
+    functionName(nameInput,nameErr,nameErr2,nameErr3)
+    })}
+}
+function checkInput(nameInput,nameErr) {
+    if(nameInput ){ 
+        if(document.getElementById(nameInput.id).value == ""){
+            showError(nameErr) 
         }
+    }
     
-        if(document.getElementById('id_last_name').value == ""){
-            showError(eLastName)
-            err++
-        }
-        val = document.getElementById('id_email').value
+}
+
+function checkEmail(nameInput,nameErr) {
+    if(nameInput){
+        val = document.getElementById(nameInput.id).value
         if(! re.test(String(val).toLowerCase())){   
-            showError(eEmail)
-            err++
-           }
-        
-    
-    
-        if(document.getElementById('id_username').value == ""){
-            showError(eUsername) 
-            err++
+            showError(nameErr)          
         }
-    
-    
+    }  
+}
 
-              pass1 = document.getElementById('id_new_password1').value
-            if(pass1.length < 8){
-                showError(e1Password) 
-            }
-            else if(! pas1.test(String(pass1))){
-                showError(e2Password) 
-            }
-            else if(pas2.test(String(pass1))){
-                showError(e3Password) 
-            }
+
+
+
+function checkPassword1(nameInput,nameErr1, nameErr2,nameErr3) {
+    if(nameInput){
+        pass1 = document.getElementById(nameInput.id).value
+        if(pass1.length < 8){
+            showError(nameErr1) 
+        }
+        else if(! pas1.test(String(pass1))){
+            showError(nameErr2)
+        }
+        else if(pas2.test(String(pass1))){
+            showError(nameErr3)
+        }
+      }
+    
+}function checkPassword2(nameInput,nameErr1, nameErr2,nameErr3) {
+    if(nameInput){
         pass1 = document.getElementById('id_new_password1').value
         pass2 = document.getElementById('id_new_password2').value
         if(pass1 != pass2){
-            showError(ePassword2) 
-            err++
+            showError(nameErr1) 
         }
-        e.preventDefault
+      
+      }
+    
+}
+
+
+
+
+
+
+
+Blur(firstName,eFirstName , checkInput)
+Blur(lastName,eLastName , checkInput)
+Blur(email,eEmail,checkEmail)
+Blur(username, eUsername,checkInput)
+Blur(loginPassword,eLoginPassword,checkInput)
+Blur(password1,e1Password,checkPassword1,e2Password,e3Password)
+Blur(password2,ePassword2,checkPassword2)
+
+
+if(form){  form.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    err = 0
+    
+    checkInput(firstName,eFirstName )
+    checkInput(lastName,eLastName  )
+    checkEmail(email,eEmail)
+    checkInput(username, eUsername )
+    checkInput(loginPassword,eLoginPassword )
+    checkPassword1(password1,e1Password,e2Password,e3Password)
+    checkPassword2(password2,ePassword2)
     
         if(err === 0){
-            document.querySelector('.form_button-submit').submit
             form.submit()
         }
-        else{err=0}
+        else{ err = 0 }
     
 })
 
-
+}
 
 
