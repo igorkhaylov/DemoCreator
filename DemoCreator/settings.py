@@ -27,7 +27,10 @@ DEBUG = True
 
 from .prod_settings import *
 
-ALLOWED_HOSTS = ['*']
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['hram-alekseevskii.igorkhaylov.uz']
 
 # Application definition
 
