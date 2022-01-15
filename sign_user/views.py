@@ -3,16 +3,12 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm
 from django.contrib.auth.forms import AuthenticationForm
 from .decorators import unauthenticated_user
-from django.http import HttpResponse, HttpResponseRedirect, BadHeaderError
-from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.views import PasswordResetView
+
+# from django.utils.http import urlsafe_base64_encode
+# from django.contrib.auth.views import PasswordResetView
 # from django.contrib.auth.forms import PasswordResetForm
-# Create your views here.
-# from django.template.loader import render_to_string
-# from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
-
-
 # from django.contrib.auth.tokens import default_token_generator
 # from django.core.mail import send_mail
 
@@ -60,6 +56,14 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return render(request, "sign_user/sign_in_form.html")
+
+
+class MyPasswordResetForm(PasswordResetView):
+    email_template_name = "sign_user/password_reset_email.html"
+
+
+
+
 
 # return HttpResponseRedirect("/login")
 
