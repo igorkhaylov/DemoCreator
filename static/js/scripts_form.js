@@ -68,9 +68,9 @@ function checkPassword1(nameInput,nameErr1, nameErr2,nameErr3) {
         else if(! pas1.test(String(pass1))){
             showError(nameErr2)
         }
-        else if(pas2.test(String(pass1))){
-            showError(nameErr3)
-        }
+        // else if(pas2.test(String(pass1))){
+        //     showError(nameErr3)
+        // }
       }
     
 }function checkPassword2(nameInput,nameErr1, nameErr2,nameErr3) {
