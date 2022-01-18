@@ -155,6 +155,7 @@ def send_message2(request):
         return HttpResponseRedirect("/")
     return HttpResponseRedirect("/")
 
+
 # def gallery(request):
 #     news = News.objects.filter(is_published=True)
 #     page = request.GET.get('page', 1)
