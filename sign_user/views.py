@@ -55,7 +55,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return render(request, "sign_user/sign_in_form.html")
+    return redirect("login")
 
 
 class MyPasswordResetForm(PasswordResetView):
