@@ -74,22 +74,22 @@
                     <ul class="list-inline rd-navbar-share-list mt-5">
                         <li class="rd-navbar-share-list-item">Поделиться: </li>
                         <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook"
-                                                                 href="https://www.facebook.com/sharer/sharer.php?u=https://user1221.pythonanywhere.com{{ request.path }}"
+                                                                 href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
                                                                  target="_blank" rel="nofollow"></a></li>
                         <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter"
-                                                                 href="https://twitter.com/share?url=https://user1221.pythonanywhere.com{{ request.path }}"
+                                                                 href="https://twitter.com/share?url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
                                                                  target="_blank" rel="nofollow"></a></li>
                         <li class="rd-navbar-share-list-item"><a class="icon fa fa-vk"
-                                                                 href="https://vk.com/share.php?url=https://user1221.pythonanywhere.com{{ request.path }}"
+                                                                 href="https://vk.com/share.php?url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
                                                                  target="_blank" rel="nofollow"></a></li>
                         <li class="rd-navbar-share-list-item"><a class="icon fa fa-odnoklassniki"
-                                                                 href="https://connect.ok.ru/offer?url=https://user1221.pythonanywhere.com{{ request.path }}"
+                                                                 href="https://connect.ok.ru/offer?url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
                                                                  target="_blank" rel="nofollow"></a></li>
                         <li class="rd-navbar-share-list-item"><a class="icon fa fa-linkedin-square"
-                                                                 href="https://www.linkedin.com/shareArticle?mini=true&url=https://user1221.pythonanywhere.com{{ request.path }}"
+                                                                 href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.scheme }}://{{ request.get_host }}{{ request.path }}"
                                                                  target="_blank" rel="nofollow"></a></li>
                         <li class="rd-navbar-share-list-item"><a class="icon fa fa-telegram"
-                                                                 href="https://t.me/share/url?url=http%3A//user1221.pythonanywhere.com{{ request.path }}"
+                                                                 href="https://t.me/share/url?url=http%3A//{{ request.get_host }}{{ request.path }}"
                                                                  target="_blank" rel="nofollow"></a></li>
 
 
