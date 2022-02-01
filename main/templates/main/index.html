@@ -3,6 +3,32 @@
 {% load thumbnail %}
 {% block title %}Главная страница{% endblock %}
 
+{% block meta %}
+
+    <meta name="description" content="Собо́р святи́теля Але́ксия Моско́вского — православный собор Ташкентской и Узбекистанской епархии Среднеазиатского митрополичьего округа Русской православной церкви в Самарканде, построенный в 1911 году. Освящён в 1912 году в честь святителя Алексия"/>
+    <meta name="keywords" content=""/>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Свято-Алексеевский Собор"/>
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"/>
+    <meta property="og:site_name" content="Свято-Алексеевский Собор"/>
+    <meta property="og:description" content="Собо́р святи́теля Але́ксия Моско́вского — православный собор Ташкентской и Узбекистанской епархии Среднеазиатского митрополичьего округа Русской православной церкви в Самарканде, построенный в 1911 году. Освящён в 1912 году в честь святителя Алексия"/>
+
+    <meta property="og:image"
+          content="{{ request.scheme }}://{{ request.get_host }}{% static "images/my/MainPicture1.jpg" %}"/>
+    <meta property="og:image:type" content="image/jpg"/>
+    <meta property="og:image:width" content="1770"/>
+    <meta property="og:image:height" content="742"/>
+    <meta property="og:image:alt" content="Свято-Алексеевский Собор">
+
+    <meta name="twitter:title" content="Свято-Алексеевский Собор"/>
+    <meta name="twitter:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image"
+          content="{{ request.scheme }}://{{ request.get_host }}{% static "images/my/MainPicture1.jpg" %}"/>
+
+{% endblock %}
+
 {% block nav_active %}
     <ul class="rd-navbar-nav">
         <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'index' %}">Главная</a></li>
@@ -16,9 +42,9 @@
             <div class="dropdown-menu">
                 <a href="{% url 'schedule' %}" class="dropdown-item">Расписание богослужений</a>
                 <a href="{% url 'typography' %}" class="dropdown-item">История богослужений</a>
-{#                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>#}
-{#                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>#}
-{#                <a href="{% url 'old_index' %}" class="dropdown-item">index</a>#}
+                {#                <a href="{% url 'typography' %}" class="dropdown-item">Typography</a>#}
+                {#                <a href="{% url 'about' %}" class="dropdown-item">About Us</a>#}
+                {#                <a href="{% url 'old_index' %}" class="dropdown-item">index</a>#}
             </div>
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
