@@ -9,7 +9,7 @@ from ckeditor.widgets import CKEditorWidget
 
 class ImagesInline(admin.StackedInline):  # TabularInline
     model = NewsImages
-    extra = 1   # сколько полей будет в inlines, default=3
+    extra = 10   # сколько полей будет в inlines, default=3
 
 
 class NewsAdminForm(forms.ModelForm):
@@ -32,12 +32,12 @@ class NewsAdmin(admin.ModelAdmin):
         ImagesInline,
     ]
     save_on_top = True  # Поле сохранить будет вверху
-    save_as = True # сохранить как новый объект
+    save_as = True  # сохранить как новый объект
 
     def get_picture(self, obj):
-        if obj.picture: # если есть фото
+        if obj.picture:  # если есть фото
             return mark_safe(f"<img src=\"{obj.picture.url}\" width=\"50\"")
-        return "-" # если нет фото, возвращаем такую строку
+        return "-"  # если нет фото, возвращаем такую строку
 
     get_picture.short_description = "Фото"
 
