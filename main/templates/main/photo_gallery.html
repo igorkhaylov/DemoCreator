@@ -40,6 +40,8 @@
 {% block body %}
 
 
+
+
     {#    <!-- Breadcrumbs -->#}
     <section class="breadcrumbs-custom-inset">
         <div class="breadcrumbs-custom context-dark bg-overlay-33">
@@ -54,9 +56,6 @@
 {% if photos.images.all %}
     <section class="section section-sm section-fluid bg-default text-center">
         <div class="container-fluid">
-{#            <h3 class="wow fadeInLeft">Фотогалерея</h3>#}
-
-
 
             <div class="container">
                 <div class="row justify-content-center">
@@ -70,26 +69,8 @@
                 </div>
             </div>
 
-{#            <p>{{ photos.title }}<a href="{% url 'post_detail' photos.pk %}">Читать полностью <span#}
-{#                    class="fa fa-arrow-circle-right"></span></a></p>#}
-
-            {#                <div class="isotope-filters isotope-filters-horizontal">#}
-            {#                    <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha"#}
-            {#                            data-custom-toggle="#isotope-3" data-custom-toggle-hide-on-blur="true"><span#}
-            {#                            class="icon fa fa-caret-down"></span>Filter#}
-            {#                    </button>#}
-            {#                    <ul class="isotope-filters-list" id="isotope-3">#}
-            {#                        <li><a class="active" href="#" data-isotope-filter="*" data-isotope-group="gallery">All</a></li>#}
-            {#                        <li><a href="#" data-isotope-filter="Type 1" data-isotope-group="gallery">Apartments</a></li>#}
-            {#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Offices</a></li>#}
-            {#                        <li><a href="#" data-isotope-filter="Type 3" data-isotope-group="gallery">Corporate designs</a>#}
-            {#                        </li>#}
-            {#                        <li><a href="#" data-isotope-filter="Type 2" data-isotope-group="gallery">Офис</a></li>#}
-            {#                    </ul>#}
-            {#                </div>#}
             <div class="row row-30 isotope" data-isotope-layout="fitRows" data-isotope-group="gallery"
                  data-lightgallery="group">
-
 
                 {% for image in photos.images.all %}
                     <div class="col-sm-6 col-lg-4 col-xxl-3 isotope-item wow fadeInLeft" data-filter="Type 3">
@@ -108,23 +89,6 @@
                                         height="308"/></a>
                                 </div>
 
-
-
-
-
-
-                                {#                                    <div class="thumbnail-classic-caption">#}
-                                {#                                        <div class="thumbnail-classic-title-wrap"><a class="icon fl-bigmug-line-zoom60"#}
-                                {#                                                                                     href="{{ image.pictures.url }}"#}
-                                {#                                                                                     data-lightgallery="item"><img#}
-                                {#                                                src="{{ im.url }}" alt="" width="420"#}
-                                {#                                                height="350"/></a>#}
-                                {#                                            <h5 class="thumbnail-classic-title"><a href="#">379 Harvey Rd</a></h5>#}
-                                {#                                        </div>#}
-                                {#                                        <p class="thumbnail-classic-text">We work hard on every project to deliver#}
-                                {#                                            top-notch#}
-                                {#                                            interior design concepts that satisfy your wishes.</p>#}
-                                {#                                    </div>#}
                             {% endthumbnail %}
                         </article>
                     </div>
@@ -136,8 +100,6 @@
 
 {% else %}
     <h1>Тут просто нет фотографий</h1>
-
-
 {% endif %}
 
 

@@ -9,7 +9,7 @@ from ckeditor.widgets import CKEditorWidget
 
 class ImagesInline(admin.StackedInline):  # TabularInline
     model = NewsImages
-    extra = 10   # сколько полей будет в inlines, default=3
+    extra = 3   # сколько полей будет в inlines, default=3
 
 
 class NewsAdminForm(forms.ModelForm):

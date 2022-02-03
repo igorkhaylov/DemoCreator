@@ -55,7 +55,7 @@
     {#    <section class="section section-sm section-first bg-default text-left">#}
     <h2 class="mt-4">Фотогалерея</h2>
     {% for news in page_obj %}
-        {% if news.images.all %}
+{#        {% if news.images %}#}
             <div class="card">
                 <div class="card-img"
                         {% thumbnail news.picture "370x307" crop="center" as im %}
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-        {% endif %}
+{#        {% endif %}#}
     {% endfor %}
     {#    </section>#}
     {#    position-static #}

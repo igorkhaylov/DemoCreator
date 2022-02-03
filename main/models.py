@@ -23,6 +23,7 @@ class News(models.Model):
     title = models.CharField("Заголовок", max_length=150)
     slug = models.SlugField("slug", max_length=40)
     picture = models.ImageField("Картинка", upload_to="articles/%Y/%m/%d/")
+    keywords_meta = models.TextField("Ключевые слова", null=True, blank=True)
     content = models.TextField("Контент")
     date = models.DateField("Дата")
     is_published = models.BooleanField("Опубликовать", default=True)
@@ -55,6 +56,7 @@ class NewsImages(models.Model):
 
 
 class Schedule(models.Model):
+    keywords_meta = models.TextField("Ключевые слова", null=True, blank=True)
     schedule = RichTextField("Богослужения", config_name="schedule")
 
     def __str__(self):
@@ -69,6 +71,7 @@ class Churches(models.Model):
     name = models.CharField("Название", max_length=70)
     slug = models.SlugField("Slug")
     picture = models.ImageField("Фотография", upload_to="media/churches")
+    keywords_meta = models.TextField("Ключевые слова", null=True, blank=True)
     short_text = models.TextField("Короткое описание", max_length=350)
     content = RichTextUploadingField("Описание", config_name="for_church")
 

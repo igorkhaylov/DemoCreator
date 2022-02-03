@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import News, Schedule, Churches, MainPagePicture
+from .models import News, Schedule, Churches, MainPagePicture, NewsImages
 from django.db.models import F
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
+
 
 
 class IndexNews(ListView):
@@ -44,7 +45,12 @@ class Gallery(ListView):
     context_object_name = "post"
 
     def get_queryset(self):
-        return News.objects.filter(is_published=True)
+        images = NewsImages.objects.all()
+        l = []
+        for image in images:
+            if image.post.id not in l:
+                l.append(image.post.id)
+        return News.objects.filter(id__in=l)
 
 
 class PhotoGallery(DetailView):
