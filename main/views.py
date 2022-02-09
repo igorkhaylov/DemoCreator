@@ -4,7 +4,7 @@ from django.db.models import F
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
-
+from django.core.cache import cache
 
 
 class IndexNews(ListView):
@@ -13,13 +13,25 @@ class IndexNews(ListView):
     paginate_by = 6
 
     def get_queryset(self):
+        main_news = cache.get("main_news")
+        if not main_news:
+            main_news = News.objects.filter(is_published=True)
+            cache.set("main_news", main_news, 300)
         return News.objects.filter(is_published=True)
 
     def get_churches(self):
-        return Churches.objects.all()
+        churches = cache.get("churches")
+        if not churches:
+            churches = Churches.objects.all()
+            cache.set("churches", churches, 3600)
+        return churches
 
     def get_main_pictures(self):
-        return MainPagePicture.objects.all()
+        main_picture = cache.get("main_picture")
+        if not main_picture:
+            main_picture = MainPagePicture.objects.all()
+            cache.set("main_picture", main_picture, 3600)
+        return main_picture
 
 
 class PostDetail(DetailView):
@@ -28,14 +40,19 @@ class PostDetail(DetailView):
     context_object_name = 'post'
 
     def get_queryset(self):
-        return News.objects.all()
+        news_details = cache.get("news_details")
+        if not news_details:
+            news_details = News.objects.all()
+            cache.set("news_details", news_details, 3600)
+        return news_details
+        # return News.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        self.object.views = F('views') + 1
-        self.object.save()
-        self.object.refresh_from_db()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     self.object.views = F('views') + 1
+    #     self.object.save()
+    #     self.object.refresh_from_db()
+    #     return context
 
 
 class Gallery(ListView):
@@ -58,12 +75,12 @@ class PhotoGallery(DetailView):
     template_name = "main/photo_gallery.html"
     context_object_name = "photos"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        self.object.views = F('views') + 1
-        self.object.save()
-        self.object.refresh_from_db()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     self.object.views = F('views') + 1
+    #     self.object.save()
+    #     self.object.refresh_from_db()
+    #     return context
 
 
 class Search(ListView):

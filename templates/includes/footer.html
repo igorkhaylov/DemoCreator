@@ -55,7 +55,7 @@
                     </ul>
                 </div>
             </div>
-            {% if request.user.is_authenticated %}
+{#            {% if request.user.is_authenticated %}#}
                 <div class="col-md-10 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay=".1s">
                     <div class="box-footer">
                         <h3 class="font-weight-normal" style="font-family: CyrillicOldBold">Свяжитесь с нами</h3>
@@ -94,65 +94,43 @@
                         </form>
                     </div>
                 </div>
-            {% else %}
-
-                <div class="col-md-10 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay=".1s">
-                    <div class="box-footer">
-                        <h3 class="font-weight-normal" style="font-family: CyrillicOldBold">Свяжитесь с нами</h3>
-
-                        <p class="text-width-medium">Чтобы оставить сообщение, пожалуйста, зарегистрируйтесь на
-                            сайте</p>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col d-flex justify-content-center">
-                                    <a href="{% url 'login' %}">
+{#            {% else %}#}
+{##}
+{#                <div class="col-md-10 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay=".1s">#}
+{#                    <div class="box-footer">#}
+{#                        <h3 class="font-weight-normal" style="font-family: CyrillicOldBold">Свяжитесь с нами</h3>#}
+{##}
+{#                        <p class="text-width-medium">Чтобы оставить сообщение, пожалуйста, зарегистрируйтесь на#}
+{#                            сайте</p>#}
+{#                        <div class="container">#}
+{#                            <div class="row">#}
+{#                                <div class="col d-flex justify-content-center">#}
+{#                                    <a href="{% url 'login' %}">#}
                                         {#                            <button id="submit_form" class="button button-block button-ujarak button-secondary my-5"#}
-                                        <button id="submit_form" class="button button-ujarak button-secondary my-5"
-                                                type="submit">
-                                            Войти
-                                        </button>
-                                    </a>
-
-                                </div>
-                                <div class="col-12 d-flex justify-content-center">
-                                    <a href="{% url 'register' %}">
-                                        <button id="submit_form" class="button button-ujarak button-secondary my-5"
-                                                type="submit">
-                                            Зарегистрироваться
-                                        </button>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        {#                        <a href="{% url 'register' %}">#}
-                        {#                            <button class="button button-primary button-pipaluk m-3" type="submit">Регистрация</button>#}
-                        {#                        </a>#}
-                    </div>
-                </div>
-            {% endif %}
-            {#            <div class="col-md-10 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".2s">#}
-            {#                <div class="box-footer">#}
-            {#                    <h3 class="font-weight-normal">See how we work</h3>#}
-            {#                    <ul class="footer-list-category">#}
-            {#                        <li class="heading-5"><a href="#">Home design<span></span></a></li>#}
-            {#                        <li class="heading-5"><a href="#">Commercial design<span></span></a></li>#}
-            {#                        <li class="heading-5"><a href="#">Office design<span></span></a></li>#}
-            {#                        <li class="heading-5"><a href="#">Consultations<span></span></a></li>#}
-            {#                        <li class="heading-5"><a href="#">Architect services<span></span></a></li>#}
-            {#                    </ul>#}
-            {#                </div>#}
-            {#            </div>#}
+{#                                        <button id="submit_form" class="button button-ujarak button-secondary my-5"#}
+{#                                                type="submit">#}
+{#                                            Войти#}
+{#                                        </button>#}
+{#                                    </a>#}
+{##}
+{#                                </div>#}
+{#                                <div class="col-12 d-flex justify-content-center">#}
+{#                                    <a href="{% url 'register' %}">#}
+{#                                        <button id="submit_form" class="button button-ujarak button-secondary my-5"#}
+{#                                                type="submit">#}
+{#                                            Зарегистрироваться#}
+{#                                        </button>#}
+{#                                    </a>#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
         </div>
     </div>
-    {#    <div class="container footer-bottom-panel wow fadeInUp">#}
-    {#        <!-- Rights-->#}
-    {#        <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span> <span>Creator</span>. All#}
-    {#            rights reserved. <span> Design&nbsp;by&nbsp;<a#}
-    {#                    href="https://www.templatemonster.com">TemplateMonster</a></span>#}
-    {#        </p>#}
-    {#    </div>#}
+
     <div class="container footer-bottom-panel wow fadeInUp">
         <!-- Rights-->
         <p class="rights font-weight-bold">

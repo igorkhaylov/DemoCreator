@@ -1,9 +1,9 @@
-{% load thumbnail %}
+{% load thumbnail cache %}
 {% load last_posts_tags %}
 {% get_last_posts as last_posts %}
+
+{% cache 3600 last_added_posts %}
 {% for last_post in last_posts %}
-
-
 
     <article class="quote-lisa mb-1">
         <div class="unit unit-spacing-md align-items-center">
@@ -34,7 +34,4 @@
     </article>
 
 {% endfor %}
-
-
-
-
+{% endcache %}

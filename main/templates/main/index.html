@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load thumbnail %}
+{% load static thumbnail cache  %}
 {% block title %}Главная страница{% endblock %}
 
 {% block meta %}
@@ -70,6 +69,7 @@
              data-simulate-touch="true" data-direction="vertical" data-nav="false">
         <div class="swiper-wrapper text-center">
 
+{#        {% cache 3600 main_picture_cache %}#}
             {% for main_picture in view.get_main_pictures %}
                 <div class="swiper-slide context-dark" data-slide-bg="{{ main_picture.picture.url }}">
 
@@ -95,51 +95,8 @@
                 </div>
 
             {% endfor %}
+{#        {% endcache %}#}
 
-
-            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture1.jpg' %}">#}
-            {#                <div class="swiper-slide-caption section-md">#}
-            {#                    <div class="container">#}
-            {#                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0"></h1>#}
-            {#                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">#}
-            {#                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского#}
-            {#                            Викентия#}
-            {#                        </p>#}
-            {#                        <a class="button button-primary button-ujarak" href="{% url 'schedule' %}"#}
-            {#                           data-caption-animate="fadeInUp"#}
-            {#                           data-caption-delay="200">#}
-            {#                            Богослужения#}
-            {#                        </a>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
-            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/my/MainPicture2.jpg' %}">#}
-            {#                <div class="swiper-slide-caption section-md">#}
-            {#                    <div class="container">#}
-            {#                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">#}
-            {#                            Committed and professional#}
-            {#                        </h1>#}
-            {#                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">#}
-            {#                            Официальный сайт создан по благословлению Митрополита Ташкентского и Узбекистанского#}
-            {#                            Викентия</p><a#}
-            {#                            class="button button-primary button-ujarak" href="{% url 'schedule' %}"#}
-            {#                            data-caption-animate="fadeInUp"#}
-            {#                            data-caption-delay="200">Богослужения</a>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
-            {#            <div class="swiper-slide context-dark" data-slide-bg="{% static 'images/slider-1-slide-3-1770x742.jpg' %}">#}
-            {#                <div class="swiper-slide-caption section-md">#}
-            {#                    <div class="container">#}
-            {#                        <h1 data-caption-animate="fadeInLeft" data-caption-delay="0">Harmonious and cozy</h1>#}
-            {#                        <p class="text-width-large" data-caption-animate="fadeInRight" data-caption-delay="100">We#}
-            {#                            develop individual room concepts for private and commercial use. Our team focuses on the#}
-            {#                            interior design of private living rooms, hotels, offices, and more.</p><a#}
-            {#                            class="button button-primary button-ujarak" href="#" data-caption-animate="fadeInUp"#}
-            {#                            data-caption-delay="200">Get in touch</a>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
         </div>
         <!-- Swiper Pagination-->
         <div class="swiper-pagination__module">
@@ -239,7 +196,6 @@
                  data-dots="true" data-animation-in="fadeIn" data-animation-out="fadeOut" data-autoplay="true">
                 <!-- Quote Lisa-->
 
-                {#                {% for church in churches %}#}
                 {% for church in view.get_churches %}
 
                     <article class="quote-lisa">
@@ -261,57 +217,11 @@
                     </article>
 
                 {% endfor %}
-
-
-                {#                <article class="quote-lisa">#}
-                {#                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
-                {#                                                                                            src="{% static 'images/user-16-100x100.jpg' %}"#}
-                {#                                                                                            alt="" width="100"#}
-                {#                                                                                            height="100"/></a>#}
-                {#                        <div class="quote-lisa-text">#}
-                {#                            <p class="q">{{ pass }}</p>#}
-                {#                        </div>#}
-                {#                        <h5 class="quote-lisa-cite"><a href="#">Catherine Williams</a></h5>#}
-                {#                        <p class="quote-lisa-status">Local shop owner</p>#}
-                {#                    </div>#}
-                {#                </article>#}
-                {#                <!-- Quote Lisa-->#}
-                {#                <article class="quote-lisa">#}
-                {#                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
-                {#                                                                                            src="{% static 'images/user-17-100x100.jpg' %}"#}
-                {#                                                                                            alt="" width="100"#}
-                {#                                                                                            height="100"/></a>#}
-                {#                        <div class="quote-lisa-text">#}
-                {#                            <p class="q">This agency was highly recommended to me. The sensitivity, knowledge,#}
-                {#                                vision#}
-                {#                                and ultimate execution this firm brought to the table was tremendous. They have#}
-                {#                                enormously talented designers in the team who consistently deliver the highest#}
-                {#                                quality#}
-                {#                                as well as aesthetically beautiful solutions for their clients.</p>#}
-                {#                        </div>#}
-                {#                        <h5 class="quote-lisa-cite"><a href="#">Rupert Wood</a></h5>#}
-                {#                        <p class="quote-lisa-status">House owner</p>#}
-                {#                    </div>#}
-                {#                </article>#}
-                {#                <!-- Quote Lisa-->#}
-                {#                                <article class="quote-lisa">#}
-                {#                                    <div class="quote-lisa-body"><a class="quote-lisa-figure" href="#"><img class="img-circles"#}
-                {#                                                                                                            src="{% static 'images/user-18-100x100.jpg' %}"#}
-                {#                                                                                                            alt="" width="100"#}
-                {#                                                                                                            height="100"/></a>#}
-                {#                                        <div class="quote-lisa-text">#}
-                {#                                            <p class="q">Your professional guidance gave me results that far exceeded my#}
-                {#                                                expectations.#}
-                {#                                                My clients thoroughly enjoy the fun, relaxing ambience that the interior design#}
-                {#                                                creates.#}
-                {#                                                Thank you for helping me bring my ideas to life and transform my own workspace into#}
-                {#                                                something new and awesome!</p>#}
-                {#                                        </div>#}
-                {#                                        <h5 class="quote-lisa-cite"><a href="#">Samantha Brown</a></h5>#}
-                {#                                        <p class="quote-lisa-status">Freelancer</p>#}
-                {#                                    </div>#}
-                {#                                </article>#}
             </div>
+
+
+
+
         </div>
     </section>
 

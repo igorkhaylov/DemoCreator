@@ -27,11 +27,10 @@ DEBUG = True
 
 from .prod_settings import *
 
-
-if DEBUG:
-    ALLOWED_HOSTS = ['*']
-else:
-    ALLOWED_HOSTS = ['hram-alekseevskii.igorkhaylov.uz']
+ALLOWED_HOSTS = ['hram-alekseevskii.igorkhaylov.uz',
+                 'ikhaylov',
+                 '127.0.0.1',
+                 ]
 
 # Application definition
 
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'sorl.thumbnail',
+    "debug_toolbar",
 
 ]
 
@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'DemoCreator.urls'
@@ -116,15 +117,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# for debug_toolbar
+INTERNAL_IPS = [
+    "127.0.0.1",
+    # "172.30.80.193",
+]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
 # STATIC_DIR = os.path.join(BASE_DIR, 'static')
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-else:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -136,76 +142,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-# CKEDITOR_CONFIGS = {
-#     'skin': 'moono',
-#     'default': {
-#         'toolbar': 'full',
-#     },
-# }
-# CKEDITOR.config.font_names = {}
-
-CKEDITOR_CONFIGS = {
-    'skin': 'moono',
+CACHES = {
     'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
-             'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source', "Youtube", "Image"]
-        ],
-        'extraPlugins': ','.join([
-            'youtube',
-        ]),
-    },
-    'my_config': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ["Source", "Templates", 'Format', 'Font', 'FontSize', 'Maximize', 'ShowBlocks'], '/',
-            ['Image', 'Youtube', 'Table', 'Bold', 'Italic', 'Underline', 'Strike', 'Indent', 'Outdent',
-             'HorizontalRule'],
-            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Blockquote', 'NumberedList'],
-            ['BulletedList', 'TextColor', 'BGColor', 'Link', 'Smiley', 'SpecialChar'], '/',
-            ['Find', 'Subscript', 'Superscript'], '/',
-            [], '/',
-            [], '/',
-        ],
-        'extraPlugins': ','.join([
-            'uploadimage',
-            'youtube',
-        ]),
-    },
-    'for_church': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ["Source", 'Font', 'FontSize', 'Maximize', 'ShowBlocks'], '/',
-            ['Image', 'Youtube', 'Table', 'Bold', 'Italic', 'Underline', 'Strike', 'Indent', 'Outdent',
-             'HorizontalRule'],
-            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'Blockquote', 'NumberedList'],
-            ['BulletedList', 'TextColor', 'BGColor', 'Link', 'Anchor', 'Smiley', 'SpecialChar'], '/',
-            ['Find', 'Subscript', 'Superscript'], '/',
-            [], '/',
-            [], '/',
-        ],
-        'extraPlugins': ','.join([
-            # 'uploadimage',
-            'youtube',
-        ]),
-    },
-    'schedule': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Font', 'Maximize'], '/',
-            ['Table', 'Bold', 'Italic', 'Underline',
-             'HorizontalRule'],
-            ['BulletedList', 'TextColor', 'BGColor', 'Link', 'Smiley', 'SpecialChar'], '/',
-            ['Find', 'Subscript', 'Superscript'], '/',
-            [], '/',
-            [], '/',
-        ],
-    },
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, "hram_cache"),
+    }
 }
-
-# CKEDITOR_JQUERY_URL = "//ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"
-# CKEDITOR_IMAGE_BACKEND = "pillow"

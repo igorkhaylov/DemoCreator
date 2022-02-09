@@ -48,9 +48,6 @@
             </div>
         </li>
         <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'gallery' %}">Галерея</a></li>
-{#        <li class="rd-nav-item active mr-lg-4 mr-xl-4 mr-xxl-4 mr-md-0"><a class="rd-nav-link"#}
-{#                                                                           href="{% url 'contact' %}">Контакты</a>#}
-{#        </li>#}
         <li class="rd-nav-item active"><a class="rd-nav-link" href="{% url 'contact' %}">Контакты</a></li>
     </ul>
 
@@ -61,30 +58,11 @@
 
     <!-- RD Google Map-->
     <section class="section section-fluid">
-        <!--Please, add the data attribute data-key="YOUR_API_KEY" in order to insert your own API key for the Google map.-->
-        <!--Please note that YOUR_API_KEY should replaced with your key.-->
-        <!--Example: <div class="google-map-container" data-key="YOUR_API_KEY">-->
-        {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1291.6747268424986!2d66.95917513156091!3d39.64661880931012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d18d394aed9b1%3A0xe2361c47e222c7b8!2zU3QgQWxla3NpIENhdGhlZHJhbCwgQm9idXIgTWlyem8gU3QsIFNhbWFya2FuZCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1624704060945!5m2!1sru!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>#}
-        {#<div class="map-responsive">#}
-{#        <div class="google-map-container">#}
             <div class="map-responsive">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1291.6747268424986!2d66.95917513156091!3d39.64661880931012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d18d394aed9b1%3A0xe2361c47e222c7b8!2zU3QgQWxla3NpIENhdGhlZHJhbCwgQm9idXIgTWlyem8gU3QsIFNhbWFya2FuZCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e0!3m2!1sru!2s!4v1624704060945!5m2!1sru!2s"
                         style="border:0;" allowfullscreen="" loading="lazy" data-zoom="5"></iframe>
             </div>
 
-{#        </div>#}
-
-
-        {#        <div class="google-map-container" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="5"#}
-        {#             data-icon="{% static 'images/gmap_marker.png' %}"#}
-        {#             data-icon-active="{% static 'images/gmap_marker_active.png' %}"#}
-        {#             data-styles="[{&quot;featureType&quot;:&quot;landscape&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:60}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:40},{&quot;visibility&quot;:&quot;on&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;administrative.province&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;lightness&quot;:30}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ef8c25&quot;},{&quot;lightness&quot;:40}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#b6c54c&quot;},{&quot;lightness&quot;:40},{&quot;saturation&quot;:-40}]},{}]">#}
-        {#            <div class="google-map"></div>#}
-        {#            <ul class="google-map-markers">#}
-        {#                <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45."#}
-        {#                    data-description="9870 St Vincent Place, Glasgow"></li>#}
-        {#            </ul>#}
-        {#        </div>#}
     </section>
     
 
@@ -128,20 +106,11 @@
         </div>
     </section>
 
-
-{#    {% if request.user.is_authenticated %}#}
-{##}
-{#        <div class="h2">Hello, {{ user.username|capfirst }}, you are registered</div>#}
-{#    {% else %}#}
-{#        <div class="h2">Чтобы оставить сообщение зарегистрируйтесь на сайте</div>#}
-{#    {% endif %}#}
-
-
     <!-- Contact Form-->
     <section class="section section-sm section-last bg-default text-left">
         <div class="container">
 
-    {% if request.user.is_authenticated %}
+{#    {% if request.user.is_authenticated %}#}
 
             <article class="title-classic">
                 <div class="title-classic-title">
@@ -159,14 +128,16 @@
                     <div class="col-md-4">
                         <div class="form-wrap">
                             <input class="form-input" id="contact-your-name-2" type="text" name="name"
-                                   data-constraints="@Required" value="{{ user.first_name }} {{ user.last_name }}" placeholder="Ваше Ф.И.О.">
+{#                                   data-constraints="@Required" value="{{ user.first_name }} {{ user.last_name }}" placeholder="Ваше Ф.И.О.">#}
+                            data-constraints="@Required" placeholder="Ваше Ф.И.О.">
                             <label class="form-label" for="contact-your-name-2" ></label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-wrap">
                             <input class="form-input" id="contact-email-2" type="email" name="email"
-                                   data-constraints="@Email @Required" value="{{ user.email }}" placeholder="Ваш E-mail">
+{#                                   data-constraints="@Email @Required" value="{{ user.email }}" placeholder="Ваш E-mail">#}
+                            data-constraints="@Email @Required" placeholder="Ваш E-mail">
                             <label class="form-label" for="contact-email-2"></label>
                         </div>
                     </div>
@@ -184,41 +155,34 @@
                             <textarea class="form-input textarea-lg" id="contact-message-2" name="message"
                                       data-constraints="@Required" placeholder="Текстовое сообщение"></textarea>
                         </div>
-{#                        <input type="text" class="phone" placeholder="Введите телефон">#}
                     </div>
                 </div>
                 <button id="submit_form" class="button button-primary button-pipaluk" type="submit">Отправить сообщение</button>
             </form>
 
+
+{#    {% else %}#}
+{##}
+{#            <article class="title-classic mt-5">#}
+{#                <div class="title-classic-title">#}
+{#                    <h4 class="font-weight-bold" style="font-family: CyrillicOldBold">Свяжиесь с нами</h4>#}
+{#                </div>#}
+{#                <div class="title-classic-text">#}
+{#                    <p>Чтобы оставить сообщение, пожалуйста, зарегистрируйтесь на сайте</p>#}
+{#                </div>#}
+{#            </article>#}
+{#        <div class="container">#}
+{#        <div class="row justify-content-center m-5">#}
+{#            <a href="{% url 'register' %}">#}
+{#                <button class="button button-primary button-pipaluk m-3" type="submit">Регистрация</button>#}
+{#            </a>#}
+{#            <a href="{% url 'login' %}">#}
+{#                <button class="button button-primary button-pipaluk m-3" type="submit">Вход</button>#}
+{#            </a>#}
 {#        </div>#}
-{#    </section>#}
-
-
-    {% else %}
-
-            <article class="title-classic mt-5">
-                <div class="title-classic-title">
-                    <h4 class="font-weight-bold" style="font-family: CyrillicOldBold">Свяжиесь с нами</h4>
-                </div>
-                <div class="title-classic-text">
-                    <p>Чтобы оставить сообщение, пожалуйста, зарегистрируйтесь на сайте</p>
-                </div>
-            </article>
-        <div class="container">
-        <div class="row justify-content-center m-5">
-            <a href="{% url 'register' %}">
-                <button class="button button-primary button-pipaluk m-3" type="submit">Регистрация</button>
-            </a>
-            <a href="{% url 'login' %}">
-                <button class="button button-primary button-pipaluk m-3" type="submit">Вход</button>
-            </a>
-        </div>
-        </div>
-
-
-
-
-    {% endif %}
+{#        </div>#}
+{##}
+{#    {% endif %}#}
     </div>
         </section>
 
