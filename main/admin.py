@@ -42,8 +42,9 @@ class NewsAdmin(admin.ModelAdmin):
     get_picture.short_description = "Фото"
 
 
+# @admin.register(NewsImages)
 class NewsImagesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
+    list_display = ('id', 'title', "post_id")
     list_display_links = ('id', 'title')
 
 
@@ -73,7 +74,7 @@ admin.site.register(News, NewsAdmin)
 admin.site.register(Schedule)
 # admin.site.register(MainPagePicture)
 admin.site.register(Churches, ChurchesAdmin)
-# admin.site.register(NewsImages, NewsImagesAdmin)
+# admin.site.register(NewsImages)
 
 admin.site.site_title = "Управление сайтом"
 admin.site.site_header = "Свято-Алексеевский Собор"

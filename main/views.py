@@ -17,7 +17,7 @@ class IndexNews(ListView):
         if not main_news:
             main_news = News.objects.filter(is_published=True)
             cache.set("main_news", main_news, 300)
-        return News.objects.filter(is_published=True)
+        return main_news
 
     def get_churches(self):
         churches = cache.get("churches")
@@ -62,11 +62,15 @@ class Gallery(ListView):
     context_object_name = "post"
 
     def get_queryset(self):
-        images = NewsImages.objects.all()
+        # images = cache.get("images_cache")
+        # if not images:
+        #     images = NewsImages.objects.all()
+        #     cache.set("images_cache", images, 10)
         l = []
+        images = NewsImages.objects.all()
         for image in images:
-            if image.post.id not in l:
-                l.append(image.post.id)
+            if image.post_id not in l:
+                l.append(image.post_id)
         return News.objects.filter(id__in=l)
 
 
@@ -84,7 +88,7 @@ class PhotoGallery(DetailView):
 
 
 class Search(ListView):
-    paginate_by = 3
+    paginate_by = 6
     template_name = "main/index.html"
 
     def get_queryset(self):
@@ -96,11 +100,25 @@ class Search(ListView):
         return context
 
     def get_churches(self):
-        return Churches.objects.all()
+        churches = cache.get("churches")
+        if not churches:
+            churches = Churches.objects.all()
+            cache.set("churches", churches, 3600)
+        return churches
+
+    def get_main_pictures(self):
+        main_picture = cache.get("main_picture")
+        if not main_picture:
+            main_picture = MainPagePicture.objects.all()
+            cache.set("main_picture", main_picture, 3600)
+        return main_picture
 
 
 def schedule(request):
-    schedule = Schedule.objects.first()
+    schedule = cache.get("schedule_cache")
+    if not schedule:
+        schedule = Schedule.objects.first()
+        cache.set("schedule_cache", schedule, 3600)
     return render(request, "main/schedule.html", {"schedule": schedule})
 
 
@@ -110,7 +128,11 @@ def churches(request, slug):
 
 
 def history(request):
-    history = Churches.objects.first()
+    history = cache.get("history_cache")
+    if not history:
+        history = Churches.objects.first()
+        cache.set("history_cache", history, 3600)
+    # history = Churches.objects.first()
     return render(request, "main/history.html", {"history": history})
 
 
